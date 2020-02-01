@@ -2,21 +2,53 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Studynotes on Lijinyu&#39;s Hugo blog</title>
-    <link>https://lijinyu3.github.io/%20-t%20hugo-theme-learn%20-D/studynotes/</link>
+    <link>https://lijinyu3.github.io/studynotes/</link>
     <description>Recent content in Studynotes on Lijinyu&#39;s Hugo blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 02 Feb 2020 00:30:15 +0800</lastBuildDate>
     
-	<atom:link href="https://lijinyu3.github.io/%20-t%20hugo-theme-learn%20-D/studynotes/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://lijinyu3.github.io/studynotes/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Markdown基本语法</title>
+      <link>https://lijinyu3.github.io/studynotes/markdown/</link>
+      <pubDate>Sat, 01 Feb 2020 03:50:58 +0800</pubDate>
+      
+      <guid>https://lijinyu3.github.io/studynotes/markdown/</guid>
+      <description>一、摘要 本博客都是用Markdown文件写作的，故写一篇博客存储md语法。
+ Markdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。 --摘自百度百科
+ 优点： Markdown是纯文本，只要支持该格式的地方就能获得一样的边际效果。 缺点： 语法要记住的多；有的地方不支持本格式。
+ 二、基本语法 2.1 标题 # 一级标题 
+## 二级标题 
+### 三级标题 
+#### 四级标题 
+##### 五级标题 
+###### 最小只有六级标题
+2.2 文本样式  加粗：**加粗** 效果：用于加粗字体。 斜体：*斜体* 效果：倾斜字体。 代码引用：&amp;gt;代码引用 效果：(可以嵌套引用)   代码引用
+   超链接：[Title](Url) 效果：超链接
+  高亮：==高亮== 效果：== 高亮 ==（原版标准不存在）
+  列表：* 列表 效果：如上一行所示。
+  分割线：--- 效果：
+    删除线：~~删除~~ 效果：删除  2.</description>
+    </item>
+    
+    <item>
+      <title>Blog</title>
+      <link>https://lijinyu3.github.io/studynotes/blog/</link>
+      <pubDate>Sat, 01 Feb 2020 01:10:16 +0800</pubDate>
+      
+      <guid>https://lijinyu3.github.io/studynotes/blog/</guid>
+      <description>你好</description>
+    </item>
+    
+    <item>
       <title>各类语言的比较</title>
-      <link>https://lijinyu3.github.io/%20-t%20hugo-theme-learn%20-D/studynotes/test2/</link>
+      <link>https://lijinyu3.github.io/studynotes/test2/</link>
       <pubDate>Thu, 01 Aug 2019 13:30:10 +0800</pubDate>
       
-      <guid>https://lijinyu3.github.io/%20-t%20hugo-theme-learn%20-D/studynotes/test2/</guid>
+      <guid>https://lijinyu3.github.io/studynotes/test2/</guid>
       <description>各种语言的学习  一、Java语言 Java有一个丰富的生态圈
 重要、必学！后端，企业、公司开发的语言。
 很好找工作。
@@ -62,10 +94,10 @@ Hugo的博客是golang写的。
     
     <item>
       <title>你好</title>
-      <link>https://lijinyu3.github.io/%20-t%20hugo-theme-learn%20-D/studynotes/test3/</link>
+      <link>https://lijinyu3.github.io/studynotes/test3/</link>
       <pubDate>Thu, 01 Aug 2019 13:29:56 +0800</pubDate>
       
-      <guid>https://lijinyu3.github.io/%20-t%20hugo-theme-learn%20-D/studynotes/test3/</guid>
+      <guid>https://lijinyu3.github.io/studynotes/test3/</guid>
       <description>测试一下  过几天要过生日了哈哈哈</description>
     </item>
     

@@ -2,13 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ReadingNotes on Lijinyu&#39;s Hugo blog</title>
-    <link>https://lijinyu3.github.io/%20-t%20hugo-theme-learn%20-D/readingnotes/</link>
+    <link>https://lijinyu3.github.io/readingnotes/</link>
     <description>Recent content in ReadingNotes on Lijinyu&#39;s Hugo blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 02 Feb 2020 00:43:32 +0800</lastBuildDate>
     
-	<atom:link href="https://lijinyu3.github.io/%20-t%20hugo-theme-learn%20-D/readingnotes/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://lijinyu3.github.io/readingnotes/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>
