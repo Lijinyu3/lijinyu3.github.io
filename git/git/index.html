@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Categories :: Lijinyu&#39;s Hugo blog</title>
+    <title>对于集中式与分布式的浅显理解 :: Lijinyu&#39;s Hugo blog</title>
 
     
     <link href="/css/nucleus.css?1580575152" rel="stylesheet">
@@ -33,7 +33,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/categories/">
+  <body class="" data-url="/git/git/">
     <nav id="sidebar" class="">
 
 
@@ -92,7 +92,7 @@
   
     
     <li data-nav-id="/git/" title="Git" class="dd-item 
-        
+        parent
         
         
         ">
@@ -116,7 +116,7 @@
  
   
     
-      <li data-nav-id="/git/git/" title="对于集中式与分布式的浅显理解" class="dd-item ">
+      <li data-nav-id="/git/git/" title="对于集中式与分布式的浅显理解" class="dd-item active">
         <a href="/git/git/">
         对于集中式与分布式的浅显理解
         
@@ -289,7 +289,13 @@
             
           
           
-            <a href='/'>Myblog</a> > Categories
+            
+            
+          
+          
+            <a href='/'>Myblog</a> > <a href='/git/'>Git</a> > 对于集中式与分布式的浅显理解
+          
+         
           
          
           
@@ -300,7 +306,15 @@
                 
                     <div class="progress">
     <div class="wrapper">
-
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#一概念">一、概念</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -316,7 +330,7 @@
           
             <h1>
               
-              Categories
+              对于集中式与分布式的浅显理解
             </h1>
           
 
@@ -324,17 +338,71 @@
 
 
 
-
-
-
-<ul>
-	
-</ul>
+<p>因为本博客架构在我的GitHub网站上，在更新Blog时要用到Git进行管理控制上传。故在此开贴记录一下Git的使用与理解。</p>
+<hr>
+<h3 id="一概念">一、概念</h3>
+<h4 id="11-版本管理系统的由来">1.1 版本管理系统的由来</h4>
+<p>首先Git是目前世界上最先进的<strong>分布式</strong> <strong>版本控制系统</strong>（没有之一）。那么什么是版本控制系统？</p>
+<p>就像我在用Word写设计报告论文时，老师总会找出错误让我改报告。每次修改为了保险都会保存上一次的文件，因此就会创建一个当前文件的副本文件作为当前使用的报告。但是改报告并不会一次两次就会修改完，经常会造成这种情况。如图1.1，版本文档示意图。</p>
+<p><img src="/Git_0.jpg" alt="图1.1 版本文档示意图"></p>
+<!-- raw HTML omitted -->
+<p>更麻烦的是，如果有一份报告需要我和组员协同完成。于是我把文件用U盘copy给组员，然后我继续完成我的部分，等着组员完成他的部分然后把Word文档发给我。但当组员把他的文档发过来时，我必须考虑在这段时间内我对这份Word文档作了哪些改动，并把我的改动与他的部分合并。这又涉及到版本回滚了，很麻烦。</p>
+<p>这时候如果能有一个软件，可以帮助我记录每次文件的改动情况，还可以让组员协同编辑，这样就把管理版本的任务交给软件了，不需要对这些文件传来传去，改来改去。如果想看某一次改动，只需要看一眼软件的记录，回滚版本也方便了很多。</p>
+<p>就像下面的表格一样。</p>
+<table>
+<thead>
+<tr>
+<th>版本</th>
+<th>文件名</th>
+<th>用户</th>
+<th>说明</th>
+<th>日期</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>文档.doc</td>
+<td>LJY</td>
+<td>第一版报告</td>
+<td>2020.2.1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>文档.doc</td>
+<td>LJY</td>
+<td>改变行间距</td>
+<td>2020.2.2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>文档.doc</td>
+<td>熊豪</td>
+<td>加入哈夫曼编码</td>
+<td>2020.2.3</td>
+</tr>
+</tbody>
+</table>
+<p>这就是版本管理系统的由来。</p>
+<h4 id="12-集中式与分布式">1.2 集中式与分布式</h4>
+<p>Git作为一款优秀的版本管理系统，它是分布式的。那么分布式与集中式的区别与优缺点都是什么。</p>
+<p>先说一下集中式的。在集中式版本管理系统中，版本库集中存放在中央服务器，在需要处理文档时，用自己的电脑从中央服务器取得最新的版本，在处理完之后，再commit到中央服务器。在这里，中央服务器就像一个大的图书馆，每次都从图书馆里借一本书，回到家自己改，改完了再交回去。如图1.2，集中式示意图。</p>
+<p><!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<p>而分布式版本控制系统根本没有中央服务器，每个人的电脑上都会clone一份完整的版本库（项目全部文件及版本迭代）。这样在处理文档时并不需要联网，因为版本库就在本机上。但是每个人电脑都有版本库，如果协同工作呢？如果我在电脑上修改了A.word，组员也修改了A.word，那么我们只需要把相互的修改push给对方，就能看到修改的东西了。</p>
+<p>这样，可以看出来与集中式相比，分布式安全了不少，即便某个人的版本库坏了，只需要从另一个人那里clone过来就行了。而集中式的如果服务器有问题了，比如宕机，那么大家都不能干活了。</p>
+<p>在实际使用时，由于两台电脑可能不在同一局域网下，所以并不能相互访问，也就不能在两人之间的电脑上相互push版本库的修改了。也有可能我的组员有事病了，他的电脑没有开机。因此分布式系统也需要一台充当中央服务器的电脑，但是此服务器并非彼服务器，它的作用仅仅是方便交换大家的修改，没有了它一样可以干活，只是很不方便。</p>
+<p><img src="/Git_2.jpg" alt="分布式示意图"></p>
+<!-- raw HTML omitted -->
+<p>集中式每次干活时只把最新版本pull下来，而分布式在第一次干活时需要把整个repo都clone过来。因此在初始化的时候，集中式只需要很短的时间就能完成，而分布式的需要等一些时间。</p>
+<p>其次，在集中式管理时，admin可以通过中央服务器制定每个人的权限范围，便于管理。分布式因为每一台都是一个完整的服务器，并不便于管理。（？不知道能不能指定每个用户可提交的文档权限）</p>
+<p>但是这样做的好处也很明显。在Central Server宕机或自己的电脑断网时，集中式如果需要连续修改一些东西，就不能完成。（每次修改必须commit，不然无法记录修改内容）。而分布式在第一种情况可以直接指定另一台电脑作为服务器，在断网时，由于自己有完整的历史库，因此可以单机commit修改内容，在有网的时候pull到中央服务器与别人交换就ok了。</p>
 
 
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -367,8 +435,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -382,6 +448,7 @@
             
             
                 
+                    
                     
                 
                 
@@ -401,6 +468,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -486,8 +556,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/git/" title="Git"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/git/" title="Git" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/studynotes/" title="Studynotes" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -517,3 +589,4 @@
 
   </body>
 </html>
+

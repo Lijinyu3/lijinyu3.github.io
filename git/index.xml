@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Myblog on Lijinyu&#39;s Hugo blog</title>
-    <link>https://lijinyu3.github.io/</link>
-    <description>Recent content in Myblog on Lijinyu&#39;s Hugo blog</description>
+    <title>Git on Lijinyu&#39;s Hugo blog</title>
+    <link>https://lijinyu3.github.io/git/</link>
+    <description>Recent content in Git on Lijinyu&#39;s Hugo blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 01 Aug 2019 00:32:24 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 02 Feb 2020 00:34:06 +0800</lastBuildDate>
     
-	<atom:link href="https://lijinyu3.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://lijinyu3.github.io/git/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -32,96 +32,6 @@
 集中式每次干活时只把最新版本pull下来，而分布式在第一次干活时需要把整个repo都clone过来。因此在初始化的时候，集中式只需要很短的时间就能完成，而分布式的需要等一些时间。
 其次，在集中式管理时，admin可以通过中央服务器制定每个人的权限范围，便于管理。分布式因为每一台都是一个完整的服务器，并不便于管理。（？不知道能不能指定每个用户可提交的文档权限）
 但是这样做的好处也很明显。在Central Server宕机或自己的电脑断网时，集中式如果需要连续修改一些东西，就不能完成。（每次修改必须commit，不然无法记录修改内容）。而分布式在第一种情况可以直接指定另一台电脑作为服务器，在断网时，由于自己有完整的历史库，因此可以单机commit修改内容，在有网的时候pull到中央服务器与别人交换就ok了。</description>
-    </item>
-    
-    <item>
-      <title>Markdown基本语法</title>
-      <link>https://lijinyu3.github.io/studynotes/markdown/</link>
-      <pubDate>Sat, 01 Feb 2020 03:50:58 +0800</pubDate>
-      
-      <guid>https://lijinyu3.github.io/studynotes/markdown/</guid>
-      <description>一、摘要 本博客都是用Markdown文件写作的，故写一篇博客存储md语法。
- Markdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。 --摘自百度百科
- 优点： Markdown是纯文本，只要支持该格式的地方就能获得一样的边际效果。 缺点： 语法要记住的多；有的地方不支持本格式。
- 二、基本语法 2.1 标题 # 一级标题 
-## 二级标题 
-### 三级标题 
-#### 四级标题 
-##### 五级标题 
-###### 最小只有六级标题
-2.2 文本样式  加粗：**加粗** 效果：用于加粗字体。 斜体：*斜体* 效果：倾斜字体。 代码引用：&amp;gt;代码引用 效果：(可以嵌套引用)   代码引用
-   超链接：[Title](Url) 效果：超链接
-  高亮：==高亮== 效果：== 高亮 ==（原版标准不存在）
-  列表：* 列表 效果：如上一行所示。
-  分割线：--- 效果：
-    删除线：~~删除~~ 效果：删除  2.</description>
-    </item>
-    
-    <item>
-      <title>Blog</title>
-      <link>https://lijinyu3.github.io/studynotes/blog/</link>
-      <pubDate>Sat, 01 Feb 2020 01:10:16 +0800</pubDate>
-      
-      <guid>https://lijinyu3.github.io/studynotes/blog/</guid>
-      <description>你好</description>
-    </item>
-    
-    <item>
-      <title>各类语言的比较</title>
-      <link>https://lijinyu3.github.io/studynotes/test2/</link>
-      <pubDate>Thu, 01 Aug 2019 13:30:10 +0800</pubDate>
-      
-      <guid>https://lijinyu3.github.io/studynotes/test2/</guid>
-      <description>各种语言的学习  一、Java语言 Java有一个丰富的生态圈
-重要、必学！后端，企业、公司开发的语言。
-很好找工作。
-Spring全家桶（框架）
- 二、C语言 经典。
-通信专业、电子
-用于嵌入式系统 e.g.单片机
-效率很高，接近机器语言。
- 三、Python语言 是一种数字分析计算语言
-与数字有关的行业
-机器学习 Machine Learning
-丰富的第三方开源库
-爬虫
-也可以做Web后端服务
- 四、C++语言 C的外延，却与C不是一种语言。
-很有设计思想的语言。
-难
- 五、JavaScript语言 全栈语言
-最广泛应用于交互网页。
-用于网站前端
-也可以用于做后端，得益于node.js
- 六、C#语言 语法很像Java
-可以做桌面应用
-也可以做后端
- 七、PHP语言**（世界上最好的语言）** 服务器脚本
-可以做后端服务器框架
- 八、SQL语言 必学
-数据查询
-优化它很重要
- 九、Objective-C ＆ Swift 开发iOS的
- 十、MATLAB 科研语言
-商业较少
-读研很重要
-数学的东西很擅长
-十一、Golang语言 Google发布
-推荐学习
-速度极快！媲美C/C++！
-也可以做web后端
-Hugo的博客是golang写的。
- 十二、Groovy语言 脚本语言
-可以与Java语言互相调用。</description>
-    </item>
-    
-    <item>
-      <title>你好</title>
-      <link>https://lijinyu3.github.io/studynotes/test3/</link>
-      <pubDate>Thu, 01 Aug 2019 13:29:56 +0800</pubDate>
-      
-      <guid>https://lijinyu3.github.io/studynotes/test3/</guid>
-      <description>测试一下  过几天要过生日了哈哈哈</description>
     </item>
     
   </channel>
