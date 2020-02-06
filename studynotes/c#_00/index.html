@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Studynotes :: Lijinyu&#39;s Hugo blog</title>
+    <title>C#_00 :: Lijinyu&#39;s Hugo blog</title>
 
     
     <link href="/css/nucleus.css?1581015454" rel="stylesheet">
@@ -33,7 +33,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/studynotes/">
+  <body class="" data-url="/studynotes/c#_00/">
     <nav id="sidebar" class="">
 
 
@@ -231,7 +231,7 @@
     
     <li data-nav-id="/studynotes/" title="Studynotes" class="dd-item 
         parent
-        active
+        
         
         ">
       <a href="/studynotes/">
@@ -254,7 +254,7 @@
  
   
     
-      <li data-nav-id="/studynotes/c#_00/" title="C#_00" class="dd-item ">
+      <li data-nav-id="/studynotes/c#_00/" title="C#_00" class="dd-item active">
         <a href="/studynotes/c#_00/">
         C#_00
         
@@ -395,7 +395,13 @@
             
           
           
-            <a href='/'>Myblog</a> > Studynotes
+            
+            
+          
+          
+            <a href='/'>Myblog</a> > <a href='/studynotes/'>Studynotes</a> > C#_00
+          
+         
           
          
           
@@ -406,7 +412,15 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -422,7 +436,7 @@
           
             <h1>
               
-              Studynotes
+              C#_00
             </h1>
           
 
@@ -430,16 +444,57 @@
 
 
 
-
-	<p>一些阅读笔记</p>
-
-
-
+<p>金旭亮老师的C#+.NET的学习笔记</p>
+<hr>
+<h4 id="一本课程学习内容c-net">一、本课程学习内容：<strong>C#</strong> <strong>.NET</strong></h4>
+<p>本课程将会用到的项目类型：</p>
+<ol>
+<li>Windows窗体程序（.exe 最常用的）</li>
+<li>控制台应用程序（多用于学习，平时少）</li>
+<li>类库（.dll 提供大厦的砖块）</li>
+</ol>
+<h4 id="二格式输入输出">二、格式输入输出</h4>
+<p>Console类</p>
+<blockquote>
+<p>格式输入：Console.WriteLine();</p>
+<p>格式输出：Console.ReadKey();</p>
+</blockquote>
+<h4 id="三控制台方法">三、控制台方法</h4>
+<p>与Java一样，静态无返回值的方法就是</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c#" data-lang="c#"> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> TestConsoleProperty(){
+     Console.Title = <span style="color:#e6db74">&#34;Current Time:&#34;</span>+DateTime.Now;
+	Console.ForegroundColor = ConsoleColor.Yellow;
+	Console.BackgroundColor = ConsoleColor.DarkBlue;
+}
+</code></pre></div><p>引用方法时的语法是</p>
+<blockquote>
+<p>TestConsoleProperty();</p>
+</blockquote>
+<p>其中Console类中的Title、ForegroundColor、BackgroundColor分别是标题、前背景色（字体颜色）、背景色这些属性。</p>
+<h4 id="四输入输出及其参数">四、输入输出及其参数</h4>
+<p>Console.Write()方法并不会自动换行，类似于Java的System.out.print()，而WriteLine()就像是println()。</p>
+<p>在输出时，涉及到字符串变量与字符串，有两种方法。</p>
+<ol>
+<li>
+<p>like Java&rsquo;s format:by using the character &lsquo;+&rsquo; to connect a string and a variable.</p>
+<blockquote>
+<p>Console.WriteLine(&ldquo;Like Java&quot;+string);</p>
+</blockquote>
+</li>
+<li>
+<p>like C&rsquo;s format:通过类似于{数字}的占位符以及后面跟着的参数进行输出。占位符里的数字代表后面的第几个参数。</p>
+<blockquote>
+<p>Console.WriteLine(&ldquo;Like C {0},I&rsquo;m familiar with {1}&quot;,string,c);</p>
+</blockquote>
+</li>
+</ol>
+<p>在输出时如果涉及到<strong>转义字符</strong>，与C语言如出一辙。比如\n\t。</p>
 
 
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -571,8 +626,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -589,6 +642,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -661,10 +717,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/git/git/" title="对于集中式与分布式的浅显理解"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/studynotes/" title="Studynotes"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/studynotes/c#_00/" title="C#_00" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/studynotes/markdown/" title="Markdown基本语法" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -694,3 +750,4 @@
 
   </body>
 </html>
+

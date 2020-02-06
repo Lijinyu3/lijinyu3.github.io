@@ -12,6 +12,29 @@
     
     
     <item>
+      <title>C#_00</title>
+      <link>https://lijinyu3.github.io/studynotes/c#_00/</link>
+      <pubDate>Fri, 07 Feb 2020 00:11:18 +0800</pubDate>
+      
+      <guid>https://lijinyu3.github.io/studynotes/c#_00/</guid>
+      <description>金旭亮老师的C#+.NET的学习笔记
+ 一、本课程学习内容：C# .NET 本课程将会用到的项目类型：
+ Windows窗体程序（.exe 最常用的） 控制台应用程序（多用于学习，平时少） 类库（.dll 提供大厦的砖块）  二、格式输入输出 Console类
+ 格式输入：Console.WriteLine();
+格式输出：Console.ReadKey();
+ 三、控制台方法 与Java一样，静态无返回值的方法就是
+static void TestConsoleProperty(){ Console.Title = &amp;#34;Current Time:&amp;#34;+DateTime.Now; Console.ForegroundColor = ConsoleColor.Yellow; Console.BackgroundColor = ConsoleColor.DarkBlue; } 引用方法时的语法是
+ TestConsoleProperty();
+ 其中Console类中的Title、ForegroundColor、BackgroundColor分别是标题、前背景色（字体颜色）、背景色这些属性。
+四、输入输出及其参数 Console.Write()方法并不会自动换行，类似于Java的System.out.print()，而WriteLine()就像是println()。
+在输出时，涉及到字符串变量与字符串，有两种方法。
+  like Java&amp;rsquo;s format:by using the character &amp;lsquo;+&amp;rsquo; to connect a string and a variable.
+ Console.WriteLine(&amp;ldquo;Like Java&amp;quot;+string);
+   like C&amp;rsquo;s format:通过类似于{数字}的占位符以及后面跟着的参数进行输出。占位符里的数字代表后面的第几个参数。
+ Console.WriteLine(&amp;ldquo;Like C {0},I&amp;rsquo;m familiar with {1}&amp;quot;,string,c);</description>
+    </item>
+    
+    <item>
       <title>Markdown基本语法</title>
       <link>https://lijinyu3.github.io/studynotes/markdown/</link>
       <pubDate>Sat, 01 Feb 2020 03:50:58 +0800</pubDate>
