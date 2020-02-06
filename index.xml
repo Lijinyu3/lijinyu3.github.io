@@ -13,10 +13,10 @@
     
     <item>
       <title>C#_00</title>
-      <link>https://lijinyu3.github.io/studynotes/c#_00/</link>
+      <link>https://lijinyu3.github.io/studynotes/csharp_00/</link>
       <pubDate>Fri, 07 Feb 2020 00:11:18 +0800</pubDate>
       
-      <guid>https://lijinyu3.github.io/studynotes/c#_00/</guid>
+      <guid>https://lijinyu3.github.io/studynotes/csharp_00/</guid>
       <description>金旭亮老师的C#+.NET的学习笔记
  一、本课程学习内容：C# .NET 本课程将会用到的项目类型：
  Windows窗体程序（.exe 最常用的） 控制台应用程序（多用于学习，平时少） 类库（.dll 提供大厦的砖块）  二、格式输入输出 Console类
