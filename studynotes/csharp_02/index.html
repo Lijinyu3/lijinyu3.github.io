@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Myblog :: Lijinyu&#39;s Hugo blog</title>
+    <title>C#_02 :: Lijinyu&#39;s Hugo blog</title>
 
     
     <link href="/css/nucleus.css?1581703096" rel="stylesheet">
@@ -33,7 +33,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/">
+  <body class="" data-url="/studynotes/csharp_02/">
     <nav id="sidebar" class="">
 
 
@@ -319,7 +319,7 @@
   
     
     <li data-nav-id="/studynotes/" title="Studynotes" class="dd-item 
-        
+        parent
         
         
         ">
@@ -381,7 +381,7 @@
  
   
     
-      <li data-nav-id="/studynotes/csharp_02/" title="C#_02" class="dd-item ">
+      <li data-nav-id="/studynotes/csharp_02/" title="C#_02" class="dd-item active">
         <a href="/studynotes/csharp_02/">
         C#_02
         
@@ -556,31 +556,171 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Myblog</a> > <a href='/studynotes/'>Studynotes</a> > C#_02
+          
+         
+          
+         
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
-          <div id="chapter">
-        
         <div id="body-inner">
+          
+            <h1>
+              
+              C#_02
+            </h1>
           
 
         
 
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h3 id="li-jinyus">Li Jinyu&rsquo;s</h3>
-<h1 id="hugo-blog">Hugo Blog</h1>
+<p>[TOC]</p>
 <hr>
-<p>Welcome.</p>
+<h4 id="一面向对象程序设计思想">一、面向对象程序设计思想</h4>
+<ul>
+<li>面向对象是一种主流的软件开发与设计方法</li>
+<li>当前人们使用的各种软件系统基本都是应用面向对象思想与技术设计和开发出来的</li>
+<li>颗粒度加大，开发更容易</li>
+</ul>
+<h4 id="二背景知识">二、背景知识</h4>
+<h5 id="21-软件是怎么写出来的">2.1 软件是怎么写出来的？</h5>
+<p>面临的问题以及解决方法：</p>
+<ol>
+<li>
+<p>如何表达信息，从而方便计算机的处理？</p>
+<p>答：设计和选用合适的数据结构。</p>
+</li>
+<li>
+<p>如何设计与选择特定的算法取处理数据与信息？</p>
+<p>答：可选择已有的or设计新的。</p>
+<p>算法：分而治之、动态规划。</p>
+<p>程序控制结构：分支、循环、递归。</p>
+</li>
+<li>
+<p>如何编写程序实现算法？</p>
+<p>答：选择合适的技术手段，设计合理的技术方案。</p>
+<p>软件系统架构、面向对象的分析与设计、编程语言、开发框架、软件平台等等。</p>
+</li>
+</ol>
+<h5 id="22-程序是如何被计算机执行的">2.2 程序是如何被计算机执行的</h5>
+<ul>
+<li>各种信息是如何用0-1表达的</li>
+<li>计算机由哪些原件构成，其工作原理是什么</li>
+<li>操作系统如何启动一个程序的执行</li>
+</ul>
+<h5 id="23-如何编写计算机可以执行的程序">2.3 如何编写计算机可以执行的程序</h5>
+<ol>
+<li>编写源代码</li>
+<li>编译</li>
+<li>得到可运行的</li>
+</ol>
+<h5 id="24-怎样构造解决问题的算法">2.4 怎样构造解决问题的算法</h5>
+<ol>
+<li>分析问题</li>
+<li>设计算法</li>
+<li>编写程序</li>
+</ol>
+<h4 id="三0和1">三、0和1</h4>
+<h5 id="31-原因">3.1 原因</h5>
+<p>人类使用十进制0~9进行计算，计算机只只使用2个数字0和1。因为两个状态的东西容易找到和制作：开关、黑白、有无。</p>
+<p>在计算机中，只需要让高电平表示&quot;1&rdquo;，低电平表示&quot;0&rdquo;，这样计算机元件的制造难度就可以大大下降。相反，如果使用十进制，就需要找到一种区分10种状态的电子元器件，很难。</p>
+<h5 id="32-如何表达信息">3.2 如何表达信息</h5>
+<p><strong>数值信息</strong>直接转换到二进制表达。</p>
+<blockquote>
+<p>10 -&gt; 1010</p>
+</blockquote>
+<p><strong>非数值信息</strong>，采用编码。</p>
+<blockquote>
+<p>编码就是以若干位二进制码的不同组合来表示非数值类型的信息。具体怎么组合是人为指定的。</p>
+</blockquote>
+<ul>
+<li>五笔字型的汉字输入法，使用1~4个字符对应一个或多个汉字。</li>
+<li>数码图像，可以将其分解成一个一个的像素点，用数字表达它的颜色和位置等信息，然后再把这些数字以特定格式存进文件里，就是图像文件。</li>
+</ul>
+<h5 id="33-机器指令和指令集">3.3 机器指令和指令集</h5>
+<p>在小灯泡电路中，0可以代表开关的关，1代表开。&ldquo;0101&quot;就是亮灭亮灭。</p>
+<p>这种以0和1表达的指令，可以由计算机直接执行，因此它们被称为<strong>机器指令</strong>。</p>
+<p>不同的计算机计算机硬件因为其不同的体系结构，能执行的机器指令也不相同，每种机器能执行的那些机器指令就称为该机器的<strong>指令集</strong>。</p>
+<p>指令集是由中央处理器<strong>CPU</strong>来执行。</p>
+<p>Windows平台下，指令与数据存储在可执行文件(<strong>.exe</strong>)中。还有一种**.dll**的动态链接库文件，需要被exe文件装入后执行。</p>
+<h4 id="四存储">四、存储</h4>
+<h5 id="41-外部存储器">4.1 外部存储器</h5>
+<p>PC上，一般是硬盘，光盘和U盘也是外部存储器。平时的软件都安装在外部存储器上面。</p>
+<h5 id="42-memory内存与内存条">4.2 Memory(内存)与内存条</h5>
+<p>放在外部存储器中的程序并不能直接运行，需要被装进内存后，才能执行。</p>
+<p>内存条中的存储芯片包含很多<strong>存储单元</strong>，用于保存程序指令和数据。</p>
+<p>存储单元的集合，就是<strong>内存</strong>。</p>
+<h5 id="43-物理内存与虚拟内存">4.3 物理内存与虚拟内存</h5>
+<p>物理内存是计算机上面安装的物理存储芯片提供的内存。</p>
+<p>虚拟内存是由操作系统提供的，可以比物理内存大，多出来的那部分是操作系统从硬盘上划出来一部分空间弥补的。</p>
+<h4 id="五程序开发与运行过程">五、程序开发与运行过程</h4>
+<ol>
+<li>软件工程师用各类编程语言编写计算机程序</li>
+<li>编译器把源代码转换为二进制指令与数据，以文件的方式保存在外部存储器中</li>
+<li>操作系统将程序文件从外部存储器读入进内存</li>
+<li>CPU从内存读取指令运行</li>
+</ol>
+
+
+<footer class=" footline" >
 	
-  
-        
-            </div> 
+</footer>
+
+
         
         </div> 
         
@@ -761,6 +901,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -773,6 +914,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -806,6 +950,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -821,6 +966,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -941,8 +1089,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/studynotes/csharp_03/" title="C#_03"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/unity/" title="Unities" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/studynotes/csharp_01/" title="C#_01" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

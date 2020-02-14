@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Myblog :: Lijinyu&#39;s Hugo blog</title>
+    <title>C#_03 :: Lijinyu&#39;s Hugo blog</title>
 
     
     <link href="/css/nucleus.css?1581703096" rel="stylesheet">
@@ -33,7 +33,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/">
+  <body class="" data-url="/studynotes/csharp_03/">
     <nav id="sidebar" class="">
 
 
@@ -319,7 +319,7 @@
   
     
     <li data-nav-id="/studynotes/" title="Studynotes" class="dd-item 
-        
+        parent
         
         
         ">
@@ -362,7 +362,7 @@
  
   
     
-      <li data-nav-id="/studynotes/csharp_03/" title="C#_03" class="dd-item ">
+      <li data-nav-id="/studynotes/csharp_03/" title="C#_03" class="dd-item active">
         <a href="/studynotes/csharp_03/">
         C#_03
         
@@ -556,31 +556,119 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Myblog</a> > <a href='/studynotes/'>Studynotes</a> > C#_03
+          
+         
+          
+         
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
-          <div id="chapter">
-        
         <div id="body-inner">
+          
+            <h1>
+              
+              C#_03
+            </h1>
           
 
         
 
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h3 id="li-jinyus">Li Jinyu&rsquo;s</h3>
-<h1 id="hugo-blog">Hugo Blog</h1>
+<p>[TOC]</p>
 <hr>
-<p>Welcome.</p>
+<h4 id="一c程序的编写编译运行">一、C#程序的编写、编译、运行。</h4>
+<ol>
+<li>
+<p>打开记事本，编写程序，完成后保存为.cs后缀的文件。(标准编码方式为ASCII)</p>
+</li>
+<li>
+<p>打开Developer Command Prompt for VS 2019(开发人员命令提示符)，找到源代码的目录。</p>
+<blockquote>
+<p>C:可以切换到某盘</p>
+<p>dir *.*可以展示当前目录下指定文件</p>
+</blockquote>
+</li>
+<li>
+<p>使用指令</p>
+<blockquote>
+<p>csc.exe /target:exe XXX.cs</p>
+<p>进行编译</p>
+<p>type xx.cs</p>
+<p>进行查看源代码</p>
+</blockquote>
+</li>
+</ol>
+<h4 id="二编译">二、编译</h4>
+<p><strong>编译</strong>就将纯文本形式的源代码(HelloWorld.cs)通过编译器<strong>Compiler</strong>进行翻译，转换成二进制的可执行程序。(.exe)</p>
+<h4 id="三可执行程序">三、可执行程序</h4>
+<p>在Windows平台下，可执行程序分为<strong>托管程序</strong>(C#，运行需要计算机安装有.NET Framework)与<strong>非托管程序</strong>(C/C++)两种。</p>
+<h5 id="31-托管程序">3.1 托管程序</h5>
+<p>.NET程序就是托管(Managed)程序，它必须运行在一个独立的运行环境(CLR=<strong>common language runtime</strong>=公共语言运行库)，并受到这个环境的管理和控制。就是一台只运行.NET程序的虚拟机(VIrtual Machine)。</p>
+<p><strong>.NET应用程序</strong>	&lt;&ndash;管理&ndash;	<strong>.NET虚拟机(CLR)</strong>	&ndash;调用功能&ndash;&gt;	<strong>操作系统(Windows)</strong>	&ndash;管理&ndash;&gt;	<strong>构成计算机的各种硬件</strong></p>
+<h4 id="四net程序开发运行全景图">四、.NET程序开发运行全景图</h4>
+<p>.exe和.dll在.NET中统称为&quot;程序集<strong>Assembly</strong>&quot;，其中保存的是&rdquo;<strong>IL</strong>(中间语言)&ldquo;指令。</p>
+<p>IL指令交给CLR也就是.NET虚拟机，首先通过<strong>类装载器</strong>读入IL指令，其次通过<strong>JIT编译器</strong>进行<strong>安全检查</strong>，如果通过了检查，就进行<strong>编译</strong>，这时就生成了本地可以由CPU直接执行的代码，叫作<strong>本地代码</strong>。最终由CPU执行。</p>
+
+
+<footer class=" footline" >
 	
-  
-        
-            </div> 
+</footer>
+
+
         
         </div> 
         
@@ -761,6 +849,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -773,6 +862,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -790,6 +882,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -805,6 +898,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -941,8 +1037,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/studynotes/csharp_04/" title="C#_04"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/unity/" title="Unities" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/studynotes/csharp_02/" title="C#_02" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

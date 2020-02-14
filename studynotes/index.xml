@@ -12,14 +12,149 @@
     
     
     <item>
+      <title>C#_04</title>
+      <link>https://lijinyu3.github.io/studynotes/csharp_04/</link>
+      <pubDate>Sun, 09 Feb 2020 20:48:52 +0800</pubDate>
+      
+      <guid>https://lijinyu3.github.io/studynotes/csharp_04/</guid>
+      <description>[TOC]
+ 一、什么是算法Algorithm 计算机中的算法，主要指为了解决某个问题而设计的一套解决方案，包容一系列计算机能够执行的有着特定循序的命令，计算机执行完这些命令就会得到某种结果，从而意味着问题已经有了一个结论。
+算法的针对性很强，专用于解决特定的问题。
+算法的设计，通常与数学有着很密切的联系，并且是独立于特定的编程语言或软件平台的。也就是可以使用多种编程语言以多种方式来实现同一种算法。
+二、需求分析 在解决某一个问题时，首先思考这个问题的解决难度，需要的专业背景知识。其次这个问题是否有必要使用计算机来解决，计算量是否大与是否方便。
+三、结构化编程 3.1 概念 程序可以被看成一种“抽象”的艺术。使用抽象的思维方式，构造软件系统的顶层模型。
+可以将一个程序看做是一个黑盒子，将一些数据输入进黑盒子，然后就可以从黑盒子中输出一些数据。因此，程序的核心实际上就是程序的输入输出与其中的算法。也就有了程序=数据结构+算法。(这句话出自Niklaus Wirth，Pascal语言之父，提出了结构化程序设计的概念)
+3.2 数据结构 数据结构实际上就是对数据的一种抽象处理。算法也是基于数据结构进行设计。
+比如某个问题要处理与年月日相关的数据，为了方便就可以抽象出一种数据结构为“日期”，含义年、月、日三个基本信息。
+数据结构设计是程序开发设计的关键，而数据结构设计的关键，就在于要依据待解决的问题，分析它涉及到的数据与蕴含的各种信息，按照当前语言的所支持的语法特性，将它们抽象为一种数据结构。
+3.3 算法 如上文，算法要基于数据结构设计。
+一般地，可以将人的计算方法思想使用计算机语言实现，也就是转化为计算机算法。将人脑的想法条理化，转化为计算机的思想：一系列命令，通过执行这些命令，完成对输入数据处理后输出。
+3.4 设计 在设计过程中，应自顶向下，由粗略到详细，先模糊在构思细节这样进行设计。因为没有粗略，也无法构思详细，就如同画画，只有先把框架搭起来，才能不断完善其细节。如果一上来就构思细节，构思不起来，也不能完成和整体的配合。
+3.5 开发 而在开发过程中，应恰恰相反，从下层到上层，自底向上的，像搭积木一样去编写程序，先把最底层的积木写好，再不断在积木上搭建房间，再通过房间达成一座高楼。
+编程中，就是先编写最底层的函数，把轮子写出来，在编写中间层函数，它需要调用底层函数。完成底板的开发。最终开发顶层函数，它调用中间层函数，而不应该去调用最底层函数，因为方便后期维护。这样在底板的基础上，搭建出一台汽车。
+同样的，底层函数更不应去反过来去调用顶层或中层函数。这样在后期维护，就不会牵一发而动全身。
+在VS2019中，首先编写一个.cs文件封装数据结构，然后在一个.cs中按照上述规则编写程序，最终实现了程序的开发。</description>
+    </item>
+    
+    <item>
+      <title>C#_03</title>
+      <link>https://lijinyu3.github.io/studynotes/csharp_03/</link>
+      <pubDate>Sun, 09 Feb 2020 00:05:53 +0800</pubDate>
+      
+      <guid>https://lijinyu3.github.io/studynotes/csharp_03/</guid>
+      <description>[TOC]
+ 一、C#程序的编写、编译、运行。   打开记事本，编写程序，完成后保存为.cs后缀的文件。(标准编码方式为ASCII)
+  打开Developer Command Prompt for VS 2019(开发人员命令提示符)，找到源代码的目录。
+ C:可以切换到某盘
+dir *.*可以展示当前目录下指定文件
+   使用指令
+ csc.exe /target:exe XXX.cs
+进行编译
+type xx.cs
+进行查看源代码
+   二、编译 编译就将纯文本形式的源代码(HelloWorld.cs)通过编译器Compiler进行翻译，转换成二进制的可执行程序。(.exe)
+三、可执行程序 在Windows平台下，可执行程序分为托管程序(C#，运行需要计算机安装有.NET Framework)与非托管程序(C/C++)两种。
+3.1 托管程序 .NET程序就是托管(Managed)程序，它必须运行在一个独立的运行环境(CLR=common language runtime=公共语言运行库)，并受到这个环境的管理和控制。就是一台只运行.NET程序的虚拟机(VIrtual Machine)。
+.NET应用程序	&amp;lt;&amp;ndash;管理&amp;ndash;	.NET虚拟机(CLR)	&amp;ndash;调用功能&amp;ndash;&amp;gt;	操作系统(Windows)	&amp;ndash;管理&amp;ndash;&amp;gt;	构成计算机的各种硬件
+四、.NET程序开发运行全景图 .exe和.dll在.NET中统称为&amp;quot;程序集Assembly&amp;quot;，其中保存的是&amp;rdquo;IL(中间语言)&amp;ldquo;指令。
+IL指令交给CLR也就是.NET虚拟机，首先通过类装载器读入IL指令，其次通过JIT编译器进行安全检查，如果通过了检查，就进行编译，这时就生成了本地可以由CPU直接执行的代码，叫作本地代码。最终由CPU执行。</description>
+    </item>
+    
+    <item>
+      <title>C#_02</title>
+      <link>https://lijinyu3.github.io/studynotes/csharp_02/</link>
+      <pubDate>Sat, 08 Feb 2020 02:00:46 +0800</pubDate>
+      
+      <guid>https://lijinyu3.github.io/studynotes/csharp_02/</guid>
+      <description>[TOC]
+ 一、面向对象程序设计思想  面向对象是一种主流的软件开发与设计方法 当前人们使用的各种软件系统基本都是应用面向对象思想与技术设计和开发出来的 颗粒度加大，开发更容易  二、背景知识 2.1 软件是怎么写出来的？ 面临的问题以及解决方法：
+  如何表达信息，从而方便计算机的处理？
+答：设计和选用合适的数据结构。
+  如何设计与选择特定的算法取处理数据与信息？
+答：可选择已有的or设计新的。
+算法：分而治之、动态规划。
+程序控制结构：分支、循环、递归。
+  如何编写程序实现算法？
+答：选择合适的技术手段，设计合理的技术方案。
+软件系统架构、面向对象的分析与设计、编程语言、开发框架、软件平台等等。
+  2.2 程序是如何被计算机执行的  各种信息是如何用0-1表达的 计算机由哪些原件构成，其工作原理是什么 操作系统如何启动一个程序的执行  2.3 如何编写计算机可以执行的程序  编写源代码 编译 得到可运行的  2.4 怎样构造解决问题的算法  分析问题 设计算法 编写程序  三、0和1 3.1 原因 人类使用十进制0~9进行计算，计算机只只使用2个数字0和1。因为两个状态的东西容易找到和制作：开关、黑白、有无。
+在计算机中，只需要让高电平表示&amp;quot;1&amp;rdquo;，低电平表示&amp;quot;0&amp;rdquo;，这样计算机元件的制造难度就可以大大下降。相反，如果使用十进制，就需要找到一种区分10种状态的电子元器件，很难。
+3.2 如何表达信息 数值信息直接转换到二进制表达。
+ 10 -&amp;gt; 1010
+ 非数值信息，采用编码。
+ 编码就是以若干位二进制码的不同组合来表示非数值类型的信息。具体怎么组合是人为指定的。
+  五笔字型的汉字输入法，使用1~4个字符对应一个或多个汉字。 数码图像，可以将其分解成一个一个的像素点，用数字表达它的颜色和位置等信息，然后再把这些数字以特定格式存进文件里，就是图像文件。  3.</description>
+    </item>
+    
+    <item>
+      <title>C#_01</title>
+      <link>https://lijinyu3.github.io/studynotes/csharp_01/</link>
+      <pubDate>Fri, 07 Feb 2020 19:13:27 +0800</pubDate>
+      
+      <guid>https://lijinyu3.github.io/studynotes/csharp_01/</guid>
+      <description>金旭亮老师的C#+.NET的学习笔记
+[TOC]
+ 一、ReadKey与Beep  ReadKey(true)
+ 可以使用户输入一个字符。当参数为true时，用户的输入会隐藏。
+ Beep()
+ 会使计算机发出一次响声。
+二、C#编程规则  标识符（identifier：程序中含有特殊含有的单词，区分大小写） 每句话以分号结尾，多条语句可以用{}合在一起成为语句块。 编写的代码放在类Class中，类是C#的基本单元。 存放C# class的源代码文件拓展名为.cs，一个.cs可以包含多个class。  三、文件组织方式 一个解决方案包Solution含了3个项目Project。
+Project是Visual Studio编译的最小单元。
+Solution可以包含多个Project。其中加粗的Project是启动项目。
+一个Project可以有多个类文件class，class只有在Project中才能被编译。
+程序的入口点是Program类的Main()方法</description>
+    </item>
+    
+    <item>
+      <title>Win10快捷键笔记</title>
+      <link>https://lijinyu3.github.io/studynotes/win10hotkeys/</link>
+      <pubDate>Fri, 07 Feb 2020 17:59:14 +0800</pubDate>
+      
+      <guid>https://lijinyu3.github.io/studynotes/win10hotkeys/</guid>
+      <description>这里记录一下Windows10的快捷键。方便后续使用。
+ 一、快捷键 1.Win键类 Win+L	快速锁屏
+Win+E	打开我的电脑
+Win+D	进入桌面（相当于右下角的显示桌面）
+Win+R	打开运行功能
+Win+↑↓←→	对当前窗口分屏/位置改变
+Win+Tab	新建电脑桌面
+Win+空格	切换多个输入法
+Win+I	打开设置
+Win+数字	打开任务栏第N个程序
+Win+W	打开ink工作区
+Win+Q	打开搜索
+2.Ctrl键类 Ctrl+Shift+N	快速创建文件夹/无痕窗口
+Ctrl+Shift+Del 删除浏览器缓存
+Ctrl+N	新建
+Ctrl+O	打开文件
+Ctrl+A	全选
+Ctrl+F/H	查找、替换
+Ctrl+鼠标拖动 快速创建副本
+Ctrl+N	快速创建同级别界面
+Ctrl+Shift+T 恢复删除的网页
+Ctrl+Z\Y	撤回\恢复
+Ctrl+W	关闭当前文档、网页
+3.Shift键类 Shift+Delete 永久删除
+Shift+Ctrl+Esc 打开任务管理器
+Shift+Win+S	截屏
+4.Alt键类 Alt+F4 关闭当前的应用
+Alt+Enter/2 Click	快速查看文件属性
+Alt+Ctrl+Del	打开安全窗口
+Alt+Esc	在没有最小化的窗口间切换
+Alt+PrtScn	对当前程序/窗口截屏
+5.TAB键类 Tab+Win	时间线切换</description>
+    </item>
+    
+    <item>
       <title>C#_00</title>
       <link>https://lijinyu3.github.io/studynotes/csharp_00/</link>
       <pubDate>Fri, 07 Feb 2020 00:11:18 +0800</pubDate>
       
       <guid>https://lijinyu3.github.io/studynotes/csharp_00/</guid>
       <description>金旭亮老师的C#+.NET的学习笔记
+[TOC]
  一、本课程学习内容：C# .NET 本课程将会用到的项目类型：
- Windows窗体程序（.exe 最常用的） 控制台应用程序（多用于学习，平时少） 类库（.dll 提供大厦的砖块）  二、格式输入输出 Console类
+ Windows窗体程序（.exe 最常用的） 控制台应用程序（多用于学习，平时少） 类库（.dll 提供大厦的砖块）  二、格式输入输出 Console类(控制台 [kənˈsəʊl , ˈkɒnsəʊl])
  格式输入：Console.WriteLine();
 格式输出：Console.ReadKey();
  三、控制台方法 与Java一样，静态无返回值的方法就是
@@ -30,8 +165,7 @@ static void TestConsoleProperty(){ Console.Title = &amp;#34;Current Time:&amp;#3
 在输出时，涉及到字符串变量与字符串，有两种方法。
   like Java&amp;rsquo;s format:by using the character &amp;lsquo;+&amp;rsquo; to connect a string and a variable.
  Console.WriteLine(&amp;ldquo;Like Java&amp;quot;+string);
-   like C&amp;rsquo;s format:通过类似于{数字}的占位符以及后面跟着的参数进行输出。占位符里的数字代表后面的第几个参数。
- Console.WriteLine(&amp;ldquo;Like C {0},I&amp;rsquo;m familiar with {1}&amp;quot;,string,c);</description>
+   like C&amp;rsquo;s format:通过类似于{数字}的占位符以及后面跟着的参数进行输出。占位符里的数字代表后面的第几个参数。</description>
     </item>
     
     <item>
@@ -42,7 +176,8 @@ static void TestConsoleProperty(){ Console.Title = &amp;#34;Current Time:&amp;#3
       <guid>https://lijinyu3.github.io/studynotes/markdown/</guid>
       <description>一、摘要 本博客都是用Markdown文件写作的，故写一篇博客存储md语法。
  Markdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。 --摘自百度百科
- 优点： Markdown是纯文本，只要支持该格式的地方就能获得一样的边际效果。 缺点： 语法要记住的多；有的地方不支持本格式。
+优点： Markdown是纯文本，只要支持该格式的地方就能获得一样的边际效果。
+缺点： 语法要记住的多；有的地方不支持本格式。
  二、基本语法 2.1 标题 # 一级标题 
 ## 二级标题 
 ### 三级标题 
@@ -54,7 +189,7 @@ static void TestConsoleProperty(){ Console.Title = &amp;#34;Current Time:&amp;#3
   高亮：==高亮== 效果：== 高亮 ==（原版标准不存在）
   列表：* 列表 效果：如上一行所示。
   分割线：--- 效果：
-    删除线：~~删除~~ 效果：删除  2.</description>
+    删除线：~~删除~~ 效果：删除  2.3 其他   图片：!</description>
     </item>
     
     <item>

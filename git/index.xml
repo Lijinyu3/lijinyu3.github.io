@@ -32,7 +32,9 @@
 集中式每次干活时只把最新版本pull下来，而分布式在第一次干活时需要把整个repo都clone过来。因此在初始化的时候，集中式只需要很短的时间就能完成，而分布式的需要等一些时间。
 其次，在集中式管理时，admin可以通过中央服务器制定每个人的权限范围，便于管理。分布式因为每一台都是一个完整的服务器，并不便于管理。（？不知道能不能指定每个用户可提交的文档权限）
 但是这样做的好处也很明显。在Central Server宕机或自己的电脑断网时，集中式如果需要连续修改一些东西，就不能完成。（每次修改必须commit，不然无法记录修改内容）。而分布式在第一种情况可以直接指定另一台电脑作为服务器，在断网时，由于自己有完整的历史库，因此可以单机commit修改内容，在有网的时候pull到中央服务器与别人交换就ok了。
-学习资料及参考：廖雪峰老师的Git学习网站</description>
+ hugo -b &amp;ldquo;https://lijinyu3.github.io&amp;rdquo; -t hugo-theme-learn -D
+git add .
+git commit -m &amp;ldquo;12th&amp;rdquo;</description>
     </item>
     
   </channel>

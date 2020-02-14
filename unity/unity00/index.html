@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Myblog :: Lijinyu&#39;s Hugo blog</title>
+    <title>Unity00_C#InUnity :: Lijinyu&#39;s Hugo blog</title>
 
     
     <link href="/css/nucleus.css?1581703096" rel="stylesheet">
@@ -33,7 +33,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/">
+  <body class="" data-url="/unity/unity00/">
     <nav id="sidebar" class="">
 
 
@@ -92,7 +92,7 @@
   
     
     <li data-nav-id="/unity/" title="Unities" class="dd-item 
-        
+        parent
         
         
         ">
@@ -154,7 +154,7 @@
  
   
     
-      <li data-nav-id="/unity/unity00/" title="Unity00_C#InUnity" class="dd-item ">
+      <li data-nav-id="/unity/unity00/" title="Unity00_C#InUnity" class="dd-item active">
         <a href="/unity/unity00/">
         Unity00_C#InUnity
         
@@ -556,31 +556,183 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Myblog</a> > <a href='/unity/'>Unities</a> > Unity00_C#InUnity
+          
+         
+          
+         
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
-          <div id="chapter">
-        
         <div id="body-inner">
+          
+            <h1>
+              
+              Unity00_C#InUnity
+            </h1>
           
 
         
 
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h3 id="li-jinyus">Li Jinyu&rsquo;s</h3>
-<h1 id="hugo-blog">Hugo Blog</h1>
-<hr>
-<p>Welcome.</p>
+<h4 id="一关于控制台输出">一、关于控制台输出</h4>
+<p>控制台输出调试时，有两种方法。</p>
+<ol>
+<li>使用print()函数进行输出</li>
+<li>使用Debug.Log()函数进行输出</li>
+</ol>
+<p>输出的内容在Windows-&gt;General-&gt;Console(控制台)。print输出只能在<strong>组件</strong>里，<strong>非组件</strong>的情况需要第二种，第二种也是无限制的输出方式。</p>
+<p>进一步，还有<strong>警告</strong>与<strong>错误</strong>输出。</p>
+<p>Debug.LogWarning()、Debug.LogError()分别输出这两种情况。</p>
+<p><strong>Ctrl+K或C可以快捷注释化。</strong></p>
+<h4 id="二数据类型">二、数据类型</h4>
+<p>Sbyte是C中的byte，byte是C中的<strong>unsigned</strong>byte。</p>
+<p>unsigned在C#是u。</p>
+<p><strong>整型</strong></p>
+<ul>
+<li>
+<p>sbyte</p>
+<p>-128~127</p>
+<p>byte是它的unsigned</p>
+</li>
+<li>
+<p>short</p>
+<p>-32768~32767</p>
+<p>ushort</p>
+</li>
+<li>
+<p>int</p>
+<p>-2147483648~2147483647</p>
+<p>uint</p>
+</li>
+<li>
+<p>long</p>
+<p>挺长的反正</p>
+<p>ulong</p>
+</li>
+</ul>
+<p><strong>浮点</strong></p>
+<ul>
+<li>
+<p>float</p>
+<p>赋值时注意+f</p>
+</li>
+<li>
+<p>double</p>
+<p>最常用的</p>
+</li>
+</ul>
+<p><strong>布尔</strong></p>
+<ul>
+<li>bool</li>
+</ul>
+<p><strong>字符</strong></p>
+<ul>
+<li>
+<p>char</p>
+<p>单字符</p>
+</li>
+<li>
+<p>string</p>
+<p>字符串</p>
+</li>
+</ul>
+<p><strong>枚举类型</strong>enum enm</p>
+<p>定义方法：</p>
+<p>enum 枚举{</p>
+<p>​	name1,</p>
+<p>​	name2,</p>
+<p>​	&hellip;</p>
+<p>}</p>
+<p>使用方法：</p>
+<p>枚举 nm=枚举.name1;</p>
+<p><strong>数组的第二种初始化方法：</strong></p>
+<p>type[] name = new type[length]</p>
+<p>会创建一个默认值的数组，和Java好像一样，都是一个引用。</p>
+<p><strong>也可以</strong></p>
+<p>type[] name=new type[length] {value,value,value&hellip;}这样两种结合起来的。</p>
+<h4 id="三类的创建与使用">三、类的创建与使用</h4>
+<p><strong>创建方法</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c#" data-lang="c#"><span style="color:#66d9ef">public</span>/<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">nameOfClass</span> : classOfInherit{
+    ...
+}
+</code></pre></div><p><strong>构造方法</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c#" data-lang="c#">Class name = <span style="color:#66d9ef">new</span> Class();
+</code></pre></div><p>new方法就是构造方法。</p>
+<p><strong>类的数据</strong></p>
+<p>使用.访问对象里的数据。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">Class.date
+</code></pre></div><p>注意：<strong>public</strong>的数据才可以访问，数据前面需要加<strong>public</strong>。</p>
+<p>且如果不添加<strong>访问修饰符</strong>，那么默认就是<strong>private</strong>。</p>
+<p><strong>类的方法</strong></p>
+<p>与Java差不多。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c#" data-lang="c#"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> method(){
+    <span style="color:#66d9ef">do</span> sth...
+}
+</code></pre></div><p>也需要设置为<strong>public</strong>才能使用。</p>
+<h4 id="四unity内部类">四、unity内部类</h4>
+<p>可以使用unity官方API文档进行查看。</p>
+<p>在unity内，help-&gt;scripting reference(脚本参考)，就可以查看官方文档了。</p>
+
+
+<footer class=" footline" >
 	
-  
-        
-            </div> 
+</footer>
+
+
         
         </div> 
         
@@ -612,8 +764,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -627,6 +777,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -660,6 +813,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -678,6 +832,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -941,8 +1098,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/unity/unity01/" title="Unity01_C#InUnity"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/unity/" title="Unities" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/readingnotes/" title="ReadingNotes" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

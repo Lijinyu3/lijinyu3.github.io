@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Myblog :: Lijinyu&#39;s Hugo blog</title>
+    <title>Unity01_C#InUnity :: Lijinyu&#39;s Hugo blog</title>
 
     
     <link href="/css/nucleus.css?1581703096" rel="stylesheet">
@@ -33,7 +33,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/">
+  <body class="" data-url="/unity/unity01/">
     <nav id="sidebar" class="">
 
 
@@ -92,7 +92,7 @@
   
     
     <li data-nav-id="/unity/" title="Unities" class="dd-item 
-        
+        parent
         
         
         ">
@@ -135,7 +135,7 @@
  
   
     
-      <li data-nav-id="/unity/unity01/" title="Unity01_C#InUnity" class="dd-item ">
+      <li data-nav-id="/unity/unity01/" title="Unity01_C#InUnity" class="dd-item active">
         <a href="/unity/unity01/">
         Unity01_C#InUnity
         
@@ -556,31 +556,137 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Myblog</a> > <a href='/unity/'>Unities</a> > Unity01_C#InUnity
+          
+         
+          
+         
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
-          <div id="chapter">
-        
         <div id="body-inner">
+          
+            <h1>
+              
+              Unity01_C#InUnity
+            </h1>
           
 
         
 
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h3 id="li-jinyus">Li Jinyu&rsquo;s</h3>
-<h1 id="hugo-blog">Hugo Blog</h1>
-<hr>
-<p>Welcome.</p>
+<h4 id="一关于脚本">一、关于脚本</h4>
+<p>可以在Project直接create一个script，也可以在某个object上面add component时，选择create new script。</p>
+<p>具体可以看unity里的一些选项进行自由选择。</p>
+<h4 id="二关于namespace">二、关于namespace</h4>
+<p>namespace也就是命名空间</p>
+<p><strong>类似于C语言的头文件</strong>，如果使用哪个命名空间的类，但是没有声明using namespace，就会报错。</p>
+<p>也可以自己声明创建一个namespace。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c#" data-lang="c#"><span style="color:#66d9ef">namespace</span> example{
+    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">dick</span>{
+        ...
+    }
+}
+</code></pre></div><p>如果想要使用dick类，就必须声明using example。</p>
+<h4 id="三关于inspector">三、关于inspector</h4>
+<p>inspector是unity内用于监视游戏物体的区域。通过inspector可以直接访问到game object内的public variable。</p>
+<p>如果通过inspector修改了variable的初始值，那么以inspector为准。如果在C#内没有定义初值，也可以在inspector里赋值。</p>
+<h4 id="四删除游戏物体">四、删除游戏物体</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C#" data-lang="C#">Transform[] children = transform.GetComponentsInChildren&lt;Transform&gt;();
+<span style="color:#66d9ef">for</span>...{
+GameObject.Destory(children[i].gameObject);
+}
+</code></pre></div><p>即可删除，但在获取物体时也会获取它自身，如果不想删除自己，只需要判断一下children[i]!=transform。</p>
+<h4 id="五foreach循环">五、foreach循环</h4>
+<p>专门用于遍历的循环。</p>
+<blockquote>
+<p>foreach(Class name <strong>in</strong> variable){</p>
+<p>do&hellip;</p>
+<p>}</p>
+</blockquote>
+<p>代表每一次赋值variable内的一个变量给name。</p>
+<h4 id="六component">六、component</h4>
+<ul>
+<li>获取</li>
+</ul>
+<p>使用GetComponent/s<!-- raw HTML omitted -->来获取，也可以获取别的object的component，只需要声明一个该类型的object，然后进行拖拽赋值过来，即可使用object.GetComponent<!-- raw HTML omitted -->进行获取。</p>
+<p>s取决于是全部获取还是只获取第一个component。</p>
+<ul>
+<li>禁用</li>
+</ul>
+<p>只需要声明该组件并引用，然后component.enable=false。即可禁用组件。</p>
+<ul>
+<li>调用</li>
+</ul>
+<p>同理，如果是同一object上的component，可以直接使用component.method()进行调用。<strong>无视是否禁用。</strong></p>
+<h4 id="七gameobject">七、GameObject</h4>
+<p>只有获取到GameObject，才能对其的property进行操作。</p>
+<h5 id="71access-gameobject">7.1	Access GameObject</h5>
+<p>1.可以声明该Class的Object，然后在unity内进行拖拽赋值。</p>
+<p>2.也可以通过transform.Find(&ldquo;string&rdquo;)这种查找字符串的方法，直接进行路径字符串查找，且这种效率会更高。当路径<strong>不存在</strong>时，会返回NULL。</p>
+<p>3.通过GameObject.Find(&ldquo;string&rdquo;)方法，直接查找Object的名字。</p>
+<p>并不推荐第三种，遍历各种物体，很慢。</p>
+<p>4.可以使用标签。使用GameObject.FindWithTag(&ldquo;str&rdquo;)。</p>
+
+
+<footer class=" footline" >
 	
-  
-        
-            </div> 
+</footer>
+
+
         
         </div> 
         
@@ -612,8 +718,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -627,6 +731,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -644,6 +751,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -659,6 +767,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -941,8 +1052,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/unity/unity02/" title="Unity02_UnityActualCombat"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/unity/" title="Unities" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/unity/unity00/" title="Unity00_C#InUnity" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

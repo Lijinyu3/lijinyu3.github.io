@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Myblog :: Lijinyu&#39;s Hugo blog</title>
+    <title>C#_04 :: Lijinyu&#39;s Hugo blog</title>
 
     
     <link href="/css/nucleus.css?1581703096" rel="stylesheet">
@@ -33,7 +33,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/">
+  <body class="" data-url="/studynotes/csharp_04/">
     <nav id="sidebar" class="">
 
 
@@ -319,7 +319,7 @@
   
     
     <li data-nav-id="/studynotes/" title="Studynotes" class="dd-item 
-        
+        parent
         
         
         ">
@@ -343,7 +343,7 @@
  
   
     
-      <li data-nav-id="/studynotes/csharp_04/" title="C#_04" class="dd-item ">
+      <li data-nav-id="/studynotes/csharp_04/" title="C#_04" class="dd-item active">
         <a href="/studynotes/csharp_04/">
         C#_04
         
@@ -556,31 +556,111 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Myblog</a> > <a href='/studynotes/'>Studynotes</a> > C#_04
+          
+         
+          
+         
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
-          <div id="chapter">
-        
         <div id="body-inner">
+          
+            <h1>
+              
+              C#_04
+            </h1>
           
 
         
 
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h3 id="li-jinyus">Li Jinyu&rsquo;s</h3>
-<h1 id="hugo-blog">Hugo Blog</h1>
+<p>[TOC]</p>
 <hr>
-<p>Welcome.</p>
+<h4 id="一什么是算法algorithm">一、什么是算法Algorithm</h4>
+<p>计算机中的算法，主要指为了解决某个问题而设计的一套解决方案，包容一系列计算机能够执行的有着特定循序的命令，计算机执行完这些命令就会得到某种结果，从而意味着问题已经有了一个结论。</p>
+<p>算法的<strong>针对性</strong>很强，专用于解决特定的问题。</p>
+<p>算法的设计，通常与数学有着很密切的联系，并且是<strong>独立于</strong>特定的编程语言或软件平台的。也就是可以使用多种编程语言以多种方式来实现<strong>同一种算法</strong>。</p>
+<h4 id="二需求分析">二、需求分析</h4>
+<p>在解决某一个问题时，首先思考这个问题的解决难度，需要的专业背景知识。其次这个问题是否有必要使用计算机来解决，计算量是否大与是否方便。</p>
+<h4 id="三结构化编程">三、结构化编程</h4>
+<h5 id="31-概念">3.1 概念</h5>
+<p>程序可以被看成一种“抽象”的艺术。使用抽象的思维方式，构造软件系统的顶层模型。</p>
+<p>可以将一个程序看做是一个黑盒子，将一些数据输入进黑盒子，然后就可以从黑盒子中输出一些数据。因此，程序的核心实际上就是程序的输入输出与其中的算法。也就有了<strong>程序=数据结构+算法</strong>。(这句话出自Niklaus Wirth，Pascal语言之父，提出了结构化程序设计的概念)</p>
+<h5 id="32-数据结构">3.2 数据结构</h5>
+<p>数据结构实际上就是对数据的一种抽象处理。算法也是基于数据结构进行设计。</p>
+<p>比如某个问题要处理与年月日相关的数据，为了方便就可以抽象出一种数据结构为“日期”，含义年、月、日三个基本信息。</p>
+<p>数据结构设计是程序开发设计的关键，而数据结构设计的关键，就在于要<strong>依据待解决的问题</strong>，分析它涉及到的<strong>数据</strong>与蕴含的各种<strong>信息</strong>，按照当前语言的所支持的<strong>语法特性</strong>，将它们抽象为一种数据结构。</p>
+<h5 id="33-算法">3.3 算法</h5>
+<p>如上文，算法要基于数据结构设计。</p>
+<p>一般地，可以将人的计算方法思想使用计算机语言实现，也就是转化为计算机算法。将人脑的想法条理化，转化为计算机的思想：一系列命令，通过执行这些命令，完成对输入数据处理后输出。</p>
+<h5 id="34-设计">3.4 设计</h5>
+<p>在设计过程中，应自顶向下，由粗略到详细，先模糊在构思细节这样进行设计。因为没有粗略，也无法构思详细，就如同画画，只有先把框架搭起来，才能不断完善其细节。如果一上来就构思细节，构思不起来，也不能完成和整体的配合。</p>
+<h5 id="35-开发">3.5 开发</h5>
+<p>而在开发过程中，应恰恰相反，从下层到上层，自底向上的，像搭积木一样去编写程序，先把最底层的积木写好，再不断在积木上搭建房间，再通过房间达成一座高楼。</p>
+<p>编程中，就是先编写最底层的函数，把轮子写出来，在编写中间层函数，它需要调用底层函数。完成底板的开发。最终开发顶层函数，它调用中间层函数，而<strong>不应该去调用最底层函数</strong>，因为方便后期维护。这样在底板的基础上，搭建出一台汽车。</p>
+<p>同样的，底层函数更不应去反过来去调用顶层或中层函数。这样在后期维护，就不会牵一发而动全身。</p>
+<p>在VS2019中，首先编写一个.cs文件封装数据结构，然后在一个.cs中按照上述规则编写程序，最终实现了程序的开发。</p>
+
+
+<footer class=" footline" >
 	
-  
-        
-            </div> 
+</footer>
+
+
         
         </div> 
         
@@ -761,6 +841,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -773,6 +854,7 @@
             
             
                 
+                    
                     
                 
                 
@@ -789,6 +871,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -941,8 +1026,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/studynotes/" title="Studynotes"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/unity/" title="Unities" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/studynotes/csharp_03/" title="C#_03" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

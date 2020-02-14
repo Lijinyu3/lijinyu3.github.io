@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Unities on Lijinyu&#39;s Hugo blog</title>
+    <link>https://lijinyu3.github.io/unity/</link>
+    <description>Recent content in Unities on Lijinyu&#39;s Hugo blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 14 Feb 2020 21:16:36 +0800</lastBuildDate>
+    
+	<atom:link href="https://lijinyu3.github.io/unity/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Unity02_UnityActualCombat</title>
+      <link>https://lijinyu3.github.io/unity/unity02/</link>
+      <pubDate>Fri, 14 Feb 2020 21:16:36 +0800</pubDate>
+      
+      <guid>https://lijinyu3.github.io/unity/unity02/</guid>
+      <description>一、About Unity Unity可以跨平台，且免去了造轮子等底层的开发。</description>
+    </item>
+    
+    <item>
+      <title>Unity01_C#InUnity</title>
+      <link>https://lijinyu3.github.io/unity/unity01/</link>
+      <pubDate>Fri, 14 Feb 2020 01:55:14 +0800</pubDate>
+      
+      <guid>https://lijinyu3.github.io/unity/unity01/</guid>
+      <description>一、关于脚本 可以在Project直接create一个script，也可以在某个object上面add component时，选择create new script。
+具体可以看unity里的一些选项进行自由选择。
+二、关于namespace namespace也就是命名空间
+类似于C语言的头文件，如果使用哪个命名空间的类，但是没有声明using namespace，就会报错。
+也可以自己声明创建一个namespace。
+namespace example{ class dick{ ... } } 如果想要使用dick类，就必须声明using example。
+三、关于inspector inspector是unity内用于监视游戏物体的区域。通过inspector可以直接访问到game object内的public variable。
+如果通过inspector修改了variable的初始值，那么以inspector为准。如果在C#内没有定义初值，也可以在inspector里赋值。
+四、删除游戏物体 Transform[] children = transform.GetComponentsInChildren&amp;lt;Transform&amp;gt;(); for...{ GameObject.Destory(children[i].gameObject); } 即可删除，但在获取物体时也会获取它自身，如果不想删除自己，只需要判断一下children[i]!=transform。
+五、foreach循环 专门用于遍历的循环。
+ foreach(Class name in variable){
+do&amp;hellip;
+}
+ 代表每一次赋值variable内的一个变量给name。
+六、component  获取  使用GetComponent/s来获取，也可以获取别的object的component，只需要声明一个该类型的object，然后进行拖拽赋值过来，即可使用object.GetComponent进行获取。
+s取决于是全部获取还是只获取第一个component。
+ 禁用  只需要声明该组件并引用，然后component.enable=false。即可禁用组件。
+ 调用  同理，如果是同一object上的component，可以直接使用component.method()进行调用。无视是否禁用。
+七、GameObject 只有获取到GameObject，才能对其的property进行操作。
+7.1	Access GameObject 1.可以声明该Class的Object，然后在unity内进行拖拽赋值。
+2.也可以通过transform.Find(&amp;ldquo;string&amp;rdquo;)这种查找字符串的方法，直接进行路径字符串查找，且这种效率会更高。当路径不存在时，会返回NULL。
+3.通过GameObject.Find(&amp;ldquo;string&amp;rdquo;)方法，直接查找Object的名字。
+并不推荐第三种，遍历各种物体，很慢。
+4.可以使用标签。使用GameObject.FindWithTag(&amp;ldquo;str&amp;rdquo;)。</description>
+    </item>
+    
+    <item>
+      <title>Unity00_C#InUnity</title>
+      <link>https://lijinyu3.github.io/unity/unity00/</link>
+      <pubDate>Wed, 12 Feb 2020 23:13:50 +0800</pubDate>
+      
+      <guid>https://lijinyu3.github.io/unity/unity00/</guid>
+      <description>一、关于控制台输出 控制台输出调试时，有两种方法。
+ 使用print()函数进行输出 使用Debug.Log()函数进行输出  输出的内容在Windows-&amp;gt;General-&amp;gt;Console(控制台)。print输出只能在组件里，非组件的情况需要第二种，第二种也是无限制的输出方式。
+进一步，还有警告与错误输出。
+Debug.LogWarning()、Debug.LogError()分别输出这两种情况。
+Ctrl+K或C可以快捷注释化。
+二、数据类型 Sbyte是C中的byte，byte是C中的unsignedbyte。
+unsigned在C#是u。
+整型
+  sbyte
+-128~127
+byte是它的unsigned
+  short
+-32768~32767
+ushort
+  int
+-2147483648~2147483647
+uint
+  long
+挺长的反正
+ulong
+  浮点
+  float
+赋值时注意+f
+  double
+最常用的
+  布尔
+ bool  字符
+  char
+单字符
+  string
+字符串
+  枚举类型enum enm
+定义方法：
+enum 枚举{
+​	name1,
+​	name2,</description>
+    </item>
+    
+  </channel>
+</rss>
