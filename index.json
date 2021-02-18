@@ -1,0 +1,148 @@
+[
+{
+	"uri": "https://206031.xyz/studynotes/",
+	"title": "StudyNotes",
+	"tags": [],
+	"description": "",
+	"content": "一些阅读笔记\n"
+},
+{
+	"uri": "https://206031.xyz/",
+	"title": "Myblog",
+	"tags": [],
+	"description": "",
+	"content": "Li Jinyu\u0026rsquo;s Hugo Blog  Welcome.\n"
+},
+{
+	"uri": "https://206031.xyz/unity_csharp/",
+	"title": "Unity和C#",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://206031.xyz/studynotes/conversionspecifier/",
+	"title": "printf与scanf中double与float参数的区别",
+	"tags": [],
+	"description": "",
+	"content": "一、我的疑惑 之前一直认为在printf与scanf中，对于单精度浮点（float）的参数中的转换说明符（conversion specifier），也就是%f，意味着float的缩写，也就是单精度的浮点数。\n而%lf就是双精度浮点（double），像long int与int的关系一样，刚好l为long的缩写修饰f。同理，long double实际上就是long long float，刚好对应的转换说明符是%llf（%Lf）。\n这样一切看起来都非常和谐，可是在C Primer Plus 6E中提到了double类型在printf函数中是可以用%f输出但在scanf中不行，在K\u0026amp;R C中也提到了这句话，且printf的转换说明符表格中指明了%f是对于double类型的，而压根就没有%lf的事。\n这就很奇怪了，怎么scanf就必须%lf和%f泾渭分明，到了printf就穿一条裤子了呢，而对于long double类型，又不一样了。\n 二、C语言的默认浮点类型与类型转换 在C语言中，浮点的默认类型是双精度浮点double，也就是说，除非函数原型指明了参数是float，不然float在当作参数传入时都会进行参数转换，让float变成参数。而double的大小又是大于float的，所以当float转化为double时不会损失任何精度。\n同样的道理，int是C语言中整型的默认类型。所以int的输出转换说明符是%d，这也是char，short这些整型的变量类型作为十进制数字输出的转换说明符。\n那怎么为什么long double是%Lf而不是像上面的float一样被转化成double用%f呢？这个问题其实很简单，C语言的类型转换规则就是低往高转，什么叫低往高转？\n整型和浮点型相遇的时候，浮点能囊括小数点而整型不行，显然浮点表现能力更广，它就更高，整型要转化为浮点再继续运算；或者同类型的，double与float相遇，double的字节比float字节多，那么它就更高。\n因此，long double本身就比默认浮点类型double更高级（更大），为什么要冒着丢失精度的风险转换为double呢。整型中也是同样的道理，long int是%ld，同理long long int。\n 三、scanf的参数 那么scanf中怎么float和double又不一样了呢。在scanf读入数据时，它需要一个地址来存储当前读取到的数据。这时候它的参数并不是像printf一样是一个数值，而是需要一个指针，指向用来存储数据的地址。\n这样的话，把宽度说明清楚就很有必要了，毕竟scanf也不知道这个浮点是4字节还是2字节，万一访问到自己不该访问的地方，CPU直接给你一个Segmentation Fault把你进程kill掉了就得不偿失了。\n因此，在读取数据存储的时候，你需要指明给了多少空间，这样宽度修饰符就很有必要了。对于整型也是同理。\n"
+},
+{
+	"uri": "https://206031.xyz/unity_csharp/unity03/",
+	"title": "Unity03_2DActualCombat",
+	"tags": [],
+	"description": "",
+	"content": "1.\tStarting 2D背景色可以点击MainCamera的Background进行修改。\n"
+},
+{
+	"uri": "https://206031.xyz/unity_csharp/unity02/",
+	"title": "Unity02_3DActualCombat",
+	"tags": [],
+	"description": "",
+	"content": "1.\tAbout Unity Unity可以跨平台，且免去了造轮子等底层的开发。\n2.\tAbout Project 2.1\tFile Structure   Assets\n用于存放游戏开发的一些资源：picture、model、voice、code。\n  Library\n库，用于存放一些内置的script。\n  ProjectSetting\n存放工程的设置。\n  Temp\n临时文件。\n  Project-\u0026gt;Scene-\u0026gt;GameObject-\u0026gt;Component\n2.2\tWindows Structure 共有三个区域，五个窗口。\n 左区域  有scene窗口与Game窗口。\nscene窗口就是游戏的场景，Game窗口就是游戏运行的效果。\n 中部区域  Project：本项目文件下Assets下的文件，也就是项目的资源。\nHierachy /\u0026lsquo;haɪərɑːrki/：显示当前场景层次，也就是有哪些东西。\n 右区域  Inspector：查看当前物体属性的检视面板，可以说是属性展示面板。\n2.3\tAbout Scene 2.3.1\tHow to create File-\u0026gt;New Scene\n要注意保存，未保存的都是Untitled。\n2.3.2\tMove perspective 按住右键可以以自己为中心旋转；按住Alt加上右键可以调整远近，按住Alt+左键可以以聚焦物体为中心旋转；在Hierarchy里点击Object可以focus on，或scene里点击它按F。按住滚轮键可以平移视野。\n右上角点击Perspective可以切换到透视视图，Iso则是正常视图。\n最上方的第一个是与鼠标中间一样，第二个是默认，第三个是调整角度，第四个是调整大小和位置。快捷键分别是QWERTY。\n然后的Global与Local的切换是用于坐标系切换，是绝对坐标系还是相对坐标系。\n2.3.3\tCamera 相机是没有实体的，图标可以调节大小。在Gizmos里面的iron。\n2.4\tAbout Hierarchy 层级面板，里面展示了游戏的Object。可以进行拖动把某一Object拖动到另一个下面，使其成为父子关系。父亲移动时，儿子会跟着移动，反之则不会。\n2.5\tAbout Inspector 可以看到GameObject上面的Component，Component是最基本组件。\nTransform component每个GameObject都有，用来保存其放大缩小以及位置的信息。\nRenderer是渲染器组件，用于渲染出该Object。\n有一些是功能组件，可以disabled它的功能，但有些是属性组件，无法disabled。\n3.\tBreakTheBricks 3.1\tCreate the ground 可以创建一个3d object里面的plane，设置坐标为0,0,0，也可以创建一个cube，然后设置0,0,0，再拉伸。\n3.2\tMaterial of Objects 对物体可以进行材质更改，在Material文件夹下创建一个材质文件，对其进行修改，然后拖动到Object上即可。\nAlbedo是反射率直译，可以设置贴图和颜色。下面的Metallic为金属质感，下面的Smoothness为光滑度。\n3.3\tPrefabs prefabs就是预制体，在我理解为Object类中设计的类，方便后续面向对象制作。创建一个Cube类，对其修改，后续生成的Cube实例都与Class的属性一样。\nCube如果不添加RigidBody，刚性，就会没有物理特性。\n3.4 Bullets 在C#Scripts里声明一个public的GameObject类的对象bullet。在Unity里将Prefabs内的预制体Bullets赋值给它。即可达到在代码内访问的效果。\n获取鼠标按键方法的用法。\npublic static bool GetMouseButtonDown(int button); using UnityEngine; using System.Collections; // Detects clicks from the mouse and prints a message // depending on the click detected.  public class ExampleClass : MonoBehaviour { void Update() { if (Input.GetMouseButtonDown(0)) Debug.Log(\u0026#34;Pressed primary button.\u0026#34;); if (Input.GetMouseButtonDown(1)) Debug.Log(\u0026#34;Pressed secondary button.\u0026#34;); if (Input.GetMouseButtonDown(2)) Debug.Log(\u0026#34;Pressed middle click.\u0026#34;); } } /*Description: *Returns true during the frame the user pressed the given mouse button. *You need to call this function from the Update function, since the state gets reset each frame. *It will not return true until the user has released the mouse button and pressed it again. *button values are 0 for the primary button (often the left button), 1 for secondary button, *and 2 for the middle button.*/ 实例化Prefabs的方法。\npublic static Object Instantiate(Object original);// //ɪns\u0026#39;tænʃɪet//\t举例，实例化 public static Object Instantiate(Object original, Transform parent); public static Object Instantiate(Object original, Transform parent, bool instantiateInWorldSpace); public static Object Instantiate(Object original, Vector3 position, Quaternion rotation); public static Object Instantiate(Object original, Vector3 position, Quaternion rotation, Transform parent); 通过声明一个Rigidbody类对象，使用GetComponent()方法获取Bullet对象身上的Rigidbody。再通过Rigidbody.velocity设置为transform.forward * speed，设置一个加速度，transform.forward为朝向。\n3.5\tMove 对于移动，需要public static float GetAxis(string axisName);方法。\n其中参数axisName可以在Edit-\u0026gt;Project Settings-\u0026gt;Input Manager查看。需要注意的是当获取键盘移动时，需要*Time.deltaTime，来让移动变为每秒而不是每帧。\n// //ˈæksɪs//  using UnityEngine; using System.Collections; // A very simplistic car driving on the x-z plane.  public class ExampleClass : MonoBehaviour { public float speed = 10.0f; public float rotationSpeed = 100.0f; void Update() { // Get the horizontal and vertical axis.  // By default they are mapped to the arrow keys.  // The value is in the range -1 to 1  float translation = Input.GetAxis(\u0026#34;Vertical\u0026#34;) * speed; float rotation = Input.GetAxis(\u0026#34;Horizontal\u0026#34;) * rotationSpeed; // Make it move 10 meters per second instead of 10 meters per frame...  translation *= Time.deltaTime; rotation *= Time.deltaTime; // Move translation along the object\u0026#39;s z-axis  transform.Translate(0, 0, translation); // Rotate around our y-axis  transform.Rotate(0, rotation, 0); } } using UnityEngine; using System.Collections; // Performs a mouse look.  public class ExampleClass : MonoBehaviour { float horizontalSpeed = 2.0f; float verticalSpeed = 2.0f; void Update() { // Get the mouse delta. This is not in the range -1...1  float h = horizontalSpeed * Input.GetAxis(\u0026#34;Mouse X\u0026#34;); float v = verticalSpeed * Input.GetAxis(\u0026#34;Mouse Y\u0026#34;); transform.Rotate(v, h, 0); } } "
+},
+{
+	"uri": "https://206031.xyz/unity_csharp/unity01/",
+	"title": "Unity01_C#InUnity",
+	"tags": [],
+	"description": "",
+	"content": "一、关于脚本 可以在Project直接create一个script，也可以在某个object上面add component时，选择create new script。\n具体可以看unity里的一些选项进行自由选择。\n二、关于namespace namespace也就是命名空间\n类似于C语言的头文件，如果使用哪个命名空间的类，但是没有声明using namespace，就会报错。\n也可以自己声明创建一个namespace。\nnamespace example{ class dick{ ... } } 如果想要使用dick类，就必须声明using example。\n三、关于inspector inspector是unity内用于监视游戏物体的区域。通过inspector可以直接访问到game object内的public variable。\n如果通过inspector修改了variable的初始值，那么以inspector为准。如果在C#内没有定义初值，也可以在inspector里赋值。\n四、删除游戏物体 Transform[] children = transform.GetComponentsInChildren\u0026lt;Transform\u0026gt;(); for...{ GameObject.Destory(children[i].gameObject); } 即可删除，但在获取物体时也会获取它自身，如果不想删除自己，只需要判断一下children[i]!=transform。\n五、foreach循环 专门用于遍历的循环。\n foreach(Class name in variable){\ndo\u0026hellip;\n}\n 代表每一次赋值variable内的一个变量给name。\n六、component  获取  使用GetComponent/s来获取，也可以获取别的object的component，只需要声明一个该类型的object，然后进行拖拽赋值过来，即可使用object.GetComponent进行获取。\ns取决于是全部获取还是只获取第一个component。\n 禁用  只需要声明该组件并引用，然后component.enable=false。即可禁用组件。\n 调用  同理，如果是同一object上的component，可以直接使用component.method()进行调用。无视是否禁用。\n七、GameObject 只有获取到GameObject，才能对其的property进行操作。\n7.1\tAccess GameObject 1.可以声明该Class的Object，然后在unity内进行拖拽赋值。\n2.也可以通过transform.Find(\u0026ldquo;string\u0026rdquo;)这种查找字符串的方法，直接进行路径字符串查找，且这种效率会更高。当路径不存在时，会返回NULL。\n3.通过GameObject.Find(\u0026ldquo;string\u0026rdquo;)方法，直接查找Object的名字。\n并不推荐第三种，遍历各种物体，很慢。\n4.可以使用标签。使用GameObject.FindWithTag(\u0026ldquo;str\u0026rdquo;)。\n"
+},
+{
+	"uri": "https://206031.xyz/unity_csharp/unity00/",
+	"title": "Unity00_C#InUnity",
+	"tags": [],
+	"description": "",
+	"content": "一、关于控制台输出 控制台输出调试时，有两种方法。\n 使用print()函数进行输出 使用Debug.Log()函数进行输出  输出的内容在Windows-\u0026gt;General-\u0026gt;Console(控制台)。print输出只能在组件里，非组件的情况需要第二种，第二种也是无限制的输出方式。\n进一步，还有警告与错误输出。\nDebug.LogWarning()、Debug.LogError()分别输出这两种情况。\nCtrl+K或C可以快捷注释化。\n二、数据类型 Sbyte是C中的byte，byte是C中的unsignedbyte。\nunsigned在C#是u。\n整型\n  sbyte\n-128~127\nbyte是它的unsigned\n  short\n-32768~32767\nushort\n  int\n-2147483648~2147483647\nuint\n  long\n挺长的反正\nulong\n  浮点\n  float\n赋值时注意+f\n  double\n最常用的\n  布尔\n bool  字符\n  char\n单字符\n  string\n字符串\n  枚举类型enum enm\n定义方法：\nenum 枚举{\n​\tname1,\n​\tname2,\n​\t\u0026hellip;\n}\n使用方法：\n枚举 nm=枚举.name1;\n数组的第二种初始化方法：\ntype[] name = new type[length]\n会创建一个默认值的数组，和Java好像一样，都是一个引用。\n也可以\ntype[] name=new type[length] {value,value,value\u0026hellip;}这样两种结合起来的。\n三、类的创建与使用 创建方法\npublic/private class nameOfClass : classOfInherit{ ... } 构造方法\nClass name = new Class(); new方法就是构造方法。\n类的数据\n使用.访问对象里的数据。\nClass.date 注意：public的数据才可以访问，数据前面需要加public。\n且如果不添加访问修饰符，那么默认就是private。\n类的方法\n与Java差不多。\npublic void method(){ do sth... } 也需要设置为public才能使用。\n四、unity内部类 可以使用unity官方API文档进行查看。\n在unity内，help-\u0026gt;scripting reference(脚本参考)，就可以查看官方文档了。\n"
+},
+{
+	"uri": "https://206031.xyz/unity_csharp/csharp_04/",
+	"title": "C#_04",
+	"tags": [],
+	"description": "",
+	"content": "[TOC]\n 一、什么是算法Algorithm 计算机中的算法，主要指为了解决某个问题而设计的一套解决方案，包容一系列计算机能够执行的有着特定循序的命令，计算机执行完这些命令就会得到某种结果，从而意味着问题已经有了一个结论。\n算法的针对性很强，专用于解决特定的问题。\n算法的设计，通常与数学有着很密切的联系，并且是独立于特定的编程语言或软件平台的。也就是可以使用多种编程语言以多种方式来实现同一种算法。\n二、需求分析 在解决某一个问题时，首先思考这个问题的解决难度，需要的专业背景知识。其次这个问题是否有必要使用计算机来解决，计算量是否大与是否方便。\n三、结构化编程 3.1 概念 程序可以被看成一种“抽象”的艺术。使用抽象的思维方式，构造软件系统的顶层模型。\n可以将一个程序看做是一个黑盒子，将一些数据输入进黑盒子，然后就可以从黑盒子中输出一些数据。因此，程序的核心实际上就是程序的输入输出与其中的算法。也就有了程序=数据结构+算法。(这句话出自Niklaus Wirth，Pascal语言之父，提出了结构化程序设计的概念)\n3.2 数据结构 数据结构实际上就是对数据的一种抽象处理。算法也是基于数据结构进行设计。\n比如某个问题要处理与年月日相关的数据，为了方便就可以抽象出一种数据结构为“日期”，含义年、月、日三个基本信息。\n数据结构设计是程序开发设计的关键，而数据结构设计的关键，就在于要依据待解决的问题，分析它涉及到的数据与蕴含的各种信息，按照当前语言的所支持的语法特性，将它们抽象为一种数据结构。\n3.3 算法 如上文，算法要基于数据结构设计。\n一般地，可以将人的计算方法思想使用计算机语言实现，也就是转化为计算机算法。将人脑的想法条理化，转化为计算机的思想：一系列命令，通过执行这些命令，完成对输入数据处理后输出。\n3.4 设计 在设计过程中，应自顶向下，由粗略到详细，先模糊在构思细节这样进行设计。因为没有粗略，也无法构思详细，就如同画画，只有先把框架搭起来，才能不断完善其细节。如果一上来就构思细节，构思不起来，也不能完成和整体的配合。\n3.5 开发 而在开发过程中，应恰恰相反，从下层到上层，自底向上的，像搭积木一样去编写程序，先把最底层的积木写好，再不断在积木上搭建房间，再通过房间达成一座高楼。\n编程中，就是先编写最底层的函数，把轮子写出来，在编写中间层函数，它需要调用底层函数。完成底板的开发。最终开发顶层函数，它调用中间层函数，而不应该去调用最底层函数，因为方便后期维护。这样在底板的基础上，搭建出一台汽车。\n同样的，底层函数更不应去反过来去调用顶层或中层函数。这样在后期维护，就不会牵一发而动全身。\n在VS2019中，首先编写一个.cs文件封装数据结构，然后在一个.cs中按照上述规则编写程序，最终实现了程序的开发。\n"
+},
+{
+	"uri": "https://206031.xyz/unity_csharp/csharp_03/",
+	"title": "C#_03",
+	"tags": [],
+	"description": "",
+	"content": "[TOC]\n 一、C#程序的编写、编译、运行。   打开记事本，编写程序，完成后保存为.cs后缀的文件。(标准编码方式为ASCII)\n  打开Developer Command Prompt for VS 2019(开发人员命令提示符)，找到源代码的目录。\n C:可以切换到某盘\ndir *.*可以展示当前目录下指定文件\n   使用指令\n csc.exe /target:exe XXX.cs\n进行编译\ntype xx.cs\n进行查看源代码\n   二、编译 编译就将纯文本形式的源代码(HelloWorld.cs)通过编译器Compiler进行翻译，转换成二进制的可执行程序。(.exe)\n三、可执行程序 在Windows平台下，可执行程序分为托管程序(C#，运行需要计算机安装有.NET Framework)与非托管程序(C/C++)两种。\n3.1 托管程序 .NET程序就是托管(Managed)程序，它必须运行在一个独立的运行环境(CLR=common language runtime=公共语言运行库)，并受到这个环境的管理和控制。就是一台只运行.NET程序的虚拟机(VIrtual Machine)。\n.NET应用程序\t\u0026lt;\u0026ndash;管理\u0026ndash;\t.NET虚拟机(CLR)\t\u0026ndash;调用功能\u0026ndash;\u0026gt;\t操作系统(Windows)\t\u0026ndash;管理\u0026ndash;\u0026gt;\t构成计算机的各种硬件\n四、.NET程序开发运行全景图 .exe和.dll在.NET中统称为\u0026quot;程序集Assembly\u0026quot;，其中保存的是\u0026quot;IL(中间语言)\u0026ldquo;指令。\nIL指令交给CLR也就是.NET虚拟机，首先通过类装载器读入IL指令，其次通过JIT编译器进行安全检查，如果通过了检查，就进行编译，这时就生成了本地可以由CPU直接执行的代码，叫作本地代码。最终由CPU执行。\n"
+},
+{
+	"uri": "https://206031.xyz/unity_csharp/csharp_02/",
+	"title": "C#_02",
+	"tags": [],
+	"description": "",
+	"content": "[TOC]\n 一、面向对象程序设计思想  面向对象是一种主流的软件开发与设计方法 当前人们使用的各种软件系统基本都是应用面向对象思想与技术设计和开发出来的 颗粒度加大，开发更容易  二、背景知识 2.1 软件是怎么写出来的？ 面临的问题以及解决方法：\n  如何表达信息，从而方便计算机的处理？\n答：设计和选用合适的数据结构。\n  如何设计与选择特定的算法取处理数据与信息？\n答：可选择已有的or设计新的。\n算法：分而治之、动态规划。\n程序控制结构：分支、循环、递归。\n  如何编写程序实现算法？\n答：选择合适的技术手段，设计合理的技术方案。\n软件系统架构、面向对象的分析与设计、编程语言、开发框架、软件平台等等。\n  2.2 程序是如何被计算机执行的  各种信息是如何用0-1表达的 计算机由哪些原件构成，其工作原理是什么 操作系统如何启动一个程序的执行  2.3 如何编写计算机可以执行的程序  编写源代码 编译 得到可运行的  2.4 怎样构造解决问题的算法  分析问题 设计算法 编写程序  三、0和1 3.1 原因 人类使用十进制0~9进行计算，计算机只只使用2个数字0和1。因为两个状态的东西容易找到和制作：开关、黑白、有无。\n在计算机中，只需要让高电平表示\u0026quot;1\u0026quot;，低电平表示\u0026quot;0\u0026quot;，这样计算机元件的制造难度就可以大大下降。相反，如果使用十进制，就需要找到一种区分10种状态的电子元器件，很难。\n3.2 如何表达信息 数值信息直接转换到二进制表达。\n 10 -\u0026gt; 1010\n 非数值信息，采用编码。\n 编码就是以若干位二进制码的不同组合来表示非数值类型的信息。具体怎么组合是人为指定的。\n  五笔字型的汉字输入法，使用1~4个字符对应一个或多个汉字。 数码图像，可以将其分解成一个一个的像素点，用数字表达它的颜色和位置等信息，然后再把这些数字以特定格式存进文件里，就是图像文件。  3.3 机器指令和指令集 在小灯泡电路中，0可以代表开关的关，1代表开。\u0026ldquo;0101\u0026quot;就是亮灭亮灭。\n这种以0和1表达的指令，可以由计算机直接执行，因此它们被称为机器指令。\n不同的计算机计算机硬件因为其不同的体系结构，能执行的机器指令也不相同，每种机器能执行的那些机器指令就称为该机器的指令集。\n指令集是由中央处理器CPU来执行。\nWindows平台下，指令与数据存储在可执行文件(.exe)中。还有一种**.dll**的动态链接库文件，需要被exe文件装入后执行。\n四、存储 4.1 外部存储器 PC上，一般是硬盘，光盘和U盘也是外部存储器。平时的软件都安装在外部存储器上面。\n4.2 Memory(内存)与内存条 放在外部存储器中的程序并不能直接运行，需要被装进内存后，才能执行。\n内存条中的存储芯片包含很多存储单元，用于保存程序指令和数据。\n存储单元的集合，就是内存。\n4.3 物理内存与虚拟内存 物理内存是计算机上面安装的物理存储芯片提供的内存。\n虚拟内存是由操作系统提供的，可以比物理内存大，多出来的那部分是操作系统从硬盘上划出来一部分空间弥补的。\n五、程序开发与运行过程  软件工程师用各类编程语言编写计算机程序 编译器把源代码转换为二进制指令与数据，以文件的方式保存在外部存储器中 操作系统将程序文件从外部存储器读入进内存 CPU从内存读取指令运行  "
+},
+{
+	"uri": "https://206031.xyz/unity_csharp/csharp_01/",
+	"title": "C#_01",
+	"tags": [],
+	"description": "",
+	"content": "金旭亮老师的C#+.NET的学习笔记\n[TOC]\n 一、ReadKey与Beep  ReadKey(true)\n 可以使用户输入一个字符。当参数为true时，用户的输入会隐藏。\n Beep()\n 会使计算机发出一次响声。\n二、C#编程规则  标识符（identifier：程序中含有特殊含有的单词，区分大小写） 每句话以分号结尾，多条语句可以用{}合在一起成为语句块。 编写的代码放在类Class中，类是C#的基本单元。 存放C# class的源代码文件拓展名为.cs，一个.cs可以包含多个class。  三、文件组织方式 一个解决方案包Solution含了3个项目Project。\nProject是Visual Studio编译的最小单元。\nSolution可以包含多个Project。其中加粗的Project是启动项目。\n一个Project可以有多个类文件class，class只有在Project中才能被编译。\n程序的入口点是Program类的Main()方法\n"
+},
+{
+	"uri": "https://206031.xyz/studynotes/win10hotkeys/",
+	"title": "Win10快捷键笔记",
+	"tags": [],
+	"description": "",
+	"content": "这里记录一下Windows10的快捷键。方便后续使用。\n 一、快捷键 1.Win键类 Win+L\t快速锁屏\nWin+E\t打开我的电脑\nWin+D\t进入桌面（相当于右下角的显示桌面）\nWin+R\t打开运行功能\nWin+↑↓←→\t对当前窗口分屏/位置改变\nWin+Tab\t新建电脑桌面\nWin+空格\t切换多个输入法\nWin+I\t打开设置\nWin+数字\t打开任务栏第N个程序\nWin+W\t打开ink工作区\nWin+Q\t打开搜索\n2.Ctrl键类 Ctrl+Shift+N\t快速创建文件夹/无痕窗口\nCtrl+Shift+Del 删除浏览器缓存\nCtrl+N\t新建\nCtrl+O\t打开文件\nCtrl+A\t全选\nCtrl+F/H\t查找、替换\nCtrl+鼠标拖动 快速创建副本\nCtrl+N\t快速创建同级别界面\nCtrl+Shift+T 恢复删除的网页\nCtrl+Z\\Y\t撤回\\恢复\nCtrl+W\t关闭当前文档、网页\n3.Shift键类 Shift+Delete 永久删除\nShift+Ctrl+Esc 打开任务管理器\nShift+Win+S\t截屏\n4.Alt键类 Alt+F4 关闭当前的应用\nAlt+Enter/2 Click\t快速查看文件属性\nAlt+Ctrl+Del\t打开安全窗口\nAlt+Esc\t在没有最小化的窗口间切换\nAlt+PrtScn\t对当前程序/窗口截屏\nWindows打开上层文件夹快捷键——【Alt+↑】\nWindows切换到下一次后打开的文件夹快捷键——【Alt+→】\nWindows切换到前一次打开的文件夹快捷键——【Alt+←】\n5.TAB键类 Tab+Win\t时间线切换\nTab+Ctrl\t程序内窗口切换\n6.F类 F2\t改文件名\nF4\t重复上一步操作\nF5\t刷新\nF6\t定为到浏览器地址栏\n 二、触摸板  **选择项目：**点击触摸板。 **滚动：**将两个手指放在触摸板上，然后以水平或垂直方向滑动。 **放大或缩小：**将两个手指放在触摸板上，然后收缩或拉伸。 **显示更多命令（类似于右键单击）：**使用两根手指点击触摸板，或按右下角。 **查看所有打开的窗口：**将三根手指放在触摸板上，然后朝外轻扫。 **显示桌面：**将三根手指放在触摸板上，然后朝里轻扫。 **在打开的窗口之间切换：**将三根手指放在触摸板上，然后向右或向左轻扫。 **打开 Cortana：**用三根手指点击触摸板。 **打开操作中心：**用四根手指点击触摸板。 **切换虚拟桌面：**将四根手指放在触摸板上，然后向右或向左轻扫。 以上手势中，一部分仅适用于精确式触摸板。若要了解你的笔记本电脑是否具有精确式触摸板，请依次选择“开始” \u0026gt;“设置” \u0026gt;“设备”\u0026gt;“触摸板”。  三、Microsoft官方 3.1\t常规    按该键 执行以下操作     Ctrl + X 剪切选定项。   Ctrl + C（或 Ctrl + Insert） 复制选定项。   Ctrl + V（或 Shift + Insert） 粘贴选定项。   Ctrl + Z 撤消操作。   Alt + Tab 在打开的应用之间切换。   Alt + F4 关闭活动项，或者退出活动应用。   Windows+L 锁定你的电脑。   Windows+D 显示和隐藏桌面。   F2 重命名所选项目。   F3 在文件资源管理器中搜索文件或文件夹。   F4 在文件资源管理器中显示地址栏列表。   F5 刷新活动窗口。   F6 循环浏览窗口中或桌面上的屏幕元素。   F10 激活活动应用中的菜单栏。   Alt + F8 在登录屏幕上显示你的密码。   Alt + Esc 按项目打开顺序循环浏览。   Alt + 带下划线的字母 执行该字母相关的命令。   Alt + Enter 显示所选项目的属性。   Alt + 空格键 打开活动窗口的快捷菜单。   Alt + 向左键 返回。   Alt + 向右键 前进。   Alt + Page Up 向上移动一个屏幕。   Alt + Page Down 向下移动一个屏幕。   Ctrl + F4 关闭活动文档（在可全屏显示并允许你同时打开多个文档的应用中）。   Ctrl + A 选择文档或窗口中的所有项目。   Ctrl + D（或 Delete） 删除选定项，将其移至回收站。   Ctrl + R（或 F5） 刷新活动窗口。   Ctrl + Y 恢复操作。   Ctrl + 向右键 将光标移动到下一个字词的起始处。   Ctrl + 向左键 将光标移动到上一个字词的起始处。   Ctrl + 向下键 将光标移动到下一段落的起始处。   Ctrl + 向上键 将光标移动到上一段落的起始处。   Ctrl + Alt + Tab 使用箭头键在所有打开的应用之间进行切换。   Alt + Shift + 箭头键 当组或磁贴的焦点放在“开始”菜单上时，可将其朝指定方向移动。   Ctrl + Shift + 箭头键 当磁贴的焦点放在“开始”菜单上时，将其移到另一个磁贴即可创建一个文件夹。   Ctrl + 箭头键 打开“开始”菜单后调整其大小。   Ctrl + 箭头键（移至某个项目）+ 空格键 选择窗口中或桌面上的多个单独项目。   Ctrl + Shift（及箭头键） 选择文本块。   Ctrl + Esc 打开“开始”菜单。   Ctrl + Shift + Esc 打开任务管理器。   Ctrl + Shift 如果多种键盘布局可用，则可切换键盘布局。   Ctrl + 空格键 打开或关闭中文输入法编辑器 (IME)。   Shift + F10 显示选定项的快捷菜单。   按 Shift 与任何箭头键 在窗口中或桌面上选择多个项目，或在文档中选择文本。   Shift + Delete 删除选定项，无需先移动到回收站。   向右键 打开右侧的下一个菜单，或打开子菜单。   向左键 打开左侧的下一个菜单，或关闭子菜单。   Esc 停止或离开当前任务。   PrtScn 捕获整个屏幕的屏幕截图并将其复制到剪贴板。 注意你可以更改此快捷方式，以便它还可以打开屏幕截取，这允许你编辑屏幕截图。依次选择“开始”菜单 \u0026gt;“设置” \u0026gt;“轻松访问” \u0026gt;“键盘”，然后打开“Print Screen 快捷方式”下的切换开关。使用 PrtScn 键打开屏幕截取    3.2\tWin快捷键    按该键 执行以下操作     Windows 打开或关闭“开始”菜单。   Win+ A 打开操作中心。   Win+ B 将焦点设置到通知区域。   Win+ C 在侦听模式下打开 Cortana。 注意此快捷方式默认情况下处于关闭状态。若要打开它，请选择“开始”菜单 \u0026gt; “设置” \u0026gt; “Cortana”，并打开“当我按 Win + C 时，让 Cortana 听我的命令”下的切换开关。Cortana 仅在某些国家/地区可用，并且某些 Cortana 功能可能无法随时随地使用。如果 Cortana 不可用或已关闭，你仍然可以使用搜索。   Win + Shift + C 打开超级按钮菜单。   Win + D 显示和隐藏桌面。   Win + Alt + D 显示和隐藏桌面上的日期和时间。   Win + E 打开文件资源管理器。   Win + F 打开反馈中心并获取屏幕截图。   Win + G 打开游戏栏（当游戏处于打开状态时）。   Win ‌ + H 开始听写。   Win + I 打开设置。   Win‌ + J 将焦点设置到可用的 Windows 提示。 当出现 Windows 提示时，请将焦点移到提示上。 再次按下键盘快捷方式，将焦点放在屏幕上 Windows 提示所固定的元素上。   Win + K 打开“连接”快速操作.   Win + L 锁定你的电脑或切换帐户。   Win + M 最小化所有窗口。   Win + O 锁定设备方向。   Win + P 选择演示显示模式。   Win + Ctrl + Q 打开快速助手。   Win + R 打开“运行”对话框。   Win + S 打开搜素。   Win + Shift + S 获取部分屏幕的屏幕截图。   Win + T 循环浏览任务栏上的应用。   Win + U 打开轻松使用设置中心。   Win + V 打开剪贴板。 注意若要激活此快捷方式，请依次选择“开始”菜单 \u0026gt; “设置” \u0026gt; “系统” \u0026gt; “剪贴板”，然后打开“剪贴板历史记录”下的切换开关。   Win + Shift + V 循环浏览通知。   Win + X 打开“快速链接”菜单。   Win + Y 在 Windows Mixed Reality 与桌面之间切换输入。   Win + Z 以全屏模式显示应用中可用的命令。   Win + 句点 (.) 或分号 (;) 打开表情符号面板。   Win + 逗号 (,) 临时速览桌面。   Win + Pause 显示“系统属性”对话框。   Win + Ctrl + F 搜索电脑（如果已连接到网络）。   Win + Shift + M 还原桌面上的最小化窗口。   Win + 数字 打开桌面，然后启动固定到任务栏的应用（位于数字所指明的位置）。如果应用已处于运行状态，则切换至该应用。   Win + Shift + 数字 打开桌面，然后启动固定到任务栏的应用新实例（位于数字所指明的位置）。   Win + Ctrl + 数字 打开桌面，然后切换至固定到任务栏的应用的最后活动窗口（位于数字所指明的位置）。   Win + Alt + 数字 打开桌面，然后打开固定到任务栏的应用的“跳转列表”（位于数字所指明的位置）。   Win + Ctrl + Shift + 数字 打开桌面，然后以管理员身份打开位于任务栏上指定位置的应用新实例。   Win + Tab 打开任务视图。   Win + 向上键 最大化窗口。   Win + 向下键 删除屏幕上的当前应用并最小化桌面窗口。   Win + 向左键 最大化屏幕左侧的应用或桌面窗口。   Win + 向右键 最大化屏幕右侧的应用或桌面窗口。   Win + Home 最小化活动桌面窗口之外的所有窗口（在第二个笔划时还原所有窗口）。   Win + Shift + 向上键 将桌面窗口拉伸至屏幕顶部和底部。   Win + Shift + 向下键 在垂直方向上还原/最小化活动桌面窗口，而宽度保持不变。   Win + Shift + 向左键或向右键 将桌面上的应用或窗口从一台显示器移动至另一台显示器。   Win + 空格键 切换输入语言和键盘布局。   Win + Ctrl + 空格键 对之前选择的输入所做的更改。   Win + Ctrl + Enter 打开“讲述人”。   Win + 加号 (+) 打开“放大镜”。   Win + 正斜杠 (/) 开始输入法复原流程。   Win + Ctrl + V 打开肩式分接设备。   Win‌ + Ctrl + Shift + B 从空白屏幕或黑屏中唤醒    官网\n"
+},
+{
+	"uri": "https://206031.xyz/unity_csharp/csharp_00/",
+	"title": "C#_00",
+	"tags": [],
+	"description": "",
+	"content": "金旭亮老师的C#+.NET的学习笔记\n[TOC]\n 一、本课程学习内容：C# .NET 本课程将会用到的项目类型：\n Windows窗体程序（.exe 最常用的） 控制台应用程序（多用于学习，平时少） 类库（.dll 提供大厦的砖块）  二、格式输入输出 Console类(控制台 [kənˈsəʊl , ˈkɒnsəʊl])\n 格式输入：Console.WriteLine();\n格式输出：Console.ReadKey();\n 三、控制台方法 与Java一样，静态无返回值的方法就是\nstatic void TestConsoleProperty(){ Console.Title = \u0026#34;Current Time:\u0026#34;+DateTime.Now; Console.ForegroundColor = ConsoleColor.Yellow; Console.BackgroundColor = ConsoleColor.DarkBlue; } 引用方法时的语法是\n TestConsoleProperty();\n 其中Console类中的Title、ForegroundColor、BackgroundColor分别是标题、前背景色（字体颜色）、背景色这些属性。\n四、输入输出及其参数 Console.Write()方法并不会自动换行，类似于Java的System.out.print()，而WriteLine()就像是println()。\n在输出时，涉及到字符串变量与字符串，有两种方法。\n  like Java\u0026rsquo;s format:by using the character \u0026lsquo;+\u0026rsquo; to connect a string and a variable.\n Console.WriteLine(\u0026ldquo;Like Java\u0026rdquo;+string);\n   like C\u0026rsquo;s format:通过类似于{数字}的占位符以及后面跟着的参数进行输出。占位符里的数字代表后面的第几个参数。\n Console.WriteLine(\u0026ldquo;Like C {0},I\u0026rsquo;m familiar with {1}\u0026quot;,string,c);\n   在输出时如果涉及到转义字符，与C语言如出一辙。比如\\n\\t。\n"
+},
+{
+	"uri": "https://206031.xyz/git/",
+	"title": "Git",
+	"tags": [],
+	"description": "",
+	"content": "一些Git与GitHub的用法感悟笔记。\n"
+},
+{
+	"uri": "https://206031.xyz/git/git/",
+	"title": "对于集中式与分布式的浅显理解",
+	"tags": [],
+	"description": "",
+	"content": "因为本博客架构在我的GitHub网站上，在更新Blog时要用到Git进行管理控制上传。故在此开贴记录一下Git的使用与理解。\n 一、概念 1.1 版本管理系统的由来 首先Git是目前世界上最先进的分布式 版本控制系统（没有之一）。那么什么是版本控制系统？\n就像我在用Word写设计报告论文时，老师总会找出错误让我改报告。每次修改为了保险都会保存上一次的文件，因此就会创建一个当前文件的副本文件作为当前使用的报告。但是改报告并不会一次两次就会修改完，经常会造成这种情况。如图1.1，版本文档示意图。\n更麻烦的是，如果有一份报告需要我和组员协同完成。于是我把文件用U盘copy给组员，然后我继续完成我的部分，等着组员完成他的部分然后把Word文档发给我。但当组员把他的文档发过来时，我必须考虑在这段时间内我对这份Word文档作了哪些改动，并把我的改动与他的部分合并。这又涉及到版本回滚了，很麻烦。\n这时候如果能有一个软件，可以帮助我记录每次文件的改动情况，还可以让组员协同编辑，这样就把管理版本的任务交给软件了，不需要对这些文件传来传去，改来改去。如果想看某一次改动，只需要看一眼软件的记录，回滚版本也方便了很多。\n就像下面的表格一样。\n   版本 文件名 用户 说明 日期     1 文档.doc LJY 第一版报告 2020.2.1   2 文档.doc LJY 改变行间距 2020.2.2   3 文档.doc 熊豪 加入哈夫曼编码 2020.2.3    这就是版本管理系统的由来。\n1.2 集中式与分布式 Git作为一款优秀的版本管理系统，它是分布式的。那么分布式与集中式的区别与优缺点都是什么。\n先说一下集中式的。在集中式版本管理系统中，版本库集中存放在中央服务器，在需要处理文档时，用自己的电脑从中央服务器取得最新的版本，在处理完之后，再commit到中央服务器。在这里，中央服务器就像一个大的图书馆，每次都从图书馆里借一本书，回到家自己改，改完了再交回去。如图1.2，集中式示意图。\n而分布式版本控制系统根本没有中央服务器，每个人的电脑上都会clone一份完整的版本库（项目全部文件及版本迭代）。这样在处理文档时并不需要联网，因为版本库就在本机上。但是每个人电脑都有版本库，如果协同工作呢？如果我在电脑上修改了A.word，组员也修改了A.word，那么我们只需要把相互的修改push给对方，就能看到修改的东西了。\n这样，可以看出来与集中式相比，分布式安全了不少，即便某个人的版本库坏了，只需要从另一个人那里clone过来就行了。而集中式的如果服务器有问题了，比如宕机，那么大家都不能干活了。\n在实际使用时，由于两台电脑可能不在同一局域网下，所以并不能相互访问，也就不能在两人之间的电脑上相互push版本库的修改了。也有可能我的组员有事病了，他的电脑没有开机。因此分布式系统也需要一台充当中央服务器的电脑，但是此服务器并非彼服务器，它的作用仅仅是方便交换大家的修改，没有了它一样可以干活，只是很不方便。\n集中式每次干活时只把最新版本pull下来，而分布式在第一次干活时需要把整个repo都clone过来。因此在初始化的时候，集中式只需要很短的时间就能完成，而分布式的需要等一些时间。\n其次，在集中式管理时，admin可以通过中央服务器制定每个人的权限范围，便于管理。分布式因为每一台都是一个完整的服务器，并不便于管理。（？不知道能不能指定每个用户可提交的文档权限）\n但是这样做的好处也很明显。在Central Server宕机或自己的电脑断网时，集中式如果需要连续修改一些东西，就不能完成。（每次修改必须commit，不然无法记录修改内容）。而分布式在第一种情况可以直接指定另一台电脑作为服务器，在断网时，由于自己有完整的历史库，因此可以单机commit修改内容，在有网的时候pull到中央服务器与别人交换就ok了。\n hugo -b \u0026ldquo;https://lijinyu3.github.io\u0026rdquo; -t hugo-theme-learn -D\ngit add .\ngit commit -m \u0026ldquo;12th\u0026rdquo;\ngit push origin master\n 学习资料及参考：廖雪峰老师的Git学习网站\n"
+},
+{
+	"uri": "https://206031.xyz/studynotes/markdown/",
+	"title": "Markdown基本语法",
+	"tags": [],
+	"description": "",
+	"content": "一、摘要 本博客都是用Markdown文件写作的，故写一篇博客存储md语法。\n Markdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。 --摘自百度百科\n优点： Markdown是纯文本，只要支持该格式的地方就能获得一样的边际效果。\n缺点： 语法要记住的多；有的地方不支持本格式。\n 二、基本语法 2.1 标题 # 一级标题 \n## 二级标题 \n### 三级标题 \n#### 四级标题 \n##### 五级标题 \n###### 最小只有六级标题\n2.2 文本样式  加粗：**加粗** 效果：用于加粗字体。 斜体：*斜体* 效果：倾斜字体。 代码引用：\u0026gt;代码引用 效果：(可以嵌套引用)   代码引用\n   超链接：[Title](Url) 效果：超链接\n  高亮：==高亮== 效果：== 高亮 ==（原版标准不存在）\n  列表：* 列表 效果：如上一行所示。\n  分割线：--- 效果：\n   删除线：~~删除~~ 效果：删除\n  2.3 其他   图片：![图片名称](地址) 效果：  写代码：``` 代码``` 效果：\n#include\u0026lt;stdio.h\u0026gt;int main(void){ printf(\u0026#34;Hello World!\\n\u0026#34;); return 0; }   表格：\n表头|表头|表头 ---|:--:|---: 内容|内容|内容 内容|内容|内容 第二行分割表头和内容。 - 有一个就行，为了对齐，多加了几个 文字默认居左 -两边加：表示文字居中 -右边加：表示文字居右 注：原生的语法两边都要用 | 包起来。此处省略 效果：\n   姓名 技能 排行     刘备 哭 大哥   关羽 打 二哥   张飞 骂 三弟      数学公式：内嵌数学公式$\\sum_{i=1}^{10}f(i)\\,\\,\\text{thanks}$ 效果：内嵌数学公式$\\sum_{i=1}^{10}f(i),,\\text{thanks} $\n  块状数学公式：改成$$ 效果： $$ \\sum_{i=1}^{10}f(i),,\\text{thanks} $$\n  还有流程图，但是我不会。\n  三、特殊 网站的文章名字里不能带#，否则打不开！会出现404 page not found。\n"
+},
+{
+	"uri": "https://206031.xyz/studynotes/test2/",
+	"title": "各类语言的比较",
+	"tags": [],
+	"description": "",
+	"content": "各种语言的学习  一、Java语言 Java有一个丰富的生态圈\n重要、必学！后端，企业、公司开发的语言。\n很好找工作。\nSpring全家桶（框架）\n 二、C语言 经典。\n通信专业、电子\n用于嵌入式系统 e.g.单片机\n效率很高，接近机器语言。\n 三、Python语言 是一种数字分析计算语言\n与数字有关的行业\n机器学习 Machine Learning\n丰富的第三方开源库\n爬虫\n也可以做Web后端服务\n 四、C++语言 C的外延，却与C不是一种语言。\n很有设计思想的语言。\n难\n 五、JavaScript语言 全栈语言\n最广泛应用于交互网页。\n用于网站前端\n也可以用于做后端，得益于node.js\n 六、C#语言 语法很像Java\n可以做桌面应用\n也可以做后端\n 七、PHP语言**（世界上最好的语言）** 服务器脚本\n可以做后端服务器框架\n 八、SQL语言 必学\n数据查询\n优化它很重要\n 九、Objective-C ＆ Swift 开发iOS的\n 十、MATLAB 科研语言\n商业较少\n读研很重要\n数学的东西很擅长\n十一、Golang语言 Google发布\n推荐学习\n速度极快！媲美C/C++！\n也可以做web后端\nHugo的博客是golang写的。\n 十二、Groovy语言 脚本语言\n可以与Java语言互相调用。\n 十三、Kotlin 也可以与Java互调\n现在是Android的开发语言。\n十四、Lua 像Python，也是C写的。\n 十五、Julia 科学计算语言\n支持非常多的数值类型\n机器学习用的多。\n总结 Java、C/C++、Python、JavaScript（全栈工程师）、MATLAB（读研）、Golang、Kotlin。\n优先级 Java\u0026gt;C\u0026gt;C++\u0026gt;Python\n"
+},
+{
+	"uri": "https://206031.xyz/studynotes/test3/",
+	"title": "你好",
+	"tags": [],
+	"description": "",
+	"content": "测试一下  过几天要过生日了哈哈哈\n"
+},
+{
+	"uri": "https://206031.xyz/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://206031.xyz/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]
