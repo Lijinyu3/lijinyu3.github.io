@@ -1,0 +1,45 @@
+site_name: Li's blog
+site_url: https://206031.com/
+site_author: enotaa33@gmail.com
+
+repo_name: Li's blog GitHub repo
+repo_url: https://github.com/Lijinyu3/lijinyu3.github.io
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - Home: index.md
+  - About: about.md
+theme:
+  name: material
+  language: zh
+  font:
+    text: Roboto
+    code: Roboto Mono
+  icon:
+    logo: material/lambda
+    repo: fontawesome/brands/github
+    # logo: img/logo.png
+  favicon: img/favicon.ico
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: deep purple
+      toggle:
+        icon: material/lightbulb-outline
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/lightbulb
+        name: Switch to light mode
+
+          #plugins:
+  # - git-revision-date-localized
+
