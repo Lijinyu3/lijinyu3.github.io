@@ -1,9 +1,11 @@
 site_name: Li's blog
 site_url: https://206031.com/
 site_author: enotaa33@gmail.com
+site_description: 个人博客
 
 repo_name: Li's blog GitHub repo
 repo_url: https://github.com/Lijinyu3/lijinyu3.github.io
+edit_uri: edit/main/docs/
 
 extra_javascript:
   - javascripts/mathjax.js
