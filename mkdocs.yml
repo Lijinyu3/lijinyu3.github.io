@@ -5,10 +5,6 @@ site_author: enotaa33@gmail.com
 repo_name: Li's blog GitHub repo
 repo_url: https://github.com/Lijinyu3/lijinyu3.github.io
 
-markdown_extensions:
-  - pymdownx.arithmatex:
-      generic: true
-
 extra_javascript:
   - javascripts/mathjax.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
@@ -42,4 +38,15 @@ theme:
 
 plugins:
   - git-revision-date-localized
+  - search
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.highlight:
+      anchor_linenums: true
+      linenums: true
+  - pymdownx.superfences
 
