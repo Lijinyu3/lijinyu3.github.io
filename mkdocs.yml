@@ -40,6 +40,6 @@ theme:
         icon: material/lightbulb
         name: Switch to light mode
 
-          #plugins:
-  # - git-revision-date-localized
+plugins:
+  - git-revision-date-localized
 
