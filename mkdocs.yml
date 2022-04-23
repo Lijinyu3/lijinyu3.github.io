@@ -14,9 +14,21 @@ extra_javascript:
 
 nav:
   - Home: index.md
-  - About: about.md
-  - 测试:
-    - 'test': 'test/tt.md'
+  - Notes:
+    - 'Harvard CS50':
+      - 'Syllabus': 'notes/Harvard_CS50/0xFF_Syllabus.md'
+      - 'Lec 00: Scratch': 'notes/Harvard_CS50/0x00_Scratch.md'
+      - 'Lec 01: C': 'notes/Harvard_CS50/0x01_C.md'
+      - 'Lec 02: Arrays': 'notes/Harvard_CS50/0x02_Arrays.md'
+      - 'Lec 03: Algorithms': 'notes/Harvard_CS50/0x03_Algorithms.md'
+      - 'Lec 04: Memory': 'notes/Harvard_CS50/0x04_Memory.md'
+      - 'Lec 05: Data Structures': 'notes/Harvard_CS50/0x05_Data_Structures.md'
+      - 'Lec 06: Python': 'notes/Harvard_CS50/0x06_Python.md'
+      - 'Lec 07: SQL': 'notes/Harvard_CS50/0x07_SQL.md'
+      - 'Lec 08: HTML, CSS, JS': 'notes/Harvard_CS50/0x08_HTML, CSS, JavaScript.md'
+    - 'MIT 6.NULL': 'notes/MIT_6.NULL/'
+      #      - 'Lec0. Scratch': 'notes/Harvard_CS50/0x00_Scratch.md'
+      # - 'test': 'notes/Harvard_CS50/test.md'
 theme:
   features:
     - navigation.tabs
