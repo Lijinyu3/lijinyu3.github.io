@@ -1,0 +1,1600 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="个人博客">
+      
+      
+        <meta name="author" content="enotaa33@gmail.com">
+      
+      
+        <link rel="canonical" href="https://206031.com/notes/Harvard_CS50/0x02_Arrays/">
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+    
+    
+      
+        <title>Lec 02: Arrays - Li's blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.120efc48.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="deep-purple" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-compiling" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Li&#39;s blog" class="md-header__button md-logo" aria-label="Li's blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m6 20 4.16-12.09L9.34 6H8V4h2c.42 0 .78.26.93.63L16.66 18H18v2h-2c-.43 0-.79-.27-.93-.64l-3.74-8.71L8.12 20H6Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Li's blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lec 02: Arrays
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="deep purple" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Lijinyu3/lijinyu3.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Li's blog GitHub repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../0xFF_Syllabus/" class="md-tabs__link md-tabs__link--active">
+        Notes
+      </a>
+    </li>
+  
+
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Li&#39;s blog" class="md-nav__button md-logo" aria-label="Li's blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m6 20 4.16-12.09L9.34 6H8V4h2c.42 0 .78.26.93.63L16.66 18H18v2h-2c-.43 0-.79-.27-.93-.64l-3.74-8.71L8.12 20H6Z"/></svg>
+
+    </a>
+    Li's blog
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Lijinyu3/lijinyu3.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Li's blog GitHub repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Notes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Notes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Notes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          Harvard CS50
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Harvard CS50" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Harvard CS50
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0xFF_Syllabus/" class="md-nav__link">
+        Syllabus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x00_Scratch/" class="md-nav__link">
+        Lec 00: Scratch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x01_C/" class="md-nav__link">
+        Lec 01: C
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Lec 02: Arrays
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Lec 02: Arrays
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-compiling" class="md-nav__link">
+    1. Compiling
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Compiling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-compiler-program" class="md-nav__link">
+    1.1. Compiler program
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-command-line-argument" class="md-nav__link">
+    1.2. Command-line argument
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-smaller-steps-of-compiling" class="md-nav__link">
+    1.3. Smaller steps of compiling
+  </a>
+  
+    <nav class="md-nav" aria-label="1.3. Smaller steps of compiling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-preprocessing" class="md-nav__link">
+    1.3.1. Preprocessing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-compiling" class="md-nav__link">
+    1.3.2. Compiling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-assembling" class="md-nav__link">
+    1.3.3. Assembling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#134-linking" class="md-nav__link">
+    1.3.4. Linking
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-debugging" class="md-nav__link">
+    2. Debugging
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Debugging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-bugs" class="md-nav__link">
+    2.1. Bugs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-printf" class="md-nav__link">
+    2.2. Printf
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-debuggers" class="md-nav__link">
+    2.3. Debuggers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-duck-debugger" class="md-nav__link">
+    2.4. Duck debugger
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-memory" class="md-nav__link">
+    3. Memory
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Memory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-spaces-of-different-types" class="md-nav__link">
+    3.1. Spaces of different types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-ram-vs-hard-drive" class="md-nav__link">
+    3.2. RAM v.s. Hard Drive
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-bytes-in-ram" class="md-nav__link">
+    3.3. Bytes in RAM
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-arrays" class="md-nav__link">
+    4. Arrays
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-what-is-arrays" class="md-nav__link">
+    4.1. What is Arrays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-access-arrays" class="md-nav__link">
+    4.2. Access arrays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-create-arrays" class="md-nav__link">
+    4.3. Create Arrays
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-characters" class="md-nav__link">
+    5. Characters
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Characters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-char-as-an-integer" class="md-nav__link">
+    5.1. Char as an integer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-char-in-memory" class="md-nav__link">
+    5.2. Char in memory
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-strings" class="md-nav__link">
+    6. Strings
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Strings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-string-as-an-array-of-chars" class="md-nav__link">
+    6.1. String as an array of chars
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-difference-between-string-and-arrays-of-chars" class="md-nav__link">
+    6.2. Difference between String and arrays of chars
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-arrays-of-strings" class="md-nav__link">
+    6.3. Arrays of Strings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-command-line-arguments" class="md-nav__link">
+    7. Command-line arguments
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Command-line arguments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-argc-and-argv" class="md-nav__link">
+    7.1. argc and argv
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-return-value" class="md-nav__link">
+    7.2. Return value
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-applications" class="md-nav__link">
+    8. Applications
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-cryptography" class="md-nav__link">
+    8.1. Cryptography
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-example-of-cryptography" class="md-nav__link">
+    8.2. Example of Cryptography
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x03_Algorithms/" class="md-nav__link">
+        Lec 03: Algorithms
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x04_Memory/" class="md-nav__link">
+        Lec 04: Memory
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x05_Data_Structures/" class="md-nav__link">
+        Lec 05: Data Structures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x06_Python/" class="md-nav__link">
+        Lec 06: Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x07_SQL/" class="md-nav__link">
+        Lec 07: SQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x08_HTML%2C%20CSS%2C%20JavaScript/" class="md-nav__link">
+        Lec 08: HTML, CSS, JS
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MIT_6.NULL/" class="md-nav__link">
+        MIT 6.NULL
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-compiling" class="md-nav__link">
+    1. Compiling
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Compiling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-compiler-program" class="md-nav__link">
+    1.1. Compiler program
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-command-line-argument" class="md-nav__link">
+    1.2. Command-line argument
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-smaller-steps-of-compiling" class="md-nav__link">
+    1.3. Smaller steps of compiling
+  </a>
+  
+    <nav class="md-nav" aria-label="1.3. Smaller steps of compiling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-preprocessing" class="md-nav__link">
+    1.3.1. Preprocessing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-compiling" class="md-nav__link">
+    1.3.2. Compiling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-assembling" class="md-nav__link">
+    1.3.3. Assembling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#134-linking" class="md-nav__link">
+    1.3.4. Linking
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-debugging" class="md-nav__link">
+    2. Debugging
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Debugging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-bugs" class="md-nav__link">
+    2.1. Bugs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-printf" class="md-nav__link">
+    2.2. Printf
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-debuggers" class="md-nav__link">
+    2.3. Debuggers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-duck-debugger" class="md-nav__link">
+    2.4. Duck debugger
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-memory" class="md-nav__link">
+    3. Memory
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Memory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-spaces-of-different-types" class="md-nav__link">
+    3.1. Spaces of different types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-ram-vs-hard-drive" class="md-nav__link">
+    3.2. RAM v.s. Hard Drive
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-bytes-in-ram" class="md-nav__link">
+    3.3. Bytes in RAM
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-arrays" class="md-nav__link">
+    4. Arrays
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-what-is-arrays" class="md-nav__link">
+    4.1. What is Arrays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-access-arrays" class="md-nav__link">
+    4.2. Access arrays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-create-arrays" class="md-nav__link">
+    4.3. Create Arrays
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-characters" class="md-nav__link">
+    5. Characters
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Characters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-char-as-an-integer" class="md-nav__link">
+    5.1. Char as an integer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-char-in-memory" class="md-nav__link">
+    5.2. Char in memory
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-strings" class="md-nav__link">
+    6. Strings
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Strings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-string-as-an-array-of-chars" class="md-nav__link">
+    6.1. String as an array of chars
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-difference-between-string-and-arrays-of-chars" class="md-nav__link">
+    6.2. Difference between String and arrays of chars
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-arrays-of-strings" class="md-nav__link">
+    6.3. Arrays of Strings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-command-line-arguments" class="md-nav__link">
+    7. Command-line arguments
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Command-line arguments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-argc-and-argv" class="md-nav__link">
+    7.1. argc and argv
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-return-value" class="md-nav__link">
+    7.2. Return value
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-applications" class="md-nav__link">
+    8. Applications
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-cryptography" class="md-nav__link">
+    8.1. Cryptography
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-example-of-cryptography" class="md-nav__link">
+    8.2. Example of Cryptography
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/Lijinyu3/lijinyu3.github.io/edit/main/docs/notes/Harvard_CS50/0x02_Arrays.md" title="编辑此页" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+  <h1>Lec 02: Arrays</h1>
+
+<h2 id="1-compiling">1. Compiling</h2>
+<h3 id="11-compiler-program">1.1. Compiler program</h3>
+<p>Last time, we compiled program with <code>make hello</code>, which turning our source code into machine code so that we could run the complied program with <code>./hello</code>.</p>
+<p><strong>Make</strong> is actually just a program called <code>clang</code>, a <strong>compiler</strong>, with <strong>options</strong>. If we enter <code>clang hello.c</code>, then <code>clang</code> would compile it then make a compiled program named <code>a.out</code> which is the default output filename of <code>clang</code>. So we can run a more specific command: <code>clang hello -o hello.out</code>.</p>
+<h3 id="12-command-line-argument">1.2. Command-line argument</h3>
+<p>What is <code>-o hello.out</code> in the command we've just run is called <strong>command-line argument</strong>, which is an input to a program on the command-line as <strong>extra words</strong> after program's name. <code>clang</code> is the program name as the first word in command, and then are additional arguments, which are <code>-o</code>, <code>hello.out</code> and <code>hello</code>. That means we're telling the <code>clang</code> to use <code>hello</code> as the source code, and use <code>hello</code> as the <strong>output</strong> filename.</p>
+<p>If we want to use CS50's library, via <code>#include &lt;cs50.h&gt;</code>, for the <code>get_string</code> function, we need to add a flag: <code>clang hello -o hello.c -l cs50</code>.</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span>
+<span class="normal"><a href="#__codelineno-0-6">6</a></span>
+<span class="normal"><a href="#__codelineno-0-7">7</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cs50.h&gt;</span><span class="cp"></span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">  </span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_string</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;What&#39;s ur name?&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;hello, %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+The <code>-l</code> flag links the <code>cs50</code> file, which includes the machine code for <code>get_string</code> (among other functions), so that our program can then refer to and use as well.</p>
+<p>With <code>make</code> program, these arguments are generated for us since the staff has configured <code>make</code> in the CS50 IDE already as well.</p>
+<h3 id="13-smaller-steps-of-compiling">1.3. Smaller steps of compiling</h3>
+<p>Actually there are <strong>four</strong> steps under compiling source code into machine code.</p>
+<ul>
+<li>Preprocessing</li>
+<li>Compiling</li>
+<li>Assembling</li>
+<li>Linking</li>
+</ul>
+<h4 id="131-preprocessing">1.3.1. Preprocessing</h4>
+<p><strong>Preprocessing</strong> generally involves lines that start with a <code>#</code>, like <code>#include</code>. For example, <code>#include &lt;cs50.h&gt;</code> will tell <code>clang</code> to look for that header file, since it contains that we want to include in our program. Then, <code>clang</code> will essentially <strong>replace the contents</strong> of those header files into our program.</p>
+<p>For example:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span>
+<span class="normal"><a href="#__codelineno-1-5">5</a></span>
+<span class="normal"><a href="#__codelineno-1-6">6</a></span>
+<span class="normal"><a href="#__codelineno-1-7">7</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cs50.h&gt;</span><span class="cp"></span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_string</span><span class="p">(</span><span class="s">&quot;What&#39;s your name? &quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;hello, %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<p>...will be preprocessed into:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span>
+<span class="normal"><a href="#__codelineno-2-6">6</a></span>
+<span class="normal"><a href="#__codelineno-2-7">7</a></span>
+<span class="normal"><a href="#__codelineno-2-8">8</a></span>
+<span class="normal"><a href="#__codelineno-2-9">9</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="p">...</span><span class="w"></span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="n">string</span><span class="w"> </span><span class="n">get_string</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">prompt</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="kt">int</span><span class="w"> </span><span class="nf">printf</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">format</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span><span class="w"></span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="p">...</span><span class="w"></span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_string</span><span class="p">(</span><span class="s">&quot;What&#39;s your name? &quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;hello, %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<p>This includes the <strong>prototypes</strong> of all the functions from those libraries we included, so we can then use them in our code.</p>
+<h4 id="132-compiling">1.3.2. Compiling</h4>
+<p><strong>Compiling</strong> takes our source code, in C, and converts it to another type of source code called <strong>assembly code</strong>, which looks like this:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span>
+<span class="normal"><a href="#__codelineno-3-14">14</a></span>
+<span class="normal"><a href="#__codelineno-3-15">15</a></span>
+<span class="normal"><a href="#__codelineno-3-16">16</a></span>
+<span class="normal"><a href="#__codelineno-3-17">17</a></span>
+<span class="normal"><a href="#__codelineno-3-18">18</a></span>
+<span class="normal"><a href="#__codelineno-3-19">19</a></span>
+<span class="normal"><a href="#__codelineno-3-20">20</a></span>
+<span class="normal"><a href="#__codelineno-3-21">21</a></span>
+<span class="normal"><a href="#__codelineno-3-22">22</a></span>
+<span class="normal"><a href="#__codelineno-3-23">23</a></span>
+<span class="normal"><a href="#__codelineno-3-24">24</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>...
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>main:                         # @main
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>    .cfi_startproc
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a># BB#0:
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a>    pushq    %rbp
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a>.Ltmp0:
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a>    .cfi_def_cfa_offset 16
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a>.Ltmp1:
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a>    .cfi_offset %rbp, -16
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a>    movq    %rsp, %rbp
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a>.Ltmp2:
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a>    .cfi_def_cfa_register %rbp
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a>    subq    $16, %rsp
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a>    xorl    %eax, %eax
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a>    movl    %eax, %edi
+<a id="__codelineno-3-16" name="__codelineno-3-16"></a>    movabsq    $.L.str, %rsi
+<a id="__codelineno-3-17" name="__codelineno-3-17"></a>    movb    $0, %al
+<a id="__codelineno-3-18" name="__codelineno-3-18"></a>    callq    get_string
+<a id="__codelineno-3-19" name="__codelineno-3-19"></a>    movabsq    $.L.str.1, %rdi
+<a id="__codelineno-3-20" name="__codelineno-3-20"></a>    movq    %rax, -8(%rbp)
+<a id="__codelineno-3-21" name="__codelineno-3-21"></a>    movq    -8(%rbp), %rsi
+<a id="__codelineno-3-22" name="__codelineno-3-22"></a>    movb    $0, %al
+<a id="__codelineno-3-23" name="__codelineno-3-23"></a>    callq    printf
+<a id="__codelineno-3-24" name="__codelineno-3-24"></a>    ...
+</code></pre></div>
+</td></tr></table>
+<p>These instructions are <strong>lower-level</strong> and is closer to the <strong>binary instructions</strong> that a computer's processor can directly understand. They generally operate on <strong>bytes</strong> themselves, as opposed to <strong>abstractions</strong> like variable names.</p>
+<h4 id="133-assembling">1.3.3. Assembling</h4>
+<p>The next step after compiling is <strong>assembling</strong>, which takes the <code>assembly code</code> and <strong>translate</strong> it to instructions in binary. The instructions in binary are called <strong>machine code</strong>, which a computer's CPU can run directly,</p>
+<h4 id="134-linking">1.3.4. Linking</h4>
+<p>The last step is <strong>linking</strong>, where previously compiled versions of libraries that we included earlier, like <code>cs50.c</code>, are actually combined with the binary of our program. So we end up with one binary file, <code>a.out</code> or  <code>hello</code>, that is the combined machine code for  <code>hello.c</code>, <code>cs50.c</code> and <code>stdio.c</code>.(In the CS50 IDE, precompiled machine code for <code>cs50.c</code> and <code>stdio.c</code> has already been installed, and <code>clang</code> has been configured to find and use them.)</p>
+<p>These four steps have been <strong>abstracted</strong> away, or simplified, by <code>make</code>, so all well we have to implement is the code for our programs.</p>
+<h2 id="2-debugging">2. Debugging</h2>
+<h3 id="21-bugs">2.1. Bugs</h3>
+<p><strong>Bugs</strong> are mistakes or problems in programs that cause them to behave differently than intended.</p>
+<p>For example, let's take a look at <code>buggy0.c</code>:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span>
+<span class="normal"><a href="#__codelineno-4-5">5</a></span>
+<span class="normal"><a href="#__codelineno-4-6">6</a></span>
+<span class="normal"><a href="#__codelineno-4-7">7</a></span>
+<span class="normal"><a href="#__codelineno-4-8">8</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">  </span><span class="c1">// Print 10 hashes</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;#</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<p>What we want is to print just 10 hashes, but it print 11 hashes, which behave differently than we intended.</p>
+<h3 id="22-printf">2.2. Printf</h3>
+<p>Since this program is compiling without any errors, so we now have a logical error. <strong>Printf</strong> is a useful also simple tool for debugging, which we known it's a function in the library of <code>stdio</code>.</p>
+<p>We can simply add another <code>printf</code> temporarily:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span>
+<span class="normal"><a href="#__codelineno-5-5">5</a></span>
+<span class="normal"><a href="#__codelineno-5-6">6</a></span>
+<span class="normal"><a href="#__codelineno-5-7">7</a></span>
+<span class="normal"><a href="#__codelineno-5-8">8</a></span>
+<span class="normal"><a href="#__codelineno-5-9">9</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="w">  </span><span class="c1">// Print 10 hashes</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;i is now %i</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;#</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<p>Then we can see what value of <code>i</code> is, it started at 0 and continued until it was 10, which sum of counts is 11 instead of 10 as we intended.</p>
+<p>So the problem is caused by the conditional expression of <code>for</code> loop, we should use <code>i &lt; 10</code> instead of <code>i &lt;= 10</code>.</p>
+<h3 id="23-debuggers">2.3. Debuggers</h3>
+<p>In the CS50 IDE, we have another tool, <strong><code>debug50</code></strong>, to help us debug programs. This is a tool written by staff that's built on a standard tool called <strong>gdb</strong>.</p>
+<p>Both of these <strong>debuggers</strong> are programs that will run our own programs step-by-step and let us look at variables and other information while our program is running.</p>
+<p>We'll run the command <code>debug50 ./buggy0</code>, and it will tell us to recompile our program since we changed it. Then it'll tell us to add a <strong>breakpoint</strong>, or indicator for a line of code where debugger should pause our program.</p>
+<h3 id="24-duck-debugger">2.4. Duck debugger</h3>
+<p>We can also use <code>ddb</code> , short for "duck debugger", a real technique where we explain what we're trying to do to a rubber duck, and oftentimes we'll <strong>realize</strong> our own mistake in logic or implementation as we're explaining it.</p>
+<h2 id="3-memory">3. Memory</h2>
+<h3 id="31-spaces-of-different-types">3.1. Spaces of different types</h3>
+<p>In C, we have different types of variables we can use for <strong>storing data</strong>, and each of them take up a fixed amount of space. Different computer systems actually <strong>vary</strong> in the amount of space actually used for each type, but we'll work with the amounts here, as used in the CS50 IDE.</p>
+<ul>
+<li>bool     1     byte</li>
+<li>char     1     byte</li>
+<li>double  8  bytes</li>
+<li>float      4  bytes</li>
+<li>int        4  bytes</li>
+<li>long    8  bytes</li>
+<li>string    ?   bytes</li>
+<li>...</li>
+</ul>
+<h3 id="32-ram-vs-hard-drive">3.2. RAM v.s. Hard Drive</h3>
+<p><strong>RAM</strong> is a chip insider our computer, short for <strong>random-access memory</strong>, that stores data for <strong>short-term</strong> use, like a program's code while it's running, or a file while it's open.</p>
+<p>We might save a program or file to our <strong>hard drive</strong> (or SSD, solid state drive) for <strong>long-term storage</strong>, but use RAM because it's much <strong>faster</strong>. However, RAM is <strong>volatile</strong>, or requires power to keep data stored.</p>
+<h3 id="33-bytes-in-ram">3.3. Bytes in RAM</h3>
+<p>We can think of <strong>bytes</strong> stored in RAM as though they were in a <strong>grid</strong>:</p>
+<p><img alt="ram" src="https://cs50.harvard.edu/x/2021/notes/2/ram.png" /></p>
+<p>In reality, there are millions(1e6) or billions(1e9) of bytes per chip. Each bytes will have a location on the chip, like the first byte, second byte, and so on.</p>
+<p>In C, when we create a variable of type <code>char</code>, which will be sized one byte, it will physically be stored in one of those boxes in RAM. An integer as the type of <code>int</code> with 4 bytes, will take up four of those boxes.</p>
+<h2 id="4-arrays">4. Arrays</h2>
+<h3 id="41-what-is-arrays">4.1. What is Arrays</h3>
+<p>It turns out, in memory, we can store variable one after another, back-to-back, and access them more easily with loops. In C, a list of values stored one after another contiguously is called an <strong>array</strong>.</p>
+<h3 id="42-access-arrays">4.2. Access arrays</h3>
+<p>We can assign and use variables in an array with <code>array[index] = value</code>. With the brackets, we're indexing into, or going to, the "0th" position in the array. Arrays are <strong>zero-indexed</strong>, which meaning that the first value has index 0, and then the second value has index 1, and so on.</p>
+<h3 id="43-create-arrays">4.3. Create Arrays</h3>
+<p>When we create or declare an array, we need an integer value to represent the length of array. E.g., <code>int array[3];</code>.</p>
+<p>Conveniently, we could use a <strong>constant</strong>, or variable with a fixed value to replace this integer value. I.e.,</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span>
+<span class="normal"><a href="#__codelineno-6-3">3</a></span>
+<span class="normal"><a href="#__codelineno-6-4">4</a></span>
+<span class="normal"><a href="#__codelineno-6-5">5</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">LENGTH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">array</span><span class="p">[</span><span class="n">LENGTH</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<p>The keyword <code>const</code> is to tell the compiler that the value of this variable should <strong>never be changed</strong> by our program. And by convention, we'll place our declaration <strong>outside</strong> of the <code>main</code> function and <strong>capitalize</strong> its name, which isn't necessary for the compiler but shows other humans that this variable is a constant and makes it easy to see from the start.</p>
+<h2 id="5-characters">5. Characters</h2>
+<h3 id="51-char-as-an-integer">5.1. Char as an integer</h3>
+<p>If we print out a single character like this way:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;#&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%c&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<p>We'll get <code>#</code> printed in the terminal.</p>
+<p>But if we change it to print <code>c</code> as an integer:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
+<span class="normal"><a href="#__codelineno-8-2">2</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;#&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%i&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="n">c</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<p>We get <code>35</code> printed. It turns out that <code>35</code> is indeed the <strong>ASCII</strong> code for a <code>#</code> symbol. And in fact, we don't need to cast a <code>char</code> to an <code>integer</code> explicitly when we print a char as an integer, the compiler can do that for us in this case.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
+<span class="normal"><a href="#__codelineno-9-2">2</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;#&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%i&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span><span class="w">    </span><span class="c1">// still printed 35</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="52-char-in-memory">5.2. Char in memory</h3>
+<p>A <code>char</code> is a single byte as we mentioned in 3.1, so we can picture it as being stored in one box in the grid of memory above.</p>
+<h2 id="6-strings">6. Strings</h2>
+<h3 id="61-string-as-an-array-of-chars">6.1. String as an array of chars</h3>
+<p>String is a text, or some characters. We already know that characters are stored in memory taking one byte storing some value. E.g., <code>HI!</code> is representing like this in memory:</p>
+<p><img alt="grid with 72, 73, and 33 labeled c1, c2, and c3" src="https://cs50.harvard.edu/x/2021/notes/2/characters.png" /></p>
+<p><strong>Strings</strong> are actually just arrays of characters, and defined not in C but by the CS50 library. If we had an array called <code>s</code>, each character can be accessed with <code>s[0]</code>.</p>
+<h3 id="62-difference-between-string-and-arrays-of-chars">6.2. Difference between String and arrays of chars</h3>
+<p>The same text <code>HI!</code>, there is a difference between them. It turns out that a string ends with a <strong>special character</strong>, <code>\0</code>, or a byte with all bits set to 0. This character is called the <strong>NULL character</strong>, or NUL. Therefore, we actually need one more byte than an array of chars to store same text.</p>
+<p><img alt="grid with H labeled s[0], I labeled s[1], ! labeled s[2], \0 labeled s[3]" src="https://cs50.harvard.edu/x/2021/notes/2/string.png" /></p>
+<p>If we print out each char of string as integer, we'll get that <code>72 73 33 0</code> as we expected.</p>
+<p>And in fact, we could try to access <code>s[4]</code> which should not be accessed by us and even may not existence, but we still can see some unexpected symbol printed.</p>
+<p>With C, our code has the ability to access or change memory that it otherwise shouldn't, which is both powerful and dangerous.</p>
+<h3 id="63-arrays-of-strings">6.3. Arrays of Strings</h3>
+<p>We can also declare an array of strings, which we can understand it as the array of text, also as two-dimensional arrays of characters.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span>
+<span class="normal"><a href="#__codelineno-10-3">3</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="n">string</span><span class="w"> </span><span class="n">words</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="n">words</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;HI!&quot;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="n">words</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;BYE!&quot;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<p>And in memory, the array of strings might be stored and accessed with:</p>
+<p><img alt="grid with H labeled words[0][0], I labeled words[0][1], and so on, until words[1][4] with a \0, each of which takes up one box, and empty boxes following" src="https://cs50.harvard.edu/x/2021/notes/2/array_of_strings.png" /></p>
+<p><code>words[0]</code> refers to the first element, or value, of the <code>words</code> array, which is a string, and so <code>words[0][0]</code> refers to the first element in that string, which is a character.</p>
+<p>So an array of strings can be understood as an array of arrays of characters, which also called two-dimensional arrays of characters.</p>
+<p>There're some useful functions of strings, such as <code>strlen()</code> in <code>string.h</code>, and <code>toupper()</code> in <code>ctype.h</code>.</p>
+<h2 id="7-command-line-arguments">7. Command-line arguments</h2>
+<h3 id="71-argc-and-argv">7.1. argc and argv</h3>
+<p>Programs of our own can also take in command-line arguments, or words added after our program's name in the command itself.</p>
+<p>In <code>argv.c</code>, we change what our <code>main</code> function looks like:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-11-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-11-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-11-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-11-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-11-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-11-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-11-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-11-10">10</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cs50.h&gt;</span><span class="cp"></span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a>
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// instead of void</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">argc</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;hello, %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span><span class="w"></span>
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;hello, world</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-11-9" name="__codelineno-11-9"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-11-10" name="__codelineno-11-10"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<p><code>argc</code> and <code>argv</code> are two variables that our <code>main</code> function will now get automatically when our program is run from command line. <code>argv</code> is the short form for <strong>argument count</strong>, and <code>argv</code>, which is <strong>argument list</strong> (or argument list), is an array of strings.</p>
+<p>The first argument is <code>argv[0]</code>, which is the name of our program (the first word typed, like <code>./hello</code>). In this example, we check if we have two arguments, and print out the second one if so.</p>
+<p>E.g., if we run <code>./argv Lee</code>, we'll get <code>hello, Lee</code> printed, since we typed in <code>Lee</code> as the second word in our command.</p>
+<h3 id="72-return-value">7.2. Return value</h3>
+<p>It turns out that our <code>main</code> function also returns an <strong>integer value</strong>. By default, our <code>main</code> function returns <strong>0</strong> to indicate nothing went wrong, but we can write a program to return a different value:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-12-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-12-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-12-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-12-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-12-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-12-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-12-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-12-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-12-10">10</a></span>
+<span class="normal"><a href="#__codelineno-12-11">11</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cs50.h&gt;</span><span class="cp"></span>
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a>
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">argc</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Missing command-line argument!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-12-8" name="__codelineno-12-8"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-12-9" name="__codelineno-12-9"></a><span class="w">    </span><span class="n">printf</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;Hello, %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span><span class="w"></span>
+<a id="__codelineno-12-10" name="__codelineno-12-10"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-12-11" name="__codelineno-12-11"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<p>The return value of <code>main</code> in our program is called an <strong>exit code</strong>, usually used to indicate error codes. (We'll write <code>return 0</code> explicitly at the end of our program here, even though we don't technically need to.)</p>
+<p>As we write more complex programs, error codes like this can help us determine what went wrong, even if it's not visible or meaningful to the user.</p>
+<h2 id="8-applications">8. Applications</h2>
+<p>Now that we know how to work with strings in our programs, as well code written by others in libraries, we can analyze paragraphs of text for their level of readability, based on factors like how long and complicated the words and sentences are.</p>
+<h3 id="81-cryptography">8.1. Cryptography</h3>
+<p><strong>Cryptography</strong> is the art of scrambling, or hiding information. If we wanted to send a message to someone, we might want to <strong>encrypt</strong>, or somehow scramble that massage so that it would be hard for others to read. </p>
+<p>The original message, or input to out algorithm, in called <strong>plain-text</strong>, and the encrypted message, or output, is called <strong>cipher-text</strong>. And the algorithm that does the scrambling is called a <strong>cipher</strong>. A cipher generally requires another input in addition to the plain-text, which called <strong>Key</strong>, like a number, is some other input that is kept secret.</p>
+<h3 id="82-example-of-cryptography">8.2. Example of Cryptography</h3>
+<p>If we wanted to send a message like <code>I LOVE YOU</code>, we can first convert it to ASCII: <code>73 76 79 86 69 89 79 85</code>. Then, we can <strong>encrypt</strong> it with a <strong>key</strong> of just <code>1</code> and a simple <strong>algorithm</strong>, where we just add the key to each value: <code>74 77 80 87 70 90 80 86</code>. Then, the <strong>cipher-text</strong> after we convert the values back to ASCII would be <code>J MPWF ZPV</code>. To decrypt this, someone would have to know the <strong>key</strong> is <code>1</code>, and to subtract it from each character,</p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 23, 2022</span>
+      
+    
+  </small>
+</div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="页脚">
+      
+        
+        <a href="../0x01_C/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Lec 01: C" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              Lec 01: C
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../0x03_Algorithms/" class="md-footer__link md-footer__link--next" aria-label="下一页: Lec 03: Algorithms" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              Lec 03: Algorithms
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "toc.follow", "toc.intergrate"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

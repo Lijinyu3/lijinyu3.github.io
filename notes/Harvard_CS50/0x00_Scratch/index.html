@@ -1,0 +1,1359 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="个人博客">
+      
+      
+        <meta name="author" content="enotaa33@gmail.com">
+      
+      
+        <link rel="canonical" href="https://206031.com/notes/Harvard_CS50/0x00_Scratch/">
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+    
+    
+      
+        <title>Lec 00: Scratch - Li's blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.120efc48.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="deep-purple" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-what-is-computer-science" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Li&#39;s blog" class="md-header__button md-logo" aria-label="Li's blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m6 20 4.16-12.09L9.34 6H8V4h2c.42 0 .78.26.93.63L16.66 18H18v2h-2c-.43 0-.79-.27-.93-.64l-3.74-8.71L8.12 20H6Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Li's blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lec 00: Scratch
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="deep purple" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Lijinyu3/lijinyu3.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Li's blog GitHub repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../0xFF_Syllabus/" class="md-tabs__link md-tabs__link--active">
+        Notes
+      </a>
+    </li>
+  
+
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Li&#39;s blog" class="md-nav__button md-logo" aria-label="Li's blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m6 20 4.16-12.09L9.34 6H8V4h2c.42 0 .78.26.93.63L16.66 18H18v2h-2c-.43 0-.79-.27-.93-.64l-3.74-8.71L8.12 20H6Z"/></svg>
+
+    </a>
+    Li's blog
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Lijinyu3/lijinyu3.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Li's blog GitHub repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Notes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Notes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Notes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          Harvard CS50
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Harvard CS50" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Harvard CS50
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0xFF_Syllabus/" class="md-nav__link">
+        Syllabus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Lec 00: Scratch
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Lec 00: Scratch
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-is-computer-science" class="md-nav__link">
+    1. What is computer science?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-representing-numbers" class="md-nav__link">
+    2. Representing numbers
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Representing numbers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-unary" class="md-nav__link">
+    2.1. Unary
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-decimal" class="md-nav__link">
+    2.2. Decimal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-binary" class="md-nav__link">
+    2.3. Binary
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-text" class="md-nav__link">
+    3. Text
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Text">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-map-and-ascii" class="md-nav__link">
+    3.1. Map and ASCII
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-one-byte-8-bits" class="md-nav__link">
+    3.2. one Byte = 8 Bits
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-unicode" class="md-nav__link">
+    3.3. Unicode
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-images-video-sounds" class="md-nav__link">
+    4. Images, video, sounds
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Images, video, sounds">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-images" class="md-nav__link">
+    4.1. Images
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1. Images">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#411-rgb" class="md-nav__link">
+    4.1.1 RGB
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#412-pixels" class="md-nav__link">
+    4.1.2 Pixels
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#413-resolution" class="md-nav__link">
+    4.1.3. Resolution
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-video" class="md-nav__link">
+    4.2. Video
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-sounds" class="md-nav__link">
+    4.3. Sounds
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-others-files" class="md-nav__link">
+    4.4. Others files
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-algorithms" class="md-nav__link">
+    5. Algorithms
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Algorithms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-what-is-algorithms" class="md-nav__link">
+    5.1. What is Algorithms
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-correct-and-bug" class="md-nav__link">
+    5.2. Correct and Bug
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-time-complexity" class="md-nav__link">
+    5.3. Time complexity
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-pseudocode" class="md-nav__link">
+    6. Pseudocode
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Pseudocode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-what-is-pseudo-code" class="md-nav__link">
+    6.1. What is Pseudo-code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-each-part-of-it" class="md-nav__link">
+    6.2. Each part of it
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-additional-features" class="md-nav__link">
+    7. Additional features
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Additional features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-hello-problem" class="md-nav__link">
+    7.1. Hello Problem
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-variables" class="md-nav__link">
+    7.2. Variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-functions" class="md-nav__link">
+    7.3. Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-loop" class="md-nav__link">
+    7.4. Loop
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75-abstraction" class="md-nav__link">
+    7.5. Abstraction
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x01_C/" class="md-nav__link">
+        Lec 01: C
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x02_Arrays/" class="md-nav__link">
+        Lec 02: Arrays
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x03_Algorithms/" class="md-nav__link">
+        Lec 03: Algorithms
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x04_Memory/" class="md-nav__link">
+        Lec 04: Memory
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x05_Data_Structures/" class="md-nav__link">
+        Lec 05: Data Structures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x06_Python/" class="md-nav__link">
+        Lec 06: Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x07_SQL/" class="md-nav__link">
+        Lec 07: SQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x08_HTML%2C%20CSS%2C%20JavaScript/" class="md-nav__link">
+        Lec 08: HTML, CSS, JS
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MIT_6.NULL/" class="md-nav__link">
+        MIT 6.NULL
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-is-computer-science" class="md-nav__link">
+    1. What is computer science?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-representing-numbers" class="md-nav__link">
+    2. Representing numbers
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Representing numbers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-unary" class="md-nav__link">
+    2.1. Unary
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-decimal" class="md-nav__link">
+    2.2. Decimal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-binary" class="md-nav__link">
+    2.3. Binary
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-text" class="md-nav__link">
+    3. Text
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Text">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-map-and-ascii" class="md-nav__link">
+    3.1. Map and ASCII
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-one-byte-8-bits" class="md-nav__link">
+    3.2. one Byte = 8 Bits
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-unicode" class="md-nav__link">
+    3.3. Unicode
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-images-video-sounds" class="md-nav__link">
+    4. Images, video, sounds
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Images, video, sounds">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-images" class="md-nav__link">
+    4.1. Images
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1. Images">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#411-rgb" class="md-nav__link">
+    4.1.1 RGB
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#412-pixels" class="md-nav__link">
+    4.1.2 Pixels
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#413-resolution" class="md-nav__link">
+    4.1.3. Resolution
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-video" class="md-nav__link">
+    4.2. Video
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-sounds" class="md-nav__link">
+    4.3. Sounds
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-others-files" class="md-nav__link">
+    4.4. Others files
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-algorithms" class="md-nav__link">
+    5. Algorithms
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Algorithms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-what-is-algorithms" class="md-nav__link">
+    5.1. What is Algorithms
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-correct-and-bug" class="md-nav__link">
+    5.2. Correct and Bug
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-time-complexity" class="md-nav__link">
+    5.3. Time complexity
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-pseudocode" class="md-nav__link">
+    6. Pseudocode
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Pseudocode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-what-is-pseudo-code" class="md-nav__link">
+    6.1. What is Pseudo-code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-each-part-of-it" class="md-nav__link">
+    6.2. Each part of it
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-additional-features" class="md-nav__link">
+    7. Additional features
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Additional features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-hello-problem" class="md-nav__link">
+    7.1. Hello Problem
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-variables" class="md-nav__link">
+    7.2. Variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-functions" class="md-nav__link">
+    7.3. Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-loop" class="md-nav__link">
+    7.4. Loop
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75-abstraction" class="md-nav__link">
+    7.5. Abstraction
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/Lijinyu3/lijinyu3.github.io/edit/main/docs/notes/Harvard_CS50/0x00_Scratch.md" title="编辑此页" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+  <h1>Lec 00: Scratch</h1>
+
+<h2 id="1-what-is-computer-science">1. What is computer science?</h2>
+<ul>
+<li>Computer science is fundamentally <strong>problem solving</strong>.</li>
+<li>What is <strong>problem solving</strong> is as the process of taking some <code>input</code> (i.e., details about our problem), and then generate some <code>output</code>(i.e., the solution to our problem). The <code>black box</code> in the middle is Computer Science, that is the <strong>code</strong> we'll learn to write.<img alt="word &quot;input&quot;, arrow into box, arrow out of box, word &quot;output&quot;" src="https://cs50.harvard.edu/x/2021/notes/0/input_output.png" /></li>
+<li>To begin doing that, we'll need a way to <strong>represent</strong> <code>input</code> and <code>output</code>, so that we can store and work with information in a <strong>standardized way</strong>.</li>
+</ul>
+<h2 id="2-representing-numbers">2. Representing numbers</h2>
+<h3 id="21-unary">2.1. Unary</h3>
+<p>When we counting the number of people in a room, probably we can do it with our hand, that is we raise one finger at a time to represent each person. It's stupid but simple, and we won't be able to count very high.</p>
+<p>This system is <code>unary</code> , where each <strong>digit</strong> represents a single value of one.</p>
+<h3 id="22-decimal">2.2. Decimal</h3>
+<p>As we know, we have a more efficient system to represent numbers, where we have 10 digits, 0 through 9.</p>
+<blockquote>
+<p>0 1 2 3 4 5 6 7 8 9</p>
+</blockquote>
+<p>This system is called <code>decimal</code>, or <strong>base 10</strong>, since there are 10 different values that a digit can represent.</p>
+<h3 id="23-binary">2.3. Binary</h3>
+<p>Computer use a simpler system called <code>binary</code>, or <strong>base 2</strong>, with only two possible digits, 0 or 1.</p>
+<p>Since computer run on <strong>electricity</strong>, there are two states of an electronic switch, which can be turned on or off.</p>
+<p>We can conveniently represent a bit by turning a switch on or off to represent a 0 or 1.</p>
+<h2 id="3-text">3. Text</h2>
+<h3 id="31-map-and-ascii">3.1. Map and ASCII</h3>
+<p>Since the computer can only represent number in binary, so if we wanna represent text or a single letter, we need to map the numbers to letters, e.g., 'A' can be mapped to 65, and 65 is a Decimal number, it's <code>01000001</code> whose representation of 65 in binary.</p>
+<p>Fortunately, we needn't to decide the correspondences of each letter mapping. There is a standard mapping, <strong>ASCII</strong>(<code>American Standard Code for Information Interchange</code>), which include the mapping of higher-case, lower letters and punctuation.</p>
+<h3 id="32-one-byte-8-bits">3.2. one Byte = 8 Bits</h3>
+<p>E.g., If we received a text message with a pattern of bits that had a decimal values <code>72</code>, <code>73</code> and <code>33</code> , those would map to the letters <code>HI</code>. Each letter actually is typically represented with a pattern of <strong>eight bits</strong>, or a <strong>byte.</strong></p>
+<p>So, the sequences of bits we would receive are <code>01001000</code>, <code>01001001</code>, and <code>00100001</code>.</p>
+<blockquote>
+<p>Byte is the unit of measurement for data with which we might already be familiar, as in megabytes(MB) or gigabytes(GB), for million or billions of bytes.</p>
+</blockquote>
+<p>With eight bits, or one byte, there are 2^8^, or 256 different values (including zero), and the highest value we can count up to would be 255.</p>
+<h3 id="33-unicode">3.3. Unicode</h3>
+<p>Can we represent any characters by using one byte? We know one byte have 2^8^ different values, so one byte can represent 2^8^ = 256 characters. Of course it's more than 256 characters that the character of languages all around the world, such as Asian language, Islam language etc.</p>
+<p>What's more, there are also other characters such as letters with accent marks and symbols.</p>
+<p>They are part of a more generally standard called <strong>Unicode</strong>, which uses more bits than ASCII to accommodate all the characters.</p>
+<p>Concretely, when we receive an emoji, out computer is actually receiving a number in binary that it then maps to the image of the emoji based on Unicode standard.</p>
+<p>For example, the "face with tears of joy" emoji is just the bits <code>000000011111011000000010</code>:<img alt="face with tears of joy emoji" src="https://cs50.harvard.edu/x/2021/notes/0/face_with_tears_of_joy.png" /></p>
+<h2 id="4-images-video-sounds">4. Images, video, sounds</h2>
+<h3 id="41-images">4.1. Images</h3>
+<h4 id="411-rgb">4.1.1 RGB</h4>
+<p>An image, like the picture of the emoji "face with tears of joy" above, are <strong>made up of colors</strong>. We can still represent each color with only bits, just like how we map numbers to letters, we can map numbers to colors as well.</p>
+<p>There are many different systems to represent colors, but a common one is <code>RGB</code>, which represent a color by indicating the amount of <strong>red</strong>, <strong>blue</strong> and <strong>green</strong> within each color. And our programs would know those bits map to a color if we opened an <strong>image file</strong>, as opposed to receiving them in a text message(map to letters).</p>
+<h4 id="412-pixels">4.1.2 Pixels</h4>
+<p>We know that there are lots of dots in a photo if we zoom in, e.g., the emoji above:<img alt="zoomed-in emoji of laughing tears of joy with squares of pixels distinguishable" src="https://cs50.harvard.edu/x/2021/notes/0/emoji_zoomed.png" /></p>
+<p>These dots, or squares are called <strong>pixels</strong>, and image are made up of many thousands or millions of those pixels as well. </p>
+<p>There are three bits to represent the amount of red, blue and green color in this pixel. For example, if we have received this pattern of bits: <code>72</code>, <code>73</code>, <code>33</code>. That indicate the amount of blue is 72 over 255(a bit has 2^8^ different values ), and so on. So we'll get this eventually:<img alt="dark yellow" src="https://cs50.harvard.edu/x/2021/notes/0/72_73_33.png" /></p>
+<h4 id="413-resolution">4.1.3. Resolution</h4>
+<p>The <strong>resolution</strong> of an image is the number of pixels there are, horizontally and vertically. </p>
+<p>That means more clear image(High-resolution) we get, more pixels it'll have, and then, more bits required to be stored. That explains why the high-resolution image always need more storage.</p>
+<h3 id="42-video">4.2. Video</h3>
+<p>Video is a sequence of images, which <strong>changing multiple times a second</strong> to give us appearance of motion, as an old-fashioned flip-book might do.</p>
+<p><img alt="img" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic204.nipic.com%2Ffile%2F20190120%2F28242164_143635256000_2.jpg&amp;refer=http%3A%2F%2Fpic204.nipic.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1621681608&amp;t=f64b7fd0ff9fbbaad42f53d130fe25a7" /></p>
+<p>For us human being, if the images can changing enough multiple times in a second, we cannot discriminate whether it's a sequence of image or a continuous video, with our eyes.</p>
+<h3 id="43-sounds">4.3. Sounds</h3>
+<p>Of course music can be represented with bits, with mappings of numbers to notes and durations, or more complex mappings of bits to sound frequencies at each moment of time.</p>
+<h3 id="44-others-files">4.4. Others files</h3>
+<p>File formats, like JPEG and PNG, or WORD or EXCEL documents, are also based on some standard that some humans have agreed on, <strong>for representing information with bits.</strong></p>
+<h2 id="5-algorithms">5. Algorithms</h2>
+<h3 id="51-what-is-algorithms">5.1. What is Algorithms</h3>
+<p>Now we can represent inputs and outputs with bits, we can concentrate our work on problem solving, where the black box in the middle of the figure before.</p>
+<p align="center">
+    <img width="200" src=https://cs50.harvard.edu/x/2021/notes/0/algorithms.png alt="Middle black box">
+</p>
+<p>Algorithms are some step-by-step instructions for solving problem, it's some computings that make the input to the output what we want.</p>
+<p>Humans can follow algorithms too, such as recipes for cooking. When programming a computer , we need to be more <strong>precise</strong> with our algorithms so that our instructions aren't ambiguous or misinterpreted.</p>
+<h3 id="52-correct-and-bug">5.2. Correct and Bug</h3>
+<p>Some of algorithms are correct, some of algorithms have bug yet.</p>
+<p>If the algorithm is correct, we can get the output we want of the problem. Otherwise, we won't solve the problem until we fix the bug.</p>
+<h3 id="53-time-complexity">5.3. Time complexity</h3>
+<p>Different algorithms have different efficiencies, <strong>time complexity</strong> could show the efficiency of algorithms by counting the number of elementary operations performed by algorithm.</p>
+<p>Concretely, think there is a problem finding someone's number in a phone book sorted alphabetically. </p>
+<ul>
+<li>Our input is the name of someone we looking for his number, and a phone book sorted alphabetically and contains his number. </li>
+<li>Our output is the phone number.</li>
+</ul>
+<p>So, there are three algorithms with varied efficiency.</p>
+<ol>
+<li>Start from first page, search each name with its phone-number in each page, until we find it.</li>
+<li>Ditto, but we can find it two pages at a time, if we flipped too far, we have to check it back.</li>
+<li>Start from the middle page of the phone-book, decide whether our name will be in the left half or right half of the book(since our book is alphabetically), and reduce the size of our problem by half. Repeat until we find our name.</li>
+</ol>
+<p>In fact, we can represent the efficiency of each of those algorithms with a chart:</p>
+<p><img alt="chart with: &quot;size of problem&quot; as x-axis; &quot;time to solve&quot; as y-axis; red, steep straight line from origin to top of graph labeled &quot;n&quot;; yellow, less steep straight line from origin to top of graph labeled &quot;n/2&quot;; green, curved line that gets less and less steep from origin to right of graph labeled &quot;log_2  n&quot;" src="https://cs50.harvard.edu/x/2021/notes/0/running_time.png" /></p>
+<p>The efficiency of the third one algorithm is well over the others. That is logarithmic algorithm, since we’re divid ing the problem by two with each step.</p>
+<p>So when we write programs using algorithms, we not only have to care about whether the algorithm is correct, but also how <strong>well-designed</strong> it is, considering factors such as efficiency.</p>
+<h2 id="6-pseudocode">6. Pseudocode</h2>
+<h3 id="61-what-is-pseudo-code">6.1. What is Pseudo-code</h3>
+<p>Pseudo-code by definition is <strong>not real code</strong>, but a <strong>representation</strong> of our algorithm in precise English(or some other human language u like).</p>
+<p>Concretely, we can represent the algorithm of the phone-book problem above with pseudo-code:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>Pick up phone book
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>Open to middle of phone book
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>Look at page
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>If person is on page
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>    Call person
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>Else if person is earlier in book
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>    Open to middle of left half of book
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>    Go back to line 3
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>Else if person is later in book
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>    Open to middle of right half of book
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a>    Go back to line 3
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>Else
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a>    Quit
+</code></pre></div>
+</td></tr></table>
+<p>With these steps we can solve the problem easily. But <strong>NOTICE</strong> that, there is a statement "Else" at line 12, this is called "<strong>final case</strong>", which is <strong>particularly important</strong> to remember, cause it might appear to <strong>freeze</strong> or <strong>stop</strong> responding when we forget it , even it can continue to repeat the same work over and over and <strong>never stop</strong>, just since the algorithm encountered a case that wasn't accounted for.</p>
+<h3 id="62-each-part-of-it">6.2. Each part of it</h3>
+<ul>
+<li>Notice that some of these lines start with verbs, or actions, such as <code>Pick up</code>, <code>Open to</code> etc. There are <strong>functions</strong>.</li>
+<li>We also have branch that lead to different paths like <code>If</code>, <code>Else if</code> etc, like forks in the road, which we'll call <strong>conditions</strong>.</li>
+<li>And there are many questions that decide where we go are called <strong>Boolean expressions</strong>, which eventually result in a value of yes(True) or no(False), as <code>person is on page</code> in line 4.</li>
+<li>Lastly, we have words that create cycles, where we can repeat parts of our program, this called <strong>loops</strong>, as <code>Go back to line N</code> in line 8 and 11.</li>
+</ul>
+<h2 id="7-additional-features">7. Additional features</h2>
+<p>We've found these features of programming in pseudo-code above:</p>
+<ul>
+<li>Functions</li>
+<li>Conditions</li>
+<li>Boolean expressions</li>
+<li>Loops</li>
+</ul>
+<p>And we'll discover those additional features yet:</p>
+<ul>
+<li>Variables</li>
+<li>Threads</li>
+<li>Events</li>
+<li>...etc</li>
+</ul>
+<h3 id="71-hello-problem">7.1. Hello Problem</h3>
+<p>Think of a problem that ask someone's name, and says "Hello, someone's name". The input of this problem is someone's name, and the output is "Hello," and the name.</p>
+<p>So what's the algorithm of the problem? We can solve it in <strong>Scratch</strong>, which is a graphical programming language compared to old-fashion programming language like C, that means we can program by dragging and dropping blocks that contain instructions.</p>
+<p>Now we can design our algorithm with pseudo-code:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>Get name of users with asking &quot;What&#39;s ur name?&quot;
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>Say &quot;hello,&quot; and the name above
+</code></pre></div>
+</td></tr></table>
+<p>Or show it with Scratch:<img alt="screenshot of join" src="https://cs50.harvard.edu/x/2021/notes/0/join.png" /></p>
+<h3 id="72-variables">7.2. Variables</h3>
+<p>The <code>answer</code> block in Scratch or the <code>name</code> in pseudo-code is a <strong>variable</strong>, or value, that <strong>stores some values of bit</strong> which may mapping to something like numbers, letters and images etc.</p>
+<p>In this case, this variable stores what the program's user type in, i.e., a sequence of letters of user's name.</p>
+<h3 id="73-functions">7.3. Functions</h3>
+<p>In fact, the line "Say 'hello,' ..." in line 1 or the <code>say</code> block itself in Scratch is like an algorithm, where we provide an input of "What's ur name" and it produced the output that to print the text of we input.</p>
+<p><img alt="say as algorithm with &quot;hello, world&quot; as input and cat as output" src="https://cs50.harvard.edu/x/2021/notes/0/say_algorithm.png" /></p>
+<p>The <code>ask</code> block, too, takes in an input(i.e., the question we want to ask), and produces the output of a variable in that stores the name of we enter.</p>
+<p><img alt="ask as algorithm with &quot;What's your name?&quot; as input and answer block as output" src="https://cs50.harvard.edu/x/2021/notes/0/ask_algorithm.png" /></p>
+<p>It's not limited that the number of input value, we can input multiple values to it.</p>
+<p>E.g., we can use the <code>answer</code> block along with our own text, "Hello, ", as two inputs to the <code>join</code> algorithm(or function) :</p>
+<p><img alt="join as algorithm with &quot;hello, &quot; and &quot;answer&quot; as input and &quot;hello, David!&quot; as output" src="https://cs50.harvard.edu/x/2021/notes/0/join_algorithm.png" /></p>
+<p>So, this is functions, which contains algorithms. It takes some input, produce some output by algorithm.</p>
+<h3 id="74-loop">7.4. Loop</h3>
+<p><code>Loop</code> is repeating something, where our programs achieves the same results, but with fewer codes, which means our code is <strong>Well-designed</strong> we mentioned before.</p>
+<p>That because if there's something we wanna change, we would only need to change it in one place instead of lots. Besides, it'll more <strong>readable</strong> when we back to change it.</p>
+<p>Also sometimes we need to do something forever and never ever stop it, for instance we wanna the program print the text "Hello!" forever. This time we'll need <code>loop</code>, but in order to repeat something never stop.</p>
+<h3 id="75-abstraction">7.5. Abstraction</h3>
+<p><code>Abstraction</code> is an important concept in Computer Science. What is <code>abstraction</code> is to simplify a more complex concept.</p>
+<p>In case, our "Hello problem" takes some of input that the name of users', then it would produce the output that print a text of "Hello" and user's name. The algorithm of this problem is somewhat complex as we know, it contains lots of functions, which are essentially sub-problems, take some input then make some output with its algorithm. (For instance, the <code>say</code> function, which take words as its input, then print it as the output.)</p>
+<p>But when we solved the hello problem, we can define it as a <code>hello</code> function, whose input and output is same as the problem before, but we needn't to care about how the algorithm implemented, we just use it like <code>say</code> function. Maybe <code>say</code> function contains some sub-function, just like <code>hello</code> function may contain <code>say</code> function, but whatever, who care about it.</p>
+<p>That is <code>Abstraction</code>, we can focus on the higher-level of programming via abstraction. Concretely, we could reuse the solution of any problems we've done before, like <code>hello</code> above; or we could use the solution that anybody done, e.g., there is a function <code>read with voice</code>, that take the input is same as <code>hello</code> function's, but its output is reading the text with a human's voice.</p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 23, 2022</span>
+      
+    
+  </small>
+</div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="页脚">
+      
+        
+        <a href="../0xFF_Syllabus/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Syllabus" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              Syllabus
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../0x01_C/" class="md-footer__link md-footer__link--next" aria-label="下一页: Lec 01: C" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              Lec 01: C
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "toc.follow", "toc.intergrate"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

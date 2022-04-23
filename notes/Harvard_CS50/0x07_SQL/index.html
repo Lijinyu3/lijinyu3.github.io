@@ -1,0 +1,1855 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="个人博客">
+      
+      
+        <meta name="author" content="enotaa33@gmail.com">
+      
+      
+        <link rel="canonical" href="https://206031.com/notes/Harvard_CS50/0x07_SQL/">
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+    
+    
+      
+        <title>Lec 07: SQL - Li's blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.120efc48.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="deep-purple" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-data-processing" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Li&#39;s blog" class="md-header__button md-logo" aria-label="Li's blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m6 20 4.16-12.09L9.34 6H8V4h2c.42 0 .78.26.93.63L16.66 18H18v2h-2c-.43 0-.79-.27-.93-.64l-3.74-8.71L8.12 20H6Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Li's blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lec 07: SQL
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="deep purple" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Lijinyu3/lijinyu3.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Li's blog GitHub repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../0xFF_Syllabus/" class="md-tabs__link md-tabs__link--active">
+        Notes
+      </a>
+    </li>
+  
+
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Li&#39;s blog" class="md-nav__button md-logo" aria-label="Li's blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m6 20 4.16-12.09L9.34 6H8V4h2c.42 0 .78.26.93.63L16.66 18H18v2h-2c-.43 0-.79-.27-.93-.64l-3.74-8.71L8.12 20H6Z"/></svg>
+
+    </a>
+    Li's blog
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Lijinyu3/lijinyu3.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Li's blog GitHub repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Notes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Notes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Notes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          Harvard CS50
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Harvard CS50" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Harvard CS50
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0xFF_Syllabus/" class="md-nav__link">
+        Syllabus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x00_Scratch/" class="md-nav__link">
+        Lec 00: Scratch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x01_C/" class="md-nav__link">
+        Lec 01: C
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x02_Arrays/" class="md-nav__link">
+        Lec 02: Arrays
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x03_Algorithms/" class="md-nav__link">
+        Lec 03: Algorithms
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x04_Memory/" class="md-nav__link">
+        Lec 04: Memory
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x05_Data_Structures/" class="md-nav__link">
+        Lec 05: Data Structures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x06_Python/" class="md-nav__link">
+        Lec 06: Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Lec 07: SQL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Lec 07: SQL
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-data-processing" class="md-nav__link">
+    1. Data processing
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Data processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-about-data-processing" class="md-nav__link">
+    1.1. About Data processing
+  </a>
+  
+    <nav class="md-nav" aria-label="1.1. About Data processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-spreadsheet-applications" class="md-nav__link">
+    1.1.1. Spreadsheet applications
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-databases" class="md-nav__link">
+    1.1.2. Databases
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-cleaning" class="md-nav__link">
+    1.2. Cleaning
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-counting" class="md-nav__link">
+    1.3. Counting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-searching" class="md-nav__link">
+    1.4. Searching
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-relational-databases" class="md-nav__link">
+    2. Relational databases
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Relational databases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-what-is-relational-databases-and-sqlite" class="md-nav__link">
+    2.1. What is Relational databases and SQLite
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-sql" class="md-nav__link">
+    2.2. SQL
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2. SQL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#221-crud" class="md-nav__link">
+    2.2.1. CRUD
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#222-functions" class="md-nav__link">
+    2.2.2. Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#223-clauses" class="md-nav__link">
+    2.2.3. Clauses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#224-saving-data" class="md-nav__link">
+    2.2.4. Saving data
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-tables" class="md-nav__link">
+    2.3. Tables
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3. Tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#231-crud-in-a-table" class="md-nav__link">
+    2.3.1. CRUD in a table
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#232-design-tables" class="md-nav__link">
+    2.3.2. Design tables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#233-columns-data-types-in-sql" class="md-nav__link">
+    2.3.3. Columns' data types in SQL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#234-columns-attributes-in-sql" class="md-nav__link">
+    2.3.4. Columns' Attributes in SQL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#235-sql-in-python" class="md-nav__link">
+    2.3.5. SQL in Python
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#236-nested-query" class="md-nav__link">
+    2.3.6. Nested query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#237-subtypes" class="md-nav__link">
+    2.3.7. Subtypes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-indexes-and-join" class="md-nav__link">
+    3. Indexes and JOIN
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Indexes and JOIN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-what-is-imdb" class="md-nav__link">
+    3.1. What is IMDb
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-schema-of-imdb" class="md-nav__link">
+    3.2. Schema of IMDb
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-indexes" class="md-nav__link">
+    3.3. indexes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-join" class="md-nav__link">
+    3.4. Join
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-problems" class="md-nav__link">
+    4. Problems
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Problems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-sql-injection-attack" class="md-nav__link">
+    4.1. SQL injection attack
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-race-conditions" class="md-nav__link">
+    4.2. Race conditions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x08_HTML%2C%20CSS%2C%20JavaScript/" class="md-nav__link">
+        Lec 08: HTML, CSS, JS
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MIT_6.NULL/" class="md-nav__link">
+        MIT 6.NULL
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-data-processing" class="md-nav__link">
+    1. Data processing
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Data processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-about-data-processing" class="md-nav__link">
+    1.1. About Data processing
+  </a>
+  
+    <nav class="md-nav" aria-label="1.1. About Data processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-spreadsheet-applications" class="md-nav__link">
+    1.1.1. Spreadsheet applications
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-databases" class="md-nav__link">
+    1.1.2. Databases
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-cleaning" class="md-nav__link">
+    1.2. Cleaning
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-counting" class="md-nav__link">
+    1.3. Counting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-searching" class="md-nav__link">
+    1.4. Searching
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-relational-databases" class="md-nav__link">
+    2. Relational databases
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Relational databases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-what-is-relational-databases-and-sqlite" class="md-nav__link">
+    2.1. What is Relational databases and SQLite
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-sql" class="md-nav__link">
+    2.2. SQL
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2. SQL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#221-crud" class="md-nav__link">
+    2.2.1. CRUD
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#222-functions" class="md-nav__link">
+    2.2.2. Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#223-clauses" class="md-nav__link">
+    2.2.3. Clauses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#224-saving-data" class="md-nav__link">
+    2.2.4. Saving data
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-tables" class="md-nav__link">
+    2.3. Tables
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3. Tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#231-crud-in-a-table" class="md-nav__link">
+    2.3.1. CRUD in a table
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#232-design-tables" class="md-nav__link">
+    2.3.2. Design tables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#233-columns-data-types-in-sql" class="md-nav__link">
+    2.3.3. Columns' data types in SQL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#234-columns-attributes-in-sql" class="md-nav__link">
+    2.3.4. Columns' Attributes in SQL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#235-sql-in-python" class="md-nav__link">
+    2.3.5. SQL in Python
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#236-nested-query" class="md-nav__link">
+    2.3.6. Nested query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#237-subtypes" class="md-nav__link">
+    2.3.7. Subtypes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-indexes-and-join" class="md-nav__link">
+    3. Indexes and JOIN
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Indexes and JOIN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-what-is-imdb" class="md-nav__link">
+    3.1. What is IMDb
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-schema-of-imdb" class="md-nav__link">
+    3.2. Schema of IMDb
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-indexes" class="md-nav__link">
+    3.3. indexes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-join" class="md-nav__link">
+    3.4. Join
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-problems" class="md-nav__link">
+    4. Problems
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Problems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-sql-injection-attack" class="md-nav__link">
+    4.1. SQL injection attack
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-race-conditions" class="md-nav__link">
+    4.2. Race conditions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/Lijinyu3/lijinyu3.github.io/edit/main/docs/notes/Harvard_CS50/0x07_SQL.md" title="编辑此页" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+  <h1>Lec 07: SQL</h1>
+
+<h2 id="1-data-processing">1. Data processing</h2>
+<h3 id="11-about-data-processing">1.1. About Data processing</h3>
+<h4 id="111-spreadsheet-applications">1.1.1. Spreadsheet applications</h4>
+<p>Suppose we'll collect some data about your favorite TV shows and their genres. With hundreds of responses, we can start looking at the responses on Google Sheets, a web-based spreadsheet application, showing our data in rows and columns.</p>
+<p><img alt="image of Google Sheets spreadsheet with row 1 having cells &quot;Timestamp&quot;, &quot;title&quot;, and &quot;genres&quot;, with row 2 having cells &quot;10/19/2020 1:41:38&quot;, &quot;Punisher&quot;, &quot;Action, Adventure&quot;, and so on" src="https://cs50.harvard.edu/x/2021/notes/7/sheets.png" /></p>
+<ul>
+<li>Notice that some responses show a single genre selected, like "Comedy", while others, with multiple genres, show them in one cell but separated by a comma, like "Crime, Drama" .</li>
+</ul>
+<p>With a spreadsheet application like Google sheets, Apple's Number, Microsoft Excel, or others, we can:</p>
+<ul>
+<li>Sort our data</li>
+<li>Store our data in rows and columns, where each additional entry is a row, and properties of each entry, like title or genre, is a column</li>
+<li>Decide on the <strong>schema</strong>, or format of our data in advance by choosing the columns.</li>
+</ul>
+<h4 id="112-databases">1.1.2. Databases</h4>
+<p>A <strong>database</strong> is a file or program that stores data for us.</p>
+<p>A CSV (Comma-Separated Values) file is a <strong>flat-file database</strong> where the data for each column is separated by commas, and each row is on a new line, saved simple as a file.</p>
+<ul>
+<li>If some data in a CSV file contains a comma itself, then it's usually surrounded by quotes as a string to prevent confusion.</li>
+<li>Formulas and calculations in spreadsheet programs are built into the programs themselves; a CSV file can only store <strong>raw, static</strong> values.</li>
+</ul>
+<h3 id="12-cleaning">1.2. Cleaning</h3>
+<p>First, we've import our CSV file to the IDE, and we can take a look at all the unique titles in our responses using Python.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">csv</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="n">titles</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;Favorite TV Shows - Form Responses 1.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>    <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>        <span class="n">titles</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">])</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">titles</span><span class="p">:</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>We used <code>DictReader</code> in <code>csv</code> library, dictionary reader, which creates a dictionary from each row, allowing us to access each column by its name (Since the first row in our CSV has the names of the columns, which can be used to label each column in our data as well).</p>
+<p>Therefore we also don't need to <code>skip</code> the header row in this case.</p>
+<p>We create <code>titles</code> as a <code>set</code>, which will automatically check for duplicates and ensure there are only unique values. To <strong>sort</strong> the titles, we can just change our loop to <code>for title in sorted(titles)</code>, which will sort our set before we iterate over it.</p>
+<p>But we'll see that our titles are considered different if their capitalization or punctuation is different, like "friends", "Friends" and "Friends  " (this one has spaces at the end).</p>
+<p>So we'll clean up the <strong>capitalization</strong> by adding title in all uppercase with <code>titles.add(row["title"].upper())</code>.</p>
+<p>We'll also have to <strong>remove spaces</strong> before or after, so we can add <code>titles.add(row["title"].strip().upper())</code> which strips the whitespace from the title, and then converts it to uppercase.</p>
+<p>Now we've <strong>canonicalized</strong>, or standardized, our data, and our list of titles are much cleaner.</p>
+<h3 id="13-counting">1.3. Counting</h3>
+<p>We can use a dictionary, instead of a set, to count the number of times we've seen each title, with the keys being the titles and the values being an integer counting the number of times we see each of them:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kn">import</span> <span class="nn">csv</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="n">titles</span> <span class="o">=</span> <span class="p">{}</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;Favorite TV Shows - Form Responses 1.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a>    <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a>    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a>        <span class="n">title</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a>        <span class="k">if</span> <span class="n">title</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">titles</span><span class="p">:</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a>            <span class="n">titles</span><span class="p">[</span><span class="n">title</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a>        <span class="n">titles</span><span class="p">[</span><span class="n">title</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">titles</span><span class="p">):</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">titles</span><span class="p">[</span><span class="n">title</span><span class="p">])</span>
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>Here, we first check if we’ve haven’t seen the title before (if it’s <code>not in titles</code>). We set the initial value to 0 if that’s the case, and then we can safely increment the value by 1 every time.</li>
+<li>Finally, we can print out our dictionary’s keys and values by passing them as arguments to <code>print</code>, which will separate them by a space for us.</li>
+</ul>
+<p>We can sort by the values in the dictionary by changing our loop to:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span>
+<span class="normal"><a href="#__codelineno-2-6">6</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="o">...</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">title</span><span class="p">):</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>    <span class="k">return</span> <span class="n">titles</span><span class="p">[</span><span class="n">title</span><span class="p">]</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">titles</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="o">...</span>
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>We define a function, <code>f</code>, which just returns the count of a title in the dictionary with <code>titles[title]</code>. The <code>sorted</code> function, in turn, will use that function as the <strong>key</strong> to sort the dictionary's elements. And we also pass in <code>reverse=True</code> to sort from largest to smallest, instead of smallest to largest.</li>
+</ul>
+<p>We can actually define our function in the same line, with this syntax:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">titles</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">title</span><span class="p">:</span> <span class="n">titles</span><span class="p">[</span><span class="n">title</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>We pass in a <strong>lambda</strong>, or anonymous function, which has no name but takes in some argument or arguments, and returns a value immediately.</li>
+</ul>
+<h3 id="14-searching">1.4. Searching</h3>
+<p>We can write a program to search for a title and report its popularity:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span>
+<span class="normal"><a href="#__codelineno-4-11">11</a></span>
+<span class="normal"><a href="#__codelineno-4-12">12</a></span>
+<span class="normal"><a href="#__codelineno-4-13">13</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="kn">import</span> <span class="nn">csv</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="n">title</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Title: &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;Favorite TV Shows - Form Responses 1.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a>    <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a>    <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a>    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a>        <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="n">title</span><span class="p">:</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a>            <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12"></a>
+<a id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="nb">print</span><span class="p">(</span><span class="n">counter</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>
+<p>We ask the user for input, and then open our CSV file. Since we’re looking for just one title, we can have one <code>counter</code> variable that we increment.</p>
+</li>
+<li>
+<p>We check for matches after standardizing both the input and the data as we check each row.</p>
+</li>
+</ul>
+<p>The running time of this is <em>O</em>(<em>n</em>), since we need to look at every row.</p>
+<h2 id="2-relational-databases">2. Relational databases</h2>
+<h3 id="21-what-is-relational-databases-and-sqlite">2.1. What is Relational databases and SQLite</h3>
+<p><strong>Relational databases</strong> are programs that store data, ultimately in files, but with additional data structures that allow us to search and store data more efficiently.</p>
+<p>With another programming language, <strong>SQL</strong> (pronounced like "sequel"), Structure Query Language, we can interact with many relational databases and their <strong>tables</strong>, like spreadsheets, which store data.</p>
+<p>We'll use a common database called <strong>SQLite</strong>, one of many available programs that support SQL. Other databases programs include Oracle Database, MySQL, PostgreSQL, and Microsoft Access.</p>
+<p>SQLite stores our data in <strong>binary file</strong>, with 0s and 1s that represent data efficiently. We'll interact with our tables of data through a command-line program, <code>sqlite3</code>.</p>
+<p>We'll run some commands to import our CSV file into a table called "shows".</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span>
+<span class="normal"><a href="#__codelineno-5-5">5</a></span>
+<span class="normal"><a href="#__codelineno-5-6">6</a></span>
+<span class="normal"><a href="#__codelineno-5-7">7</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>~/ $ sqlite3
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>SQLite version 3.32.3 2020-06-18 14:16:19
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a>Enter &quot;.help&quot; for usage hints.
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a>Connected to a transient in-memory database.
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a>Use &quot;.open FILENAME&quot; to reopen on a persistent database.
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a>sqlite&gt; .mode csv
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a>sqlite&gt; .import &#39;Favorite TV Shows (Responses) - Form Responses 1.csv&#39; shows
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>
+<p>Based on the rows in the CSV file, SQLite will create a table in our database with the data and columns.</p>
+</li>
+<li>
+<p>We’ll set SQLite to CSV mode, and use the <code>.import</code> command to create a table from our file.</p>
+</li>
+</ul>
+<p>It turns out that, when working with data, we generally need <strong>four</strong> types of operations supported by relational databases: <strong>CRUD</strong>, which is the abbreviation for:</p>
+<ul>
+<li>CREATE</li>
+<li>READ / RETRIEVE</li>
+<li>UPDATE</li>
+<li>DELETE</li>
+</ul>
+<h3 id="22-sql">2.2. SQL</h3>
+<h4 id="221-crud">2.2.1. CRUD</h4>
+<p>In SQL, the commands to perform each of these operations are:</p>
+<ul>
+<li>CREATE, INSERT</li>
+<li>E.g., to create a new table, we can use: <code>CREATE table (column type, ...);</code> where <code>table</code> is the name of our new table, and <code>column</code> is the name of a column, followed by its type.</li>
+<li>SELECT</li>
+<li><code>SELECT column FROM table;</code></li>
+<li>UPDATE</li>
+<li>DELETE</li>
+</ul>
+<p>We can check the schema of our new table with <code>.schema</code>:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span>
+<span class="normal"><a href="#__codelineno-6-3">3</a></span>
+<span class="normal"><a href="#__codelineno-6-4">4</a></span>
+<span class="normal"><a href="#__codelineno-6-5">5</a></span>
+<span class="normal"><a href="#__codelineno-6-6">6</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>sqlite&gt; .schema
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>CREATE TABLE shows(
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a>    &quot;Timestamp&quot; TEXT,
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a>    &quot;title&quot; TEXT,
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a>    &quot;genres&quot; TEXT
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a>);
+</code></pre></div>
+</td></tr></table>
+<p>We see that <code>.import</code> used the <code>CREATE TABLE ...</code> command listed to create a table called <code>shows</code>, with column names automatically copied from the CSV's header row and types assumed to be text.</p>
+<p>We can select a column with:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span>
+<span class="normal"><a href="#__codelineno-7-4">4</a></span>
+<span class="normal"><a href="#__codelineno-7-5">5</a></span>
+<span class="normal"><a href="#__codelineno-7-6">6</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>sqlite&gt; SELECT title FROM shows;
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>title
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a>...
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a>&quot;Madam Secretary&quot;
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a>&quot;Game of Thrones&quot;
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a>&quot;Still Game&quot;
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>Notice that we <strong>capitalize</strong> SQL keywords by convention, and we'll see titles from our rows printed in the order from the CSV.</li>
+<li>We can also select multiple columns with <code>SELECT Timestamp, title FROM shows;</code>, or all columns with <code>SELECT * FROM shows;</code>, where <code>*</code> is a wild card means all in SQL.</li>
+</ul>
+<h4 id="222-functions">2.2.2. Functions</h4>
+<p>SQL supports many functions that we can use to count and summarize data:</p>
+<ul>
+<li><code>AVG</code></li>
+<li><code>COUNT</code></li>
+<li><code>DISTINCT</code>, for getting distinct values without duplicates</li>
+<li><code>LOWER</code></li>
+<li><code>MAX</code></li>
+<li><code>MIN</code></li>
+<li><code>UPPER</code></li>
+<li>...</li>
+</ul>
+<p>We can clean up our titles as before, converting them to uppercase and printing only the unique value:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
+<span class="normal"><a href="#__codelineno-8-2">2</a></span>
+<span class="normal"><a href="#__codelineno-8-3">3</a></span>
+<span class="normal"><a href="#__codelineno-8-4">4</a></span>
+<span class="normal"><a href="#__codelineno-8-5">5</a></span>
+<span class="normal"><a href="#__codelineno-8-6">6</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>sqlite&gt; SELECT DISTINCT(UPPER(title)) FROM shows;
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a>title
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a>...
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a>&quot;GREY&#39;S ANATOMY&quot;
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a>&quot;SCOOBY DOO&quot;
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a>&quot;MADAM SECRETARY&quot;
+</code></pre></div>
+</td></tr></table>
+<h4 id="223-clauses">2.2.3. Clauses</h4>
+<p>We can also add more <strong>clauses</strong>, or phrases that modify our query:</p>
+<ul>
+<li><code>WHERE</code>, matching results on a strict condition</li>
+<li><code>LIKE</code>, matching results on a less strict condition</li>
+<li><code>ORDER BY</code>, ordering results in some way</li>
+<li><code>LIMIT</code>, limiting the number of results</li>
+<li><code>GROUP BY</code>, grouping results in some way</li>
+<li>...</li>
+</ul>
+<p>We can filter rows by titles:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
+<span class="normal"><a href="#__codelineno-9-2">2</a></span>
+<span class="normal"><a href="#__codelineno-9-3">3</a></span>
+<span class="normal"><a href="#__codelineno-9-4">4</a></span>
+<span class="normal"><a href="#__codelineno-9-5">5</a></span>
+<span class="normal"><a href="#__codelineno-9-6">6</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>sqlite&gt; SELECT title FROM shows WHERE title = &quot;The Office&quot;;
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a>title
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a>...
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a>&quot;The Office&quot;
+<a id="__codelineno-9-5" name="__codelineno-9-5"></a>&quot;The Office&quot;
+<a id="__codelineno-9-6" name="__codelineno-9-6"></a>&quot;The Office&quot;
+</code></pre></div>
+</td></tr></table>
+<p>But there are other entries we would like to catch, so we can use:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span>
+<span class="normal"><a href="#__codelineno-10-3">3</a></span>
+<span class="normal"><a href="#__codelineno-10-4">4</a></span>
+<span class="normal"><a href="#__codelineno-10-5">5</a></span>
+<span class="normal"><a href="#__codelineno-10-6">6</a></span>
+<span class="normal"><a href="#__codelineno-10-7">7</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>sqlite&gt; SELECT title FROM shows WHERE title LIKE &quot;%Office%&quot;;
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a>title
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a>...
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a>office
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a>&quot;The Office&quot;
+<a id="__codelineno-10-6" name="__codelineno-10-6"></a>&quot;the office &quot;
+<a id="__codelineno-10-7" name="__codelineno-10-7"></a>&quot;The Office&quot;
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>The <code>%</code> character is a placeholder for zero or more other characters.</li>
+</ul>
+<p>We can even group the same titles together, and count the number of times they appear:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
+<span class="normal"><a href="#__codelineno-11-2">2</a></span>
+<span class="normal"><a href="#__codelineno-11-3">3</a></span>
+<span class="normal"><a href="#__codelineno-11-4">4</a></span>
+<span class="normal"><a href="#__codelineno-11-5">5</a></span>
+<span class="normal"><a href="#__codelineno-11-6">6</a></span>
+<span class="normal"><a href="#__codelineno-11-7">7</a></span>
+<span class="normal"><a href="#__codelineno-11-8">8</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>sqlite&gt; SELECT UPPER(title), COUNT(title) FROM shows GROUP BY UPPER(title);
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a>...
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a>&quot;THE OFFICE&quot;,23
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a>...
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a>&quot;TOP GEAR&quot;,1
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a>...
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a>&quot;TWIN PEAKS&quot;,4
+<a id="__codelineno-11-8" name="__codelineno-11-8"></a>...
+</code></pre></div>
+</td></tr></table>
+<p>We can order by the counts:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
+<span class="normal"><a href="#__codelineno-12-2">2</a></span>
+<span class="normal"><a href="#__codelineno-12-3">3</a></span>
+<span class="normal"><a href="#__codelineno-12-4">4</a></span>
+<span class="normal"><a href="#__codelineno-12-5">5</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>sqlite&gt; SELECT UPPER(title), COUNT(title) FROM shows GROUP BY UPPER(title) ORDER BY COUNT(title);
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a>...
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a>&quot;THE OFFICE&quot;,23
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a>FRIENDS,26
+<a id="__codelineno-12-5" name="__codelineno-12-5"></a>&quot;GAME OF THRONES&quot;,33
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>And if we add <code>DESC</code> to the end, we could see the results in descending order.</li>
+</ul>
+<p>With <code>LIMIT 10</code> added as well, we see the top 10 rows:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
+<span class="normal"><a href="#__codelineno-13-2">2</a></span>
+<span class="normal"><a href="#__codelineno-13-3">3</a></span>
+<span class="normal"><a href="#__codelineno-13-4">4</a></span>
+<span class="normal"><a href="#__codelineno-13-5">5</a></span>
+<span class="normal"><a href="#__codelineno-13-6">6</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>sqlite&gt; SELECT UPPER(title), COUNT(title) FROM shows GROUP BY UPPER(title) ORDER BY COUNT(title) DESC LIMIT 10;
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a>UPPER(title),COUNT(title)
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a>&quot;GAME OF THRONES&quot;,33
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a>FRIENDS,26
+<a id="__codelineno-13-5" name="__codelineno-13-5"></a>&quot;THE OFFICE&quot;,23
+<a id="__codelineno-13-6" name="__codelineno-13-6"></a>...
+</code></pre></div>
+</td></tr></table>
+<p>Finally, we’ll trim whitespace from each title too, nesting that function:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
+<span class="normal"><a href="#__codelineno-14-2">2</a></span>
+<span class="normal"><a href="#__codelineno-14-3">3</a></span>
+<span class="normal"><a href="#__codelineno-14-4">4</a></span>
+<span class="normal"><a href="#__codelineno-14-5">5</a></span>
+<span class="normal"><a href="#__codelineno-14-6">6</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a>sqlite&gt; SELECT UPPER(TRIM(title)), COUNT(title) FROM shows GROUP BY UPPER(TRIM(title)) ORDER BY COUNT(title) DESC LIMIT 10;
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a>UPPER(title),COUNT(title)
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a>&quot;GAME OF THRONES&quot;,33
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a>&quot;FRIENDS&quot;,26
+<a id="__codelineno-14-5" name="__codelineno-14-5"></a>&quot;THE OFFICE&quot;,23
+<a id="__codelineno-14-6" name="__codelineno-14-6"></a>...
+</code></pre></div>
+</td></tr></table>
+<h4 id="224-saving-data">2.2.4. Saving data</h4>
+<p>Before we finish, we’ll want to <strong>save</strong> our data into a file with <code>.save shows.db</code>, which we’ll see in our IDE after running that command.</p>
+<p>Notice that our program to find the most popular shows from earlier, which took dozens of lines of code in Python, now only requires one (long) line of SQL.</p>
+<p>We’ve used SQLite’s command-line interface, but there are also graphical programs that support working with SQL queries and viewing results more visually.</p>
+<h3 id="23-tables">2.3. Tables</h3>
+<h4 id="231-crud-in-a-table">2.3.1. CRUD in a table</h4>
+<p>Our <code>genres</code> column has multiple genres in the same field, so we'll use <code>LIKE</code> to get all the titles containing some genres:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span>
+<span class="normal"><a href="#__codelineno-15-2">2</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a>sqlite&gt; SELECT title FROM shows WHERE genres LIKE &quot;%Comedy%&quot;;
+<a id="__codelineno-15-2" name="__codelineno-15-2"></a>...
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>But the genres are still stored in comma-separated list themselves, which is not as clean. E.g., if our genres included both “Music” and “Musical”, it would be difficult to select titles with just the “Music” genre.</li>
+</ul>
+<p>We can <strong>insert</strong> data into a table manually with <code>INSERT INTO table (column, ...) VALUES(value, ...);</code>.</p>
+<ul>
+<li>For example, we can say:</li>
+</ul>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a>sqlite&gt; INSERT INTO shows (Timestamp, title, genres) VALUES(&quot;now&quot;, &quot;The Muppet Show&quot;, &quot;Comedy, Musical&quot;);
+</code></pre></div>
+</td></tr></table>
+<p>We can <strong>update</strong> a row with <code>UPDATE table SET column = value WHERE condition;</code>, like:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a>sqlite&gt; UPDATE shows SET genres = &quot;Comedy, Drama, Musical&quot; WHERE title = &quot;The Muppet Show&quot;;
+</code></pre></div>
+</td></tr></table>
+<p>We can even <strong>remove</strong> all rows that match with: <code>DELETE FROM table WHERE condition;</code>:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a>sqlite&gt; DELETE FROM shows WHERE title LIKE &quot;Friends&quot;;
+</code></pre></div>
+</td></tr></table>
+<h4 id="232-design-tables">2.3.2. Design tables</h4>
+<p>Now let’s write our own Python program that will use SQL to import our CSV data into tables with the following design:</p>
+<p><img alt="table named shows with columns id and title, table named genre with columns show_id and genre, with arrow from show_id to id" src="https://cs50.harvard.edu/x/2021/notes/7/shows_genres.png" /></p>
+<ul>
+<li>This design will start to <strong>normalize</strong> our data, or reduce redundancy and ensure a single source of truth.</li>
+<li>
+<p>Here, for example, we have a table named <code>shows</code>, with each show having an <code>id</code> and <code>title</code>, and another table, <code>genre</code>, which uses each’s show’s <code>id</code> to associate a genre with a show. Note that the show’s <code>title</code> doesn’t need to be stored multiple times.</p>
+</li>
+<li>
+<p>We can also now add multiple rows in the <code>genre</code> table, to associate a show with more than one genre.</p>
+</li>
+</ul>
+<h4 id="233-columns-data-types-in-sql">2.3.3. Columns' data types in SQL</h4>
+<p>It turns out that SQL, too, has its own data types to optimize the amount of space used for storing data, which we’ll need to specify when creating a table manually:</p>
+<ul>
+<li><code>BLOB</code>, for "binary large object", raw binary data that might represents files</li>
+<li><code>INTEGER</code></li>
+<li><code>NUMERIC</code>, number-like but not quite a number, like a data or time</li>
+<li><code>REAL</code>, for floating-point values</li>
+<li><code>TEXT</code>, like strings</li>
+</ul>
+<h4 id="234-columns-attributes-in-sql">2.3.4. Columns' Attributes in SQL</h4>
+<p>Columns can also have additional attributes:</p>
+<ul>
+<li><code>NOT NULL</code>, which specifies that there must be some values</li>
+<li><code>UNIQUE</code>, which means that the value for that column must be unique for every row in that table</li>
+<li><code>PRIMARY KEY</code>, like the <code>id</code> column above that will used to uniquely identify each row</li>
+<li><code>FOREIGN KEY</code>, like the <code>show_id</code> column above that refers to a column in some other table</li>
+</ul>
+<h4 id="235-sql-in-python">2.3.5. SQL in Python</h4>
+<p>We’ll use the CS50 library’s SQL feature to make queries easily, and there are other libraries for Python as well:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-19-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-19-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-19-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-19-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-19-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-19-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-19-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-19-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-19-10">10</a></span>
+<span class="normal"><a href="#__codelineno-19-11">11</a></span>
+<span class="normal"><a href="#__codelineno-19-12">12</a></span>
+<span class="normal"><a href="#__codelineno-19-13">13</a></span>
+<span class="normal"><a href="#__codelineno-19-14">14</a></span>
+<span class="normal"><a href="#__codelineno-19-15">15</a></span>
+<span class="normal"><a href="#__codelineno-19-16">16</a></span>
+<span class="normal"><a href="#__codelineno-19-17">17</a></span>
+<span class="normal"><a href="#__codelineno-19-18">18</a></span>
+<span class="normal"><a href="#__codelineno-19-19">19</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="kn">import</span> <span class="nn">csv</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2"></a>
+<a id="__codelineno-19-3" name="__codelineno-19-3"></a><span class="kn">from</span> <span class="nn">cs50</span> <span class="kn">import</span> <span class="n">SQL</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4"></a>
+<a id="__codelineno-19-5" name="__codelineno-19-5"></a><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;shows.db&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6"></a><span class="n">db</span> <span class="o">=</span> <span class="n">SQL</span><span class="p">(</span><span class="s2">&quot;sqlite:///shows.db&quot;</span><span class="p">)</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7"></a>
+<a id="__codelineno-19-8" name="__codelineno-19-8"></a><span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;CREATE TABLE shows (id INTEGER, title TEXT, PRIMARY KEY(id))&quot;</span><span class="p">)</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9"></a><span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;CREATE TABLE genres (show_id INTEGER, genre TEXT, FOREIGN KEY(show_id) REFERENCES shows(id))&quot;</span><span class="p">)</span>
+<a id="__codelineno-19-10" name="__codelineno-19-10"></a>
+<a id="__codelineno-19-11" name="__codelineno-19-11"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;Favorite TV Shows - Form Responses 1.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+<a id="__codelineno-19-12" name="__codelineno-19-12"></a>    <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+<a id="__codelineno-19-13" name="__codelineno-19-13"></a>    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
+<a id="__codelineno-19-14" name="__codelineno-19-14"></a>        <span class="n">title</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<a id="__codelineno-19-15" name="__codelineno-19-15"></a>
+<a id="__codelineno-19-16" name="__codelineno-19-16"></a>        <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO shows (title) VALUES(?)&quot;</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span>
+<a id="__codelineno-19-17" name="__codelineno-19-17"></a>
+<a id="__codelineno-19-18" name="__codelineno-19-18"></a>        <span class="k">for</span> <span class="n">genre</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;genres&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">):</span>
+<a id="__codelineno-19-19" name="__codelineno-19-19"></a>            <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO genres (show_id, genre) VALUES(?, ?)&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">genre</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>First, we’ll open a <code>shows.db</code> file and close it, to make sure that the file is created.</li>
+<li>Then, we’ll create a <code>db</code> variable to store our database created by <code>SQL</code>, which takes the database file we just created.</li>
+<li>Next, we’ll run SQL commands by writing it as a string, and calling <code>db.execute</code> with it. Here, we’ll create two tables as we designed above, indicating the names, types, and properties of each column we want in each table.</li>
+<li>
+<p>Now, we can read our original CSV file row by row, getting the title and using <code>db.execute</code> to run an <code>INSERT</code> command for each row. It turns out that we can use the <code>?</code> <strong>placeholder</strong> in a SQL command, and pass in a variable to be substituted. Then, we’ll get back an <code>id</code> that’s automatically created for us for each row, since we declared it to be a primary key.</p>
+</li>
+<li>
+<p>Finally, we’ll split the genre string in each row by the comma, and insert each of them into the <code>genres</code> table, using the <code>id</code> for the show as <code>show_id</code>.</p>
+</li>
+</ul>
+<p>After we run this program, we can see the IDs and titles of each show, as well as the genres where the first column is a show’s ID:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-20-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-20-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-20-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-20-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-20-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-20-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-20-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-20-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-20-10">10</a></span>
+<span class="normal"><a href="#__codelineno-20-11">11</a></span>
+<span class="normal"><a href="#__codelineno-20-12">12</a></span>
+<span class="normal"><a href="#__codelineno-20-13">13</a></span>
+<span class="normal"><a href="#__codelineno-20-14">14</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a>sqlite&gt; SELECT * FROM shows;
+<a id="__codelineno-20-2" name="__codelineno-20-2"></a>...
+<a id="__codelineno-20-3" name="__codelineno-20-3"></a>511 | MADAM SECRETARY
+<a id="__codelineno-20-4" name="__codelineno-20-4"></a>512 | GAME OF THRONES
+<a id="__codelineno-20-5" name="__codelineno-20-5"></a>513 | STILL GAME
+<a id="__codelineno-20-6" name="__codelineno-20-6"></a>sqlite&gt; SELECT * FROM genres;
+<a id="__codelineno-20-7" name="__codelineno-20-7"></a>...
+<a id="__codelineno-20-8" name="__codelineno-20-8"></a>511 | Drama
+<a id="__codelineno-20-9" name="__codelineno-20-9"></a>512 | Action
+<a id="__codelineno-20-10" name="__codelineno-20-10"></a>512 | Adventure
+<a id="__codelineno-20-11" name="__codelineno-20-11"></a>512 | History
+<a id="__codelineno-20-12" name="__codelineno-20-12"></a>512 | Thriller
+<a id="__codelineno-20-13" name="__codelineno-20-13"></a>512 | War
+<a id="__codelineno-20-14" name="__codelineno-20-14"></a>513 | Comedy
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>Notice that the show with id 512, “GAME OF THRONES”, now has five genres associated with it.</li>
+</ul>
+<h4 id="236-nested-query">2.3.6. Nested query</h4>
+<p>To find all the musicals, for example, we can run:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span>
+<span class="normal"><a href="#__codelineno-21-2">2</a></span>
+<span class="normal"><a href="#__codelineno-21-3">3</a></span>
+<span class="normal"><a href="#__codelineno-21-4">4</a></span>
+<span class="normal"><a href="#__codelineno-21-5">5</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a>sqlite&gt; SELECT show_id FROM genres WHERE genre = &quot;Musical&quot;;
+<a id="__codelineno-21-2" name="__codelineno-21-2"></a>...
+<a id="__codelineno-21-3" name="__codelineno-21-3"></a>422
+<a id="__codelineno-21-4" name="__codelineno-21-4"></a>435
+<a id="__codelineno-21-5" name="__codelineno-21-5"></a>468
+</code></pre></div>
+</td></tr></table>
+<p>And we can <strong>nest</strong> that query to get titles from the list of show IDs:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1">1</a></span>
+<span class="normal"><a href="#__codelineno-22-2">2</a></span>
+<span class="normal"><a href="#__codelineno-22-3">3</a></span>
+<span class="normal"><a href="#__codelineno-22-4">4</a></span>
+<span class="normal"><a href="#__codelineno-22-5">5</a></span>
+<span class="normal"><a href="#__codelineno-22-6">6</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a>sqlite&gt; SELECT title FROM shows WHERE id IN (SELECT show_id FROM genres WHERE genre = &quot;Musical&quot;);
+<a id="__codelineno-22-2" name="__codelineno-22-2"></a>title
+<a id="__codelineno-22-3" name="__codelineno-22-3"></a>BREAKING BAD
+<a id="__codelineno-22-4" name="__codelineno-22-4"></a>...
+<a id="__codelineno-22-5" name="__codelineno-22-5"></a>THE LAWYER
+<a id="__codelineno-22-6" name="__codelineno-22-6"></a>MY BROTHER, MY BROTHER, AND ME
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>Our first query, in the parentheses, will be executed first, and then used in the outer query.</li>
+</ul>
+<p>We can find all the rows in <code>shows</code> with the title of “THE OFFICE”, and find all the genres associated:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1">1</a></span>
+<span class="normal"><a href="#__codelineno-23-2">2</a></span>
+<span class="normal"><a href="#__codelineno-23-3">3</a></span>
+<span class="normal"><a href="#__codelineno-23-4">4</a></span>
+<span class="normal"><a href="#__codelineno-23-5">5</a></span>
+<span class="normal"><a href="#__codelineno-23-6">6</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a>sqlite&gt; SELECT DISTINCT(genre) FROM genres WHERE show_id IN (SELECT id FROM shows WHERE title = &quot;THE OFFICE&quot;) ORDER BY genre;
+<a id="__codelineno-23-2" name="__codelineno-23-2"></a>genre
+<a id="__codelineno-23-3" name="__codelineno-23-3"></a>...
+<a id="__codelineno-23-4" name="__codelineno-23-4"></a>Comedy
+<a id="__codelineno-23-5" name="__codelineno-23-5"></a>Documentary
+<a id="__codelineno-23-6" name="__codelineno-23-6"></a>...
+</code></pre></div>
+</td></tr></table>
+<p>We could improve on the design of our tables even more, with a third table:</p>
+<p><img alt="table named shows with columns id and title, table named shows_genres with columns show_id and genre_id, with arrow from show_id to id, and table named genre with columns id and name, with arrow from id to genre_id" src="https://cs50.harvard.edu/x/2021/notes/7/shows_genres_joined.png" /></p>
+<ul>
+<li>Now, each genre’s name will only be stored once, with a new table, a <strong>join table</strong>, called <code>shows_genres</code> that contains foreign keys that link shows to genres. This is a <strong>many-to-many</strong> relationship, where one show can have many genres, and one genre can belong to many shows.</li>
+<li>If we needed to change a genre’s name, we would only have to change one row now, instead of many.</li>
+</ul>
+<h4 id="237-subtypes">2.3.7. Subtypes</h4>
+<p>It turns out that there are <strong>subtypes</strong> for a column, too, that we can be even more specific with:</p>
+<ul>
+<li><code>INTEGER</code> </li>
+<li><code>smallint</code>, with fewer bits</li>
+<li><code>integer</code></li>
+<li><code>bigint</code>, with more bits</li>
+<li><code>NUMERIC</code></li>
+<li><code>boolean</code></li>
+<li><code>data</code></li>
+<li><code>datatime</code></li>
+<li><code>numeric(scale, precision)</code>, with a fixed number of digits</li>
+<li><code>time</code></li>
+<li><code>timestamp</code></li>
+<li><code>REAL</code></li>
+<li><code>real</code></li>
+<li><code>double precision</code>, with twice as many bits</li>
+<li><code>TEXT</code></li>
+<li><code>char(n)</code>, a fixed number of characters</li>
+<li><code>varchar(n)</code>, a variable number </li>
+<li><code>text</code>, a string with no limit</li>
+</ul>
+<h2 id="3-indexes-and-join">3. Indexes and JOIN</h2>
+<h3 id="31-what-is-imdb">3.1. What is IMDb</h3>
+<p>IMDb, abbreviation for the Internet Movie Database, has datasets available for download as TSV (table-separated values) file.</p>
+<h3 id="32-schema-of-imdb">3.2. Schema of IMDb</h3>
+<p>After we import one such dataset, we'll see tables with the following schemas:</p>
+<p><img alt="table named people with columns id, name, birth, table named stars with columns show_id, person_id, table named shows with columns id, title, year, episodes, table named writers with columns show_id, person_id, table named genres with columns show_id, genre, and table named ratings with show_id, rating, and votes, with arrows between foreign key id columns" src="https://cs50.harvard.edu/x/2021/notes/7/imdb.png" /></p>
+<ul>
+<li>The <code>genres</code> table has some duplication, since the <code>genre</code> column is repeated, but the <code>stars</code> and <code>writers</code> table join rows in the <code>people</code> and <code>shows</code> table based on their relationship.</li>
+</ul>
+<h3 id="33-indexes">3.3. indexes</h3>
+<p>With <code>SELECT COUNT(*) FROM shows;</code> we can see that there are more than 150,000 shows in our table, so with a large amount of data we can use <strong>indexes</strong>, which tells our database program to create additional data structures so we can search and sort with <strong>logarithmic time</strong>:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1">1</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a>sqlite&gt; CREATE INDEX title_index on shows(title);
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>It turns out that these data structures are generally <strong>B-trees</strong>, like binary trees we've seen in C, with nodes organized such that we search faster than linearly.</li>
+<li>Creating an index takes some time, but afterwards we can run queries much more quickly.</li>
+</ul>
+<h3 id="34-join">3.4. Join</h3>
+<p>With our data spread among different tables, we can use <strong><code>JOIN</code></strong> commands to combine them in our queries:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1">1</a></span>
+<span class="normal"><a href="#__codelineno-25-2">2</a></span>
+<span class="normal"><a href="#__codelineno-25-3">3</a></span>
+<span class="normal"><a href="#__codelineno-25-4">4</a></span>
+<span class="normal"><a href="#__codelineno-25-5">5</a></span>
+<span class="normal"><a href="#__codelineno-25-6">6</a></span>
+<span class="normal"><a href="#__codelineno-25-7">7</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a>sqlite3&gt; SELECT title FROM people
+<a id="__codelineno-25-2" name="__codelineno-25-2"></a>    ...&gt; JOIN stars ON people.id = stars.person_id
+<a id="__codelineno-25-3" name="__codelineno-25-3"></a>    ...&gt; JOIN shows ON stars.show_id = shows.id
+<a id="__codelineno-25-4" name="__codelineno-25-4"></a>    ...&gt; WHERE name = &quot;Steve Carell&quot;;
+<a id="__codelineno-25-5" name="__codelineno-25-5"></a>...
+<a id="__codelineno-25-6" name="__codelineno-25-6"></a>The Morning Show
+<a id="__codelineno-25-7" name="__codelineno-25-7"></a>LA Times: the Envelope
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>With the <code>JOIN</code> syntax, we can virtually combine tables based on their foreign keys, and use their columns as though they were one table.</li>
+</ul>
+<h2 id="4-problems">4. Problems</h2>
+<h3 id="41-sql-injection-attack">4.1. SQL injection attack</h3>
+<p>One problem in SQL is called a <strong>SQL injection attack</strong>, where someone can <strong>inject</strong>, or place, their own commands into inputs that we then run on our database.</p>
+<p>Our query for logging a user in might be <code>rows = db.execute("SELECT * FROM users WHERE username = ? AND password = ?", username, password)</code>. By using the <code>?</code> placeholders, our SQL library will escape the input, or prevent dangerous characters from being interpreted as part of the command.</p>
+<p>In contrast, we might have a SQL query that’s a formatted string, such as:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1">1</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1"></a><span class="sa">f</span><span class="s2">&quot;SELECT * FROM users WHERE username = &#39;</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s2">&#39; AND password = &#39;</span><span class="si">{</span><span class="n">password</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>If a user types in <code>malan@harvard.edu'--</code>, then the query will end up being:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-27-1">1</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1"></a> <span class="sa">f</span><span class="s2">&quot;SELECT * FROM users WHERE username = &#39;malan@harvard.edu&#39;--&#39; AND password = &#39;</span><span class="si">{</span><span class="n">password</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>This query will actually select the row where <code>username = 'malan@harvard.edu'</code>, without checking the password, since the <code>--</code> turns the rest of the line into a <strong>comment</strong> in SQL.</p>
+<h3 id="42-race-conditions">4.2. Race conditions</h3>
+<p>Another problem with databases is <strong>race conditions</strong>, where code in a multi-threaded environment can be commingled, or mixed together, in each thread.</p>
+<p>One example is a popular post getting lots of likes. A server might try to increment the number of likes, asking the database for the current number of likes, adding one, and updating the value in the database:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-28-1">1</a></span>
+<span class="normal"><a href="#__codelineno-28-2">2</a></span>
+<span class="normal"><a href="#__codelineno-28-3">3</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1"></a><span class="n">row</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT likes FROM posts WHERE id = ?&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="p">)</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2"></a><span class="n">likes</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;likes&quot;</span><span class="p">]</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3"></a><span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;UPDATE posts SET likes = ? WHERE id = ?&quot;</span><span class="p">,</span> <span class="n">likes</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">id</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>But for applications with multiple servers, each of them might trying to add likes at the same time. Two servers, responding to two different users, might get the same starting number of likes since the first line of code runs at the same time on each server. Then, both will set the same new number of likes, even though there should have been two separate increments.</p>
+<p>To solve this problem, SQL supports <strong>transactions</strong>, where we can look rows in a database, such that a particular set of actions are guaranteed to happen together, with syntax like:</p>
+<ul>
+<li><strong><code>BEGIN TRANSACTION</code></strong></li>
+<li><strong><code>COMMIT</code></strong></li>
+<li><strong><code>ROLLBACK</code></strong></li>
+</ul>
+<p>E.g., we can fix our problem above with:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-29-1">1</a></span>
+<span class="normal"><a href="#__codelineno-29-2">2</a></span>
+<span class="normal"><a href="#__codelineno-29-3">3</a></span>
+<span class="normal"><a href="#__codelineno-29-4">4</a></span>
+<span class="normal"><a href="#__codelineno-29-5">5</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1"></a><span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;BEGIN TRANSACTION&quot;</span><span class="p">)</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2"></a><span class="n">rows</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT likes FROM posts WHERE id = ?;&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="p">)</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3"></a><span class="n">likes</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;likes&quot;</span><span class="p">]</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4"></a><span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;UPDATE posts SET likes = ? WHERE id = ?;&quot;</span><span class="p">,</span> <span class="n">likes</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">id</span><span class="p">)</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5"></a><span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;COMMIT&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>The database will ensure that all the query in between are executed together.</li>
+</ul>
+<p>Another example might be of two roommates and a shared fridge in their dorm. The first roommate comes home, and sees that there is no milk in the fridge. So the first roommate leaves to the store to buy milk, and while they are at the store, the second roommate comes home, sees that there is no milk, and leaves for another store to get milk as well. Later, there will be two jugs of milk in the fridge.</p>
+<p>We can solve this problem by locking the fridge so that our roommate can’t check whether there is milk until we’ve gotten back.</p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 23, 2022</span>
+      
+    
+  </small>
+</div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="页脚">
+      
+        
+        <a href="../0x06_Python/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Lec 06: Python" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              Lec 06: Python
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../0x08_HTML%2C%20CSS%2C%20JavaScript/" class="md-footer__link md-footer__link--next" aria-label="下一页: Lec 08: HTML, CSS, JS" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              Lec 08: HTML, CSS, JS
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "toc.follow", "toc.intergrate"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

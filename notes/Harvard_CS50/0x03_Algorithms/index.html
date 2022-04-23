@@ -1,0 +1,1084 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="个人博客">
+      
+      
+        <meta name="author" content="enotaa33@gmail.com">
+      
+      
+        <link rel="canonical" href="https://206031.com/notes/Harvard_CS50/0x03_Algorithms/">
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+    
+    
+      
+        <title>Lec 03: Algorithms - Li's blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.120efc48.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="deep-purple" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-searching" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Li&#39;s blog" class="md-header__button md-logo" aria-label="Li's blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m6 20 4.16-12.09L9.34 6H8V4h2c.42 0 .78.26.93.63L16.66 18H18v2h-2c-.43 0-.79-.27-.93-.64l-3.74-8.71L8.12 20H6Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Li's blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lec 03: Algorithms
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="deep purple" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Lijinyu3/lijinyu3.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Li's blog GitHub repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../0xFF_Syllabus/" class="md-tabs__link md-tabs__link--active">
+        Notes
+      </a>
+    </li>
+  
+
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Li&#39;s blog" class="md-nav__button md-logo" aria-label="Li's blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m6 20 4.16-12.09L9.34 6H8V4h2c.42 0 .78.26.93.63L16.66 18H18v2h-2c-.43 0-.79-.27-.93-.64l-3.74-8.71L8.12 20H6Z"/></svg>
+
+    </a>
+    Li's blog
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Lijinyu3/lijinyu3.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Li's blog GitHub repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Notes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Notes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Notes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          Harvard CS50
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Harvard CS50" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Harvard CS50
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0xFF_Syllabus/" class="md-nav__link">
+        Syllabus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x00_Scratch/" class="md-nav__link">
+        Lec 00: Scratch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x01_C/" class="md-nav__link">
+        Lec 01: C
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x02_Arrays/" class="md-nav__link">
+        Lec 02: Arrays
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Lec 03: Algorithms
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Lec 03: Algorithms
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-searching" class="md-nav__link">
+    1. Searching
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Searching">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-running-time-big-o-big" class="md-nav__link">
+    1.1. Running time, Big O, Big Ω
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-t-function-vs-big-o" class="md-nav__link">
+    1.2. T function vs Big O
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-linear-search-binary-search" class="md-nav__link">
+    1.3. Linear search, binary search
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-structs" class="md-nav__link">
+    2. Structs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-sorting" class="md-nav__link">
+    3. Sorting
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Sorting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-tradeoff" class="md-nav__link">
+    3.1. Tradeoff
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-selection-sort" class="md-nav__link">
+    3.2. Selection sort
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-bubble-sort" class="md-nav__link">
+    3.3. Bubble sort
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-recursion" class="md-nav__link">
+    4. Recursion
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Recursion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-merge-sort" class="md-nav__link">
+    4.1. Merge sort
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-tradeoff-again" class="md-nav__link">
+    4.2. Tradeoff again
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-another-notation" class="md-nav__link">
+    5. Another notation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x04_Memory/" class="md-nav__link">
+        Lec 04: Memory
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x05_Data_Structures/" class="md-nav__link">
+        Lec 05: Data Structures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x06_Python/" class="md-nav__link">
+        Lec 06: Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x07_SQL/" class="md-nav__link">
+        Lec 07: SQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x08_HTML%2C%20CSS%2C%20JavaScript/" class="md-nav__link">
+        Lec 08: HTML, CSS, JS
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MIT_6.NULL/" class="md-nav__link">
+        MIT 6.NULL
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-searching" class="md-nav__link">
+    1. Searching
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Searching">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-running-time-big-o-big" class="md-nav__link">
+    1.1. Running time, Big O, Big Ω
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-t-function-vs-big-o" class="md-nav__link">
+    1.2. T function vs Big O
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-linear-search-binary-search" class="md-nav__link">
+    1.3. Linear search, binary search
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-structs" class="md-nav__link">
+    2. Structs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-sorting" class="md-nav__link">
+    3. Sorting
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Sorting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-tradeoff" class="md-nav__link">
+    3.1. Tradeoff
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-selection-sort" class="md-nav__link">
+    3.2. Selection sort
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-bubble-sort" class="md-nav__link">
+    3.3. Bubble sort
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-recursion" class="md-nav__link">
+    4. Recursion
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Recursion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-merge-sort" class="md-nav__link">
+    4.1. Merge sort
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-tradeoff-again" class="md-nav__link">
+    4.2. Tradeoff again
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-another-notation" class="md-nav__link">
+    5. Another notation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/Lijinyu3/lijinyu3.github.io/edit/main/docs/notes/Harvard_CS50/0x03_Algorithms.md" title="编辑此页" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+  <h1>Lec 03: Algorithms</h1>
+
+<h2 id="1-searching">1. Searching</h2>
+<p>It turns out that, with arrays, computers cannot look at all of the elements at once. Computers can only <strong>do one thing at a time,</strong> such as look at one element of the array.</p>
+<p>Actually humans are also cannot do this, because there if only are several elements of the array, we could have a glance to see all of this, but how if we have billion or even trillion elements of array? And even there are only several elements, we still look at one element at a time, only we're too fast to sense that.</p>
+<p><strong>Searching</strong> is how we solve problem of finding a particular value. A simple case might have an input of some array of values, and the output might simply be a <code>bool</code> value, whether or not a particular value is in the array.</p>
+<h3 id="11-running-time-big-o-big">1.1. Running time, Big <em>O</em>, Big Ω</h3>
+<p><strong>Running time</strong> is how long an algorithms takes to run given some size of inout.</p>
+<p>And in week 0 we use the notation such as <strong>log<sub>2</sub>n</strong>, <strong>n</strong> and <strong>n/2</strong> to describe running times, the more formal way to describe each of these running times is with <strong>Big <em>O</em> notation</strong>, which we can think of as <strong>on the order of</strong>. </p>
+<p>In Big <em>O</em> notation, we only care about the <strong>dominant factor</strong>, or largest term.</p>
+<p>Also there we have a similar notation called <strong>Big Ω</strong> ,big Omega notation, which is the <strong>lower bound</strong> of number of steps for our algorithms, or the best case. <strong>Big <em>O</em></strong> is the <strong>upper bound</strong> of number of steps, or the worst case.</p>
+<p>There are some common running times in <strong>Big <em>O</em></strong> and <strong>Big Ω</strong>:</p>
+<ul>
+<li><strong><em>O</em>(n^2^)</strong></li>
+<li><strong><em>O</em>(n*log n)</strong></li>
+<li><strong><em>O</em>(n)</strong></li>
+<li><strong><em>O</em>(log n)</strong></li>
+<li><strong><em>O</em>(1)</strong></li>
+<li>An algorithm that takes a <strong>constant</strong> number of steps, regardless of how big the problem is.</li>
+</ul>
+<p>And:</p>
+<ul>
+<li><strong>Ω(n^2^)</strong></li>
+<li><strong>Ω(n*log n)</strong></li>
+<li><strong>Ω(n)</strong></li>
+<li><strong>Ω(log n)</strong></li>
+<li><strong>Ω(1)</strong></li>
+</ul>
+<h3 id="12-t-function-vs-big-o">1.2. T function vs Big O</h3>
+<p>When discussing an algorithm, the common usage of the symbol  𝑇  is to represent its time complexity.</p>
+<p>𝑇  is a function. The input to this function is the input size, the output is the (worst-case) running time for an input of that size.</p>
+<p>Therefore,  𝑇(𝑛)  is a number: the number returned by the function  𝑇  when given the number  𝑛 . This number is the running time of our algorithm on an input of size  𝑛 .</p>
+<p>The  𝑂  in " 𝑂(𝑛) " is not a function. This is Big O notation. In particular, the symbol  𝑂(𝑛)  represents the class of all functions that grow (asymptotically) at most as quickly as the linear function  𝑓(𝑛)=𝑛 .</p>
+<p>Big O notation gives us a convenient way to talk about upper bounds. For example, we can say "the time complexity of this algorithm is  𝑂(𝑛2) " (formally: " 𝑇∈𝑂(𝑛2) ") to say that the running time of the algorithm is at most quadratic in the input size.</p>
+<p>Sometimes, you can see both symbols being used in a single equation. For example, the time complexity of MergeSort is commonly described by the following recurrence: " 𝑇(𝑛)=2𝑇(𝑛/2)+𝑂(𝑛) ".</p>
+<p>The meaning of the above statement: For any  𝑛 , the time  𝑇(𝑛)  needed to sort  𝑛  elements can be computed by taking the time  𝑇(𝑛/2)  needed to sort  𝑛/2  elements, multiplying that time by 2, and adding something extra. That something extra must be at most linear in  𝑛 .</p>
+<h3 id="13-linear-search-binary-search">1.3. Linear search, binary search</h3>
+<p>If we want to look for some number in an array of numbers, the simplest algorithm would be check each of these numbers from left to right, that is <strong>linear search</strong>.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>For i from 0 to n-1:
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>    If the i&#39;th of array is number:
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>        Return true
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>Return false        // Outside the for loop
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>Input: </li>
+<li>a number we wanna find</li>
+<li>an array of numbers</li>
+<li>Output:</li>
+<li>a boolean value of whether our number is found</li>
+<li>Running time:</li>
+<li><em>O</em>(n)</li>
+<li>Ω(1)</li>
+</ul>
+<p>If we know that the numbers in this array are sorted, then we can start in the middle, and find our value more efficiently, that is <strong>binary search</strong>.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span>
+<span class="normal"><a href="#__codelineno-1-5">5</a></span>
+<span class="normal"><a href="#__codelineno-1-6">6</a></span>
+<span class="normal"><a href="#__codelineno-1-7">7</a></span>
+<span class="normal"><a href="#__codelineno-1-8">8</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>If no numbers:
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>    Return false
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>If the middle of array is number:
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>    Return true
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>Else if middle number &gt; number:
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a>    Search left half
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a>Else if middle number &lt; number:
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a>    Search right half
+</code></pre></div>
+</td></tr></table>
+<p>The input and output is same as the previous.</p>
+<ul>
+<li>Running time:</li>
+<li><em>O</em>(log n)</li>
+<li>Ω(1)</li>
+</ul>
+<p>We perform steps at a frequency of one <strong>hertz</strong> (Hz), or cycle per second, and a processor's speed might be measured in gigahertz (GHz), or billion of operations per second. So the more efficient algorithms we choose, the more operations we could perform.</p>
+<h2 id="2-structs">2. Structs</h2>
+<p>If we wanted a type of variable more complex, such as a person in phone book, which contains their name and phone number, the basic types in C will not adequate.</p>
+<p>It turns out in C that we define our own data type, or <strong>data structure</strong>, with a <strong>struct</strong> in the following syntax:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span>
+<span class="normal"><a href="#__codelineno-2-6">6</a></span>
+<span class="normal"><a href="#__codelineno-2-7">7</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">number</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="p">}</span><span class="w"> </span><span class="n">person</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="c1">// Using the dot operator &quot;.&quot; to use the variable inside structs.</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="n">person</span><span class="w"> </span><span class="n">p</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="n">p</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Use dot&quot;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<p>We can see that one struct contains other data types inside it.</p>
+<p>With structs, we can be a little more confident that we won't have human errors in our program, which means we'll improve the <strong>robustness</strong> of our programs.</p>
+<h2 id="3-sorting">3. Sorting</h2>
+<p>If out input is an <strong>unsorted</strong> list of numbers, there are many algorithms we could use to produce an output of a <strong>sorted</strong> list, where all the elements are in order.</p>
+<h3 id="31-tradeoff">3.1. Tradeoff</h3>
+<p>With a sorted list, we can use binary search for efficiency, but it might take more time to write a sorting algorithm for that efficiency, so sometimes we'll encounter the <strong>tradeoff</strong> of time it takes a human to write a program compared to the time it takes a computer to run some algorithm.</p>
+<p>Other tradeoffs we'll see might be <strong>time</strong> and <strong>complexity</strong>, or <strong>time</strong> and <strong>memory usage</strong>.</p>
+<h3 id="32-selection-sort">3.2. Selection sort</h3>
+<p><strong>Selection sort</strong> is a simple sorting algorithm, and its pseudocode here:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>For i from 0 to n-1
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>    Find smallest item between i&#39;th item and last item
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>    Swap smallest item with i&#39;th item
+</code></pre></div>
+</td></tr></table>
+<p>For this algorithm, we were looking at roughly all <code>n</code> elements to find the smallest currently, and making <code>n</code> passes to sort all the elements.</p>
+<p>Its running time is <strong><em>O</em>(n^2^)</strong>.</p>
+<ul>
+<li>First we have to look at all n elements, then n-1, then n-2, and so on until there is only one element we need to look at.</li>
+<li>n + (n - 1) + (n - 2) + ... + 1 = n^2^/2 + n/2 = <strong><em>O</em>(n^2^)</strong></li>
+</ul>
+<p>And its lower bound of running time is <strong>Ω(n^2^)</strong>.</p>
+<ul>
+<li>The best case with a sorting algorithm is that the list of input has been sorted.</li>
+<li>Even though the list was sorted, <strong>Selection sort</strong> still need finding the smallest element n times, that still has the running time of <strong>n^2^</strong>.</li>
+</ul>
+<h3 id="33-bubble-sort">3.3. Bubble sort</h3>
+<p>There also is a simple sorting algorithm called <strong>Bubble sort</strong>, where we swap pairs of numbers repeatedly.</p>
+<p>Here's its pseudocode:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span>
+<span class="normal"><a href="#__codelineno-4-5">5</a></span>
+<span class="normal"><a href="#__codelineno-4-6">6</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>Repeat n-1 times
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>    For i from 0 to n-2 // Since we&#39;re comparing the i&#39;th and i+1&#39;th
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>        If i&#39;th and 1+i&#39;th elements out of order
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>            Swap them
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a>    If no swaps
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a>        Quit
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>And we can stop as soon as the list is sorted, since we can just remember whether we made any swaps. If not, the list must be stored already. </li>
+</ul>
+<p>This algorithm has <strong><em>O</em>(n^2^)</strong>.</p>
+<ul>
+<li>We have <code>n-1</code> comparisons in the loop, and at most <code>n-1</code> loops, so we get <strong>n^2^-2n+1</strong> steps total, where the largest factor is <strong>n^2^</strong>.</li>
+</ul>
+<p>The lower bound for running time this algorithm would be <strong>Ω(n)</strong>.</p>
+<ul>
+<li>Once we look at all the elements is sorted we could quit.</li>
+</ul>
+<h2 id="4-recursion">4. Recursion</h2>
+<p><strong>Recursion</strong> is the ability for a function to call itself.</p>
+<h3 id="41-merge-sort">4.1. Merge sort</h3>
+<p>We can take the idea of <strong>recursion</strong> to sorting, with another algorithm called <strong>Merge sort</strong>.</p>
+<p>The pseudocode might look like:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span>
+<span class="normal"><a href="#__codelineno-5-5">5</a></span>
+<span class="normal"><a href="#__codelineno-5-6">6</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>If only one number
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>    Return
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a>Else
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a>    Sort left half of number
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a>    Sort right half of number
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a>    Merge sorted halves
+</code></pre></div>
+</td></tr></table>
+<p>Notice the line 1 in pseudocode, this is <strong>recursion terminal condition</strong>. Once we haven't <strong>recursion terminal condition</strong>, the recursion will endless running.</p>
+<p>The magic of this algorithm is the line 6. It will return if there's only one element, then we could merge sorted halves, where the halves both are only one element, and of course is sorted, then we can back to the stage which  invoked this stage, and then merge, and so forth.</p>
+<p>Each merging steps required <code>n</code> steps, there are <code>log n</code> stages containing merging, so total time is <code>n*log n</code>.</p>
+<p>So the upper bound for running time is <strong><em>O</em>(n * log n)</strong>.</p>
+<p>And the lower bound is <strong>Ω(n * log n)</strong>, since we still have to sort each half first and then merge them together.</p>
+<h3 id="42-tradeoff-again">4.2. Tradeoff again</h3>
+<p>Even though <strong>merge sort</strong> is likely to be faster than <strong>selection sort</strong> or <strong>bubble sort</strong>, we do need <strong>more memory</strong> to temporarily store our merged list at each stage.</p>
+<p>We face the <strong>tradeoff</strong> of incurring a higher cost, another array in memory, for the benefit of faster sorting.</p>
+<h2 id="5-another-notation">5. Another notation</h2>
+<p>Finally, there's another notation, <strong>θ</strong>，Theta, which we use describe running times of algorithms if <strong>the upper bound and lower bound is the same</strong>.</p>
+<p>For example, <strong>merge sort</strong> has <strong>θ（n logn)</strong>, and <strong>selection sort</strong> has <strong>θ(n^2^)</strong>.</p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 23, 2022</span>
+      
+    
+  </small>
+</div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="页脚">
+      
+        
+        <a href="../0x02_Arrays/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Lec 02: Arrays" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              Lec 02: Arrays
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../0x04_Memory/" class="md-footer__link md-footer__link--next" aria-label="下一页: Lec 04: Memory" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              Lec 04: Memory
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "toc.follow", "toc.intergrate"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

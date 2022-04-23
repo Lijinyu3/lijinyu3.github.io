@@ -1,0 +1,1999 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="个人博客">
+      
+      
+        <meta name="author" content="enotaa33@gmail.com">
+      
+      
+        <link rel="canonical" href="https://206031.com/notes/Harvard_CS50/0x06_Python/">
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+    
+    
+      
+        <title>Lec 06: Python - Li's blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.120efc48.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="deep-purple" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-python-basics" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Li&#39;s blog" class="md-header__button md-logo" aria-label="Li's blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m6 20 4.16-12.09L9.34 6H8V4h2c.42 0 .78.26.93.63L16.66 18H18v2h-2c-.43 0-.79-.27-.93-.64l-3.74-8.71L8.12 20H6Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Li's blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lec 06: Python
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="deep purple" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Lijinyu3/lijinyu3.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Li's blog GitHub repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../0xFF_Syllabus/" class="md-tabs__link md-tabs__link--active">
+        Notes
+      </a>
+    </li>
+  
+
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Li&#39;s blog" class="md-nav__button md-logo" aria-label="Li's blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m6 20 4.16-12.09L9.34 6H8V4h2c.42 0 .78.26.93.63L16.66 18H18v2h-2c-.43 0-.79-.27-.93-.64l-3.74-8.71L8.12 20H6Z"/></svg>
+
+    </a>
+    Li's blog
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Lijinyu3/lijinyu3.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Li's blog GitHub repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Notes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Notes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Notes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          Harvard CS50
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Harvard CS50" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Harvard CS50
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0xFF_Syllabus/" class="md-nav__link">
+        Syllabus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x00_Scratch/" class="md-nav__link">
+        Lec 00: Scratch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x01_C/" class="md-nav__link">
+        Lec 01: C
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x02_Arrays/" class="md-nav__link">
+        Lec 02: Arrays
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x03_Algorithms/" class="md-nav__link">
+        Lec 03: Algorithms
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x04_Memory/" class="md-nav__link">
+        Lec 04: Memory
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x05_Data_Structures/" class="md-nav__link">
+        Lec 05: Data Structures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Lec 06: Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Lec 06: Python
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-python-basics" class="md-nav__link">
+    1. Python basics
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Python basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-what-is-python" class="md-nav__link">
+    1.1. What is Python
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-hello-world" class="md-nav__link">
+    1.2. Hello World
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-input-output" class="md-nav__link">
+    1.3. Input &amp; Output
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-implicitly-setting-the-type" class="md-nav__link">
+    1.4. Implicitly setting the type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-conditions-and-boolean-expressions" class="md-nav__link">
+    1.5. Conditions and Boolean expressions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-loops" class="md-nav__link">
+    1.6. Loops
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17-pythonic" class="md-nav__link">
+    1.7. Pythonic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#18-built-in-data-types-and-loosely-typed" class="md-nav__link">
+    1.8. Built-in data types and Loosely typed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#19-cs50-library" class="md-nav__link">
+    1.9. CS50 library
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-details" class="md-nav__link">
+    2. Details
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-use-others-libraries" class="md-nav__link">
+    2.1. Use others' libraries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-interpreter" class="md-nav__link">
+    2.2. Interpreter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-input" class="md-nav__link">
+    2.3. Input
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-divisions-and-string-comparisons" class="md-nav__link">
+    2.4. Divisions and String comparisons
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-functions-and-the-main-function" class="md-nav__link">
+    2.5. Functions and the Main function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-variables-scope" class="md-nav__link">
+    2.6. Variables scope
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27-named-arguments" class="md-nav__link">
+    2.7. Named arguments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#28-overflow-imprecision" class="md-nav__link">
+    2.8. Overflow, Imprecision
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#29-lists-strings" class="md-nav__link">
+    2.9. Lists, strings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#210-command-line-arguments-exit-codes" class="md-nav__link">
+    2.10. Command-line arguments, exit codes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#211-algorithms" class="md-nav__link">
+    2.11. Algorithms
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-files" class="md-nav__link">
+    3. Files
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-csv-file" class="md-nav__link">
+    3.1. CSV file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-with-and-as-keyword" class="md-nav__link">
+    3.2. with and as keyword
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-more-libraries" class="md-nav__link">
+    3. More libraries
+  </a>
+  
+    <nav class="md-nav" aria-label="3. More libraries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-pyttsx3-library" class="md-nav__link">
+    3.1. pyttsx3 library
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-face_recognition" class="md-nav__link">
+    3.2. face_recognition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-qrcode" class="md-nav__link">
+    3.3. qrcode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-speech_recognition" class="md-nav__link">
+    3.4. speech_recognition
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x07_SQL/" class="md-nav__link">
+        Lec 07: SQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x08_HTML%2C%20CSS%2C%20JavaScript/" class="md-nav__link">
+        Lec 08: HTML, CSS, JS
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MIT_6.NULL/" class="md-nav__link">
+        MIT 6.NULL
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-python-basics" class="md-nav__link">
+    1. Python basics
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Python basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-what-is-python" class="md-nav__link">
+    1.1. What is Python
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-hello-world" class="md-nav__link">
+    1.2. Hello World
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-input-output" class="md-nav__link">
+    1.3. Input &amp; Output
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-implicitly-setting-the-type" class="md-nav__link">
+    1.4. Implicitly setting the type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-conditions-and-boolean-expressions" class="md-nav__link">
+    1.5. Conditions and Boolean expressions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-loops" class="md-nav__link">
+    1.6. Loops
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17-pythonic" class="md-nav__link">
+    1.7. Pythonic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#18-built-in-data-types-and-loosely-typed" class="md-nav__link">
+    1.8. Built-in data types and Loosely typed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#19-cs50-library" class="md-nav__link">
+    1.9. CS50 library
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-details" class="md-nav__link">
+    2. Details
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-use-others-libraries" class="md-nav__link">
+    2.1. Use others' libraries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-interpreter" class="md-nav__link">
+    2.2. Interpreter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-input" class="md-nav__link">
+    2.3. Input
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-divisions-and-string-comparisons" class="md-nav__link">
+    2.4. Divisions and String comparisons
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-functions-and-the-main-function" class="md-nav__link">
+    2.5. Functions and the Main function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-variables-scope" class="md-nav__link">
+    2.6. Variables scope
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27-named-arguments" class="md-nav__link">
+    2.7. Named arguments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#28-overflow-imprecision" class="md-nav__link">
+    2.8. Overflow, Imprecision
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#29-lists-strings" class="md-nav__link">
+    2.9. Lists, strings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#210-command-line-arguments-exit-codes" class="md-nav__link">
+    2.10. Command-line arguments, exit codes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#211-algorithms" class="md-nav__link">
+    2.11. Algorithms
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-files" class="md-nav__link">
+    3. Files
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-csv-file" class="md-nav__link">
+    3.1. CSV file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-with-and-as-keyword" class="md-nav__link">
+    3.2. with and as keyword
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-more-libraries" class="md-nav__link">
+    3. More libraries
+  </a>
+  
+    <nav class="md-nav" aria-label="3. More libraries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-pyttsx3-library" class="md-nav__link">
+    3.1. pyttsx3 library
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-face_recognition" class="md-nav__link">
+    3.2. face_recognition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-qrcode" class="md-nav__link">
+    3.3. qrcode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-speech_recognition" class="md-nav__link">
+    3.4. speech_recognition
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/Lijinyu3/lijinyu3.github.io/edit/main/docs/notes/Harvard_CS50/0x06_Python.md" title="编辑此页" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+  <h1>Lec 06: Python</h1>
+
+<h2 id="1-python-basics">1. Python basics</h2>
+<h3 id="11-what-is-python">1.1. What is Python</h3>
+<p><strong>Python</strong> is a programming language, which is a newer language than <strong>C</strong>, it has additional features as well as simplicity, leading to its popularity.</p>
+<h3 id="12-hello-world">1.2. Hello World</h3>
+<p>Source code in Python looks a lot simpler than C. In fact, to print "Hello World" just like what we've done in C, all we need to write is:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>Notice that, unlike in C, we don't need to specify a <strong>newline</strong> in the <code>print</code> function or use a <strong>semicolon</strong> to end our line.</li>
+<li>Furthermore, to write and run this program, we'll just save this source code file as <code>hello.py</code>, and run the command <code>python hello.py</code> without any compilation.</li>
+</ul>
+<h3 id="13-input-output">1.3. Input &amp; Output</h3>
+<p>We can get <strong>input</strong> from user, such as <code>string</code>:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="n">answer</span> <span class="o">=</span> <span class="n">get_string</span><span class="p">(</span><span class="s2">&quot;What&#39;s your name? &quot;</span><span class="p">)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello, &quot;</span> <span class="o">+</span> <span class="n">answer</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>We also need to <strong>import</strong> the Python version of the CS50 library with <code>import cs50</code>, where <code>get_string</code> function is in it, similar to <code>#include &lt;cs50.h&gt;</code> in C.</li>
+<li>But in this case, we need to import this way: <code>from cs50 import get_string</code>, we'll explain it later.</li>
+</ul>
+<p>Notice that, we create a variable called <code>answer</code> without specifying any <strong>type</strong>, and we can combine, or <strong>concatenate</strong>, two strings with the <code>+</code> operator before we pass it into <code>print</code>.</p>
+<p>We can also use the syntax for <strong>format strings</strong> in <strong>output</strong>, <code>f"...{variable}..."</code> to plug in variables.</p>
+<p>E.g., we could have written <code>print(f"hello, {answer}")</code> to plug in the value of <code>answer</code> into our string by surrounding it with <strong>curly braces</strong>.</p>
+<h3 id="14-implicitly-setting-the-type">1.4. Implicitly setting the type</h3>
+<p>We can create variables with just <code>counter = 0</code>. By assigning the value of <code>0</code> , we're implicitly setting the type of <code>counter</code> to an integer, so we don't need to specify the type.</p>
+<p>To increment a integer variable, we can use <code>counter = counter +  1</code> or <code>counter += 1</code> like C, but there's no <code>counter++</code> in Python.</p>
+<h3 id="15-conditions-and-boolean-expressions">1.5. Conditions and Boolean expressions</h3>
+<p>Conditions look like:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span>
+<span class="normal"><a href="#__codelineno-2-6">6</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">:</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x is less than y&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="k">elif</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">:</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x is greater than y&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x is equal to y&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>Unlike in C, where curly braces are used to indicate blocks of code, the <strong>exact indentation</strong> of each line is what <strong>determines the level of nesting</strong> in Python.</li>
+<li>And instead of <code>else if</code> , just <code>elif</code>.</li>
+</ul>
+<p>Boolean expressions are slightly different, too:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;True instead of true&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>Both <code>True</code> and <code>False</code> are <strong>capitalized</strong> in Python</li>
+</ul>
+<h3 id="16-loops">1.6. Loops</h3>
+<p>We can write a loop with a variable:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;now i is </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</code></pre></div>
+</td></tr></table>
+<p>We can also use a <strong>for</strong> loop, where we can do something for each value in a list:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>List in Python, <code>[0, 1, 2]</code>, are like arrays in C.</li>
+</ul>
+<p>But if the number of loop becomes larger, this way gonna be inelegant. Instead, we can use a specific function called <code>range(n)</code>, which will give us a list from <code>0</code> up to <code>n</code> but exclude <code>n</code>, with the values of <code>0, 1, ..., n - 1</code>.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;elegant&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p><code>range()</code> function takes <strong>other options</strong> as well, so we can have lists that start at different values and have different increments between values. E.g., <code>range(10, 101, 2)</code> means give us a sequence of number start from <code>10</code> up to <code>101</code> but exclude <code>101</code>, incrementing by <code>2</code> at a time.</p>
+<h3 id="17-pythonic">1.7. Pythonic</h3>
+<p>Since there are often multiple ways to write the same code in Python, the most commonly used and accepted ways are called <strong>Pythonic</strong>.</p>
+<h3 id="18-built-in-data-types-and-loosely-typed">1.8. Built-in data types and Loosely typed</h3>
+<p>In Python, there're many <strong>built-in data types</strong>:</p>
+<ul>
+<li><code>bool</code>, Boolean values, either <code>True</code> or <code>False</code></li>
+<li><code>float</code>, real numbers</li>
+<li><code>int</code>, integers</li>
+<li><code>str</code>, strings</li>
+</ul>
+<p>While C is a <strong>strongly typed</strong> language, where we need to specify types, Python is a <strong>loosely typed</strong> language, where the type is implied by the values we assigned.</p>
+<p>Other types in Python include:</p>
+<ul>
+<li><code>range</code>, sequence of numbers</li>
+<li><code>list</code>, sequence of mutable values, or values we can change</li>
+<li>And list, even though they're arrays in C, can grow and shrink automatically in Python</li>
+<li><code>tuple</code>, collection of ordered values like x- and y-coordinates, or longitude and latitude</li>
+<li><code>dict</code>, dictionaries, collection of key-value pairs, like a hash table</li>
+<li><code>set</code>, collection of unique values, or values without duplicates</li>
+</ul>
+<h3 id="19-cs50-library">1.9. CS50 library</h3>
+<p>The CS50 library for Python include:</p>
+<ul>
+<li><code>get_float</code></li>
+<li><code>get_int</code></li>
+<li><code>get_string</code></li>
+</ul>
+<p>As we mentioned, we can import one at a time:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="kn">from</span> <span class="nn">cs50</span> <span class="kn">import</span> <span class="n">get_float</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="kn">from</span> <span class="nn">cs50</span> <span class="kn">import</span> <span class="n">get_int</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="kn">from</span> <span class="nn">cs50</span> <span class="kn">import</span> <span class="n">get_string</span>
+</code></pre></div>
+</td></tr></table>
+<p>or all together:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="kn">from</span> <span class="nn">cs50</span> <span class="kn">import</span> <span class="n">get_float</span><span class="p">,</span> <span class="n">get_int</span><span class="p">,</span> <span class="n">get_string</span>
+</code></pre></div>
+</td></tr></table>
+<p>or import the whole library:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="kn">import</span> <span class="nn">cs50</span>
+</code></pre></div>
+</td></tr></table>
+<p>If our program needed to import two different libraries, each with a <code>get_int</code> function, for example, we would need to use this method to <strong>namespace</strong> functions, keeping their names in different spaces to prevent them from colliding.</p>
+<h2 id="2-details">2. Details</h2>
+<h3 id="21-use-others-libraries">2.1. Use others' libraries</h3>
+<p>Since Python includes many features as well as libraries of code written by others, we can solve problem at a <strong>higher level of abstraction</strong>, instead of implementing all the details ourselves.</p>
+<p>There's some differences between C and Python in using libraries.</p>
+<p>E.g., we can blur an image with:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span>
+<span class="normal"><a href="#__codelineno-10-3">3</a></span>
+<span class="normal"><a href="#__codelineno-10-4">4</a></span>
+<span class="normal"><a href="#__codelineno-10-5">5</a></span>
+<span class="normal"><a href="#__codelineno-10-6">6</a></span>
+<span class="normal"><a href="#__codelineno-10-7">7</a></span>
+<span class="normal"><a href="#__codelineno-10-8">8</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageFilter</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a>
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="c1"># Open an image called &quot;bridge.bmp&quot;</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="n">before</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;bridge.bmp&quot;</span><span class="p">)</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="c1"># Call a bulr filter function</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6"></a><span class="n">after</span> <span class="o">=</span> <span class="n">before</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ImageFilter</span><span class="o">.</span><span class="n">BoxBlur</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7"></a><span class="c1"># Save it to a file called &quot;out.bmp&quot;</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8"></a><span class="n">after</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;out.bmp&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>In Python, we include other libraries with <code>import</code> just as we mentioned last chapter, and here we'll <code>import</code> the <code>Image</code> and <code>ImageFilter</code> from <code>PIL</code> library. (Other people have written this library, among others, and made it available for all of us download and use.)</li>
+</ul>
+<p><code>Image</code> is a structure that not only has data, <strong>but functions that we can access</strong> with the <code>.</code> operator, such as with <code>Image.open()</code>.</p>
+<p>Finally, we can run this with <code>python blur.py</code> after saving to a file called <code>blur.py</code>.</p>
+<h3 id="22-interpreter">2.2. Interpreter</h3>
+<p>We can implement a dictionary like we did in week 5 with:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-11-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-11-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-11-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-11-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-11-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-11-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-11-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-11-10">10</a></span>
+<span class="normal"><a href="#__codelineno-11-11">11</a></span>
+<span class="normal"><a href="#__codelineno-11-12">12</a></span>
+<span class="normal"><a href="#__codelineno-11-13">13</a></span>
+<span class="normal"><a href="#__codelineno-11-14">14</a></span>
+<span class="normal"><a href="#__codelineno-11-15">15</a></span>
+<span class="normal"><a href="#__codelineno-11-16">16</a></span>
+<span class="normal"><a href="#__codelineno-11-17">17</a></span>
+<span class="normal"><a href="#__codelineno-11-18">18</a></span>
+<span class="normal"><a href="#__codelineno-11-19">19</a></span>
+<span class="normal"><a href="#__codelineno-11-20">20</a></span>
+<span class="normal"><a href="#__codelineno-11-21">21</a></span>
+<span class="normal"><a href="#__codelineno-11-22">22</a></span>
+<span class="normal"><a href="#__codelineno-11-23">23</a></span>
+<span class="normal"><a href="#__codelineno-11-24">24</a></span>
+<span class="normal"><a href="#__codelineno-11-25">25</a></span>
+<span class="normal"><a href="#__codelineno-11-26">26</a></span>
+<span class="normal"><a href="#__codelineno-11-27">27</a></span>
+<span class="normal"><a href="#__codelineno-11-28">28</a></span>
+<span class="normal"><a href="#__codelineno-11-29">29</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="c1"># Create a new set called words</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="n">words</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a>
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="c1"># Define a function called load</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="n">dictionary</span><span class="p">):</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a>    <span class="c1"># open dictionary with read mode as variable &quot;file&quot;</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a>    <span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">dictionary</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8"></a>    <span class="c1"># iterate over the lines in file</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9"></a>    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10"></a>        <span class="c1"># remove the newline character at the end of line with .rstrip()</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11"></a>        <span class="n">words</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">())</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12"></a>    <span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13"></a>    <span class="k">return</span> <span class="kc">True</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14"></a>
+<a id="__codelineno-11-15" name="__codelineno-11-15"></a><span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+<a id="__codelineno-11-16" name="__codelineno-11-16"></a>    <span class="c1"># check if the word in the words</span>
+<a id="__codelineno-11-17" name="__codelineno-11-17"></a>    <span class="k">if</span> <span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+<a id="__codelineno-11-18" name="__codelineno-11-18"></a>        <span class="k">return</span> <span class="kc">True</span>
+<a id="__codelineno-11-19" name="__codelineno-11-19"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-11-20" name="__codelineno-11-20"></a>        <span class="k">return</span> <span class="kc">False</span>
+<a id="__codelineno-11-21" name="__codelineno-11-21"></a>
+<a id="__codelineno-11-22" name="__codelineno-11-22"></a><span class="k">def</span> <span class="nf">size</span><span class="p">():</span>
+<a id="__codelineno-11-23" name="__codelineno-11-23"></a>    <span class="c1"># we can use len() function get the length of an array(or a set) directly</span>
+<a id="__codelineno-11-24" name="__codelineno-11-24"></a>    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+<a id="__codelineno-11-25" name="__codelineno-11-25"></a>
+<a id="__codelineno-11-26" name="__codelineno-11-26"></a><span class="k">def</span> <span class="nf">unload</span><span class="p">():</span>
+<a id="__codelineno-11-27" name="__codelineno-11-27"></a>    <span class="c1"># There is no longer memory management like malloc() and free()</span>
+<a id="__codelineno-11-28" name="__codelineno-11-28"></a>    <span class="c1"># so it gonna be always True</span>
+<a id="__codelineno-11-29" name="__codelineno-11-29"></a>    <span class="k">return</span> <span class="kc">True</span>
+</code></pre></div>
+</td></tr></table>
+<p>It turns out, even though implementing a program in Python is simpler for us, the <strong>running time</strong> in Python is <strong>slower</strong> in C since the language has to do more work for us with general-propose solutions, like for memory management.</p>
+<p>In addition, Python is also the name of a program called an <strong>interpreter</strong>, which reads in our source code and <strong>translates</strong> it to code that our CPU (Central Processing Unit) can understand, line by line, like machine code compiled by a compiler in C.</p>
+<p>E.g., consider that there is a text written in Spanish, and you can't understand Spanish, if we translate it into English, we probably could read it as fast as usual; but if we only have a Spanish-English dictionary, we have to look up every word of this text in dictionary, which gonna be very slow.</p>
+<p>So, depending on our goals, we'll also have to consider the <strong>trade-off</strong> of <em>human time</em> of writing a program that's more efficient, versus the <em>running time</em> of the program.</p>
+<h3 id="23-input">2.3. Input</h3>
+<p>We can get input from the user with the <code>input</code> function without using CS50 library:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
+<span class="normal"><a href="#__codelineno-12-2">2</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What&#39;s your name? &quot;</span><span class="p">)</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello, </span><span class="si">{</span><span class="n">answer</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>Also we can ask the user for two integers using <code>input</code> function and add them:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
+<span class="normal"><a href="#__codelineno-13-2">2</a></span>
+<span class="normal"><a href="#__codelineno-13-3">3</a></span>
+<span class="normal"><a href="#__codelineno-13-4">4</a></span>
+<span class="normal"><a href="#__codelineno-13-5">5</a></span>
+<span class="normal"><a href="#__codelineno-13-6">6</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="n">x</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Integer x: &quot;</span><span class="p">)</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="c1"># x = 1</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="n">y</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Integer x: &quot;</span><span class="p">)</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="c1"># y = 3</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6"></a><span class="c1"># output is 13 (it&#39;s a string)</span>
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>Notice that comments starts with <code>#</code> instead of </li>
+</ul>
+<p>The <code>input</code> function give us back strings for our values, to fix this we need to <strong>cast</strong>, or convert, each value from <code>input</code> into an <code>int</code> before we store it:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
+<span class="normal"><a href="#__codelineno-14-2">2</a></span>
+<span class="normal"><a href="#__codelineno-14-3">3</a></span>
+<span class="normal"><a href="#__codelineno-14-4">4</a></span>
+<span class="normal"><a href="#__codelineno-14-5">5</a></span>
+<span class="normal"><a href="#__codelineno-14-6">6</a></span>
+<span class="normal"><a href="#__codelineno-14-7">7</a></span>
+<span class="normal"><a href="#__codelineno-14-8">8</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="c1"># Prompt user for x</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;x: &quot;</span><span class="p">))</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a>
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="c1"># Prompt user for y</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="n">y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;y: &quot;</span><span class="p">))</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6"></a>
+<a id="__codelineno-14-7" name="__codelineno-14-7"></a><span class="c1"># Perform addition</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8"></a><span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>But if user didn't type in a number, we'll need to do even more error-checking or our program will crash. So we will generally want to use a commonly used library to solve problems like this.</li>
+</ul>
+<h3 id="24-divisions-and-string-comparisons">2.4. Divisions and String comparisons</h3>
+<p>We can divide values with:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span>
+<span class="normal"><a href="#__codelineno-15-2">2</a></span>
+<span class="normal"><a href="#__codelineno-15-3">3</a></span>
+<span class="normal"><a href="#__codelineno-15-4">4</a></span>
+<span class="normal"><a href="#__codelineno-15-5">5</a></span>
+<span class="normal"><a href="#__codelineno-15-6">6</a></span>
+<span class="normal"><a href="#__codelineno-15-7">7</a></span>
+<span class="normal"><a href="#__codelineno-15-8">8</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="c1"># Prompt user for x</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;x: &quot;</span><span class="p">))</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3"></a>
+<a id="__codelineno-15-4" name="__codelineno-15-4"></a><span class="c1"># Prompt user for y</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5"></a><span class="n">y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;y: &quot;</span><span class="p">))</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6"></a>
+<a id="__codelineno-15-7" name="__codelineno-15-7"></a><span class="c1"># Perform division</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8"></a><span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">y</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>We won't get <strong>truncation</strong> just like in C, but a floating-point, decimal value back, even if we divided two integers.</p>
+<p>To compare strings, we can say:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span>
+<span class="normal"><a href="#__codelineno-16-2">2</a></span>
+<span class="normal"><a href="#__codelineno-16-3">3</a></span>
+<span class="normal"><a href="#__codelineno-16-4">4</a></span>
+<span class="normal"><a href="#__codelineno-16-5">5</a></span>
+<span class="normal"><a href="#__codelineno-16-6">6</a></span>
+<span class="normal"><a href="#__codelineno-16-7">7</a></span>
+<span class="normal"><a href="#__codelineno-16-8">8</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="kn">from</span> <span class="nn">cs50</span> <span class="kn">import</span> <span class="n">get_string</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2"></a>
+<a id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="n">s</span> <span class="o">=</span> <span class="n">get_string</span><span class="p">(</span><span class="s2">&quot;Do you agree? &quot;</span><span class="p">)</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4"></a>
+<a id="__codelineno-16-5" name="__codelineno-16-5"></a><span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="s2">&quot;Y&quot;</span> <span class="ow">or</span> <span class="n">s</span> <span class="o">==</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Agreed.&quot;</span><span class="p">)</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7"></a><span class="k">elif</span> <span class="n">s</span> <span class="o">==</span> <span class="s2">&quot;N&quot;</span> <span class="ow">or</span> <span class="n">s</span> <span class="o">==</span> <span class="s2">&quot;n&quot;</span><span class="p">:</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Not agreed.&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>
+<p>Python doesn't have <code>char</code>, so we check <code>Y</code> and other letters as <code>strings</code>.</p>
+</li>
+<li>
+<p>We can also compare strings directly with <code>==</code> since there're no longer pointers in Python.</p>
+</li>
+<li>
+<p>In our boolean expressions, we use <code>or</code> and <code>and</code> instead of symbols like <code>&amp;&amp;</code> and <code>||</code>.</p>
+</li>
+</ul>
+<p>We can also say <code>if s.lower() in ["y", "yes"]:</code> to check if our string is in a list, after converting it to lowercase first.</p>
+<h3 id="25-functions-and-the-main-function">2.5. Functions and the Main function</h3>
+<p>Recall that we implemented and improved the <code>meow()</code> function in C, we can improve versions of <code>meow</code> too.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span>
+<span class="normal"><a href="#__codelineno-17-2">2</a></span>
+<span class="normal"><a href="#__codelineno-17-3">3</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;meow&quot;</span><span class="p">)</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;meow&quot;</span><span class="p">)</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;meow&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>We can define a function that we can reuse:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span>
+<span class="normal"><a href="#__codelineno-18-2">2</a></span>
+<span class="normal"><a href="#__codelineno-18-3">3</a></span>
+<span class="normal"><a href="#__codelineno-18-4">4</a></span>
+<span class="normal"><a href="#__codelineno-18-5">5</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2"></a>    <span class="n">meow</span><span class="p">()</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3"></a>
+<a id="__codelineno-18-4" name="__codelineno-18-4"></a><span class="k">def</span> <span class="nf">meow</span><span class="p">():</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;meow&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>But this causes an error when we try to run it: <code>NameError: name 'meow' is not defined.</code></li>
+<li>It turns out that we need to define a function before we use it, so we can either move our definition of <code>meow()</code> function to the top, or define a <code>main()</code> function first.</li>
+</ul>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span>
+<span class="normal"><a href="#__codelineno-19-2">2</a></span>
+<span class="normal"><a href="#__codelineno-19-3">3</a></span>
+<span class="normal"><a href="#__codelineno-19-4">4</a></span>
+<span class="normal"><a href="#__codelineno-19-5">5</a></span>
+<span class="normal"><a href="#__codelineno-19-6">6</a></span>
+<span class="normal"><a href="#__codelineno-19-7">7</a></span>
+<span class="normal"><a href="#__codelineno-19-8">8</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2"></a>    <span class="k">for</span> <span class="ow">in</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3"></a>        <span class="n">meow</span><span class="p">()</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4"></a>
+<a id="__codelineno-19-5" name="__codelineno-19-5"></a><span class="k">def</span> <span class="nf">meow</span><span class="p">():</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;meow&quot;</span><span class="p">)</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7"></a>
+<a id="__codelineno-19-8" name="__codelineno-19-8"></a><span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>Now, by the time we actually call our <code>main</code> function, the <code>meow</code> function will already have been defined.</li>
+</ul>
+<p>Our functions could take inputs, too:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span>
+<span class="normal"><a href="#__codelineno-20-2">2</a></span>
+<span class="normal"><a href="#__codelineno-20-3">3</a></span>
+<span class="normal"><a href="#__codelineno-20-4">4</a></span>
+<span class="normal"><a href="#__codelineno-20-5">5</a></span>
+<span class="normal"><a href="#__codelineno-20-6">6</a></span>
+<span class="normal"><a href="#__codelineno-20-7">7</a></span>
+<span class="normal"><a href="#__codelineno-20-8">8</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2"></a>    <span class="n">meow</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3"></a>
+<a id="__codelineno-20-4" name="__codelineno-20-4"></a><span class="k">def</span> <span class="nf">meow</span><span class="p">(</span><span class="n">times</span><span class="p">):</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">times</span><span class="p">):</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;meow&quot;</span><span class="p">)</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7"></a>
+<a id="__codelineno-20-8" name="__codelineno-20-8"></a><span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="26-variables-scope">2.6. Variables scope</h3>
+<p>We can define a function to get a positive integer:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-21-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-21-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-21-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-21-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-21-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-21-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-21-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-21-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-21-10">10</a></span>
+<span class="normal"><a href="#__codelineno-21-11">11</a></span>
+<span class="normal"><a href="#__codelineno-21-12">12</a></span>
+<span class="normal"><a href="#__codelineno-21-13">13</a></span>
+<span class="normal"><a href="#__codelineno-21-14">14</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="kn">from</span> <span class="nn">cs50</span> <span class="kn">import</span> <span class="n">get_int</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2"></a>
+<a id="__codelineno-21-3" name="__codelineno-21-3"></a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4"></a>    <span class="n">i</span> <span class="o">=</span> <span class="n">get_positive_int</span><span class="p">()</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6"></a>
+<a id="__codelineno-21-7" name="__codelineno-21-7"></a><span class="k">def</span> <span class="nf">get_positive_int</span><span class="p">():</span>
+<a id="__codelineno-21-8" name="__codelineno-21-8"></a>    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<a id="__codelineno-21-9" name="__codelineno-21-9"></a>        <span class="n">n</span> <span class="o">=</span> <span class="n">get_int</span><span class="p">(</span><span class="s2">&quot;Positive integer: &quot;</span><span class="p">)</span>
+<a id="__codelineno-21-10" name="__codelineno-21-10"></a>        <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-21-11" name="__codelineno-21-11"></a>            <span class="k">break</span>
+<a id="__codelineno-21-12" name="__codelineno-21-12"></a>    <span class="k">return</span> <span class="n">n</span>
+<a id="__codelineno-21-13" name="__codelineno-21-13"></a>
+<a id="__codelineno-21-14" name="__codelineno-21-14"></a><span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table>
+<p>Since there's no <code>do-while</code> loop in Python as there is in C, we have a <code>while</code> loop that will go on infinitely, and use <code>break</code> to end the loop as soon as <code>n &gt; 0</code>. Finally, our function will <code>return n</code>, at our original indentation level, outside of the <code>while</code> loop.</p>
+<p>Notice that, the variables in Python are <strong>scoped to functions</strong> by default, meaning that <code>n</code> can be initialized within a loop, but still be accessible later in the function.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1">1</a></span>
+<span class="normal"><a href="#__codelineno-22-2">2</a></span>
+<span class="normal"><a href="#__codelineno-22-3">3</a></span>
+<span class="normal"><a href="#__codelineno-22-4">4</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3"></a><span class="c1"># the variable i is still accessible</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="27-named-arguments">2.7. Named arguments</h3>
+<p>We can print out a row of question marks on the screen:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1">1</a></span>
+<span class="normal"><a href="#__codelineno-23-2">2</a></span>
+<span class="normal"><a href="#__codelineno-23-3">3</a></span>
+<span class="normal"><a href="#__codelineno-23-4">4</a></span>
+<span class="normal"><a href="#__codelineno-23-5">5</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2"></a>    <span class="c1"># named argument &quot;end = &quot;</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;?&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4"></a><span class="c1"># add a newline</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5"></a><span class="nb">print</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table>
+<p>It turns out that <code>print()</code> function will print a newline character automatically by default, if we don't want the automatic new line, we can pass a <strong>named argument</strong>, also known as keyword argument, to the <code>print</code> function, which specifies the value for a specify parameter.</p>
+<p>So far, we've only seen <strong>positional arguments</strong>, where parameters are set based on their position in the function call just like in C.</p>
+<p>Here, we say <code>end=""</code> to specify that nothing should be printed at the end of our string. <code>end</code> is also an <strong>optional argument</strong>, one we don't need pass in, with a default value of <code>\n</code>, which is why <code>print</code> usually adds a new line for us.</p>
+<p>We can also "multiply" a string and print that directly with <code>print("?" * 4)</code>.</p>
+<h3 id="28-overflow-imprecision">2.8. Overflow, Imprecision</h3>
+<p>In Python, trying to cause an integer overflow actually won’t work:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1">1</a></span>
+<span class="normal"><a href="#__codelineno-24-2">2</a></span>
+<span class="normal"><a href="#__codelineno-24-3">3</a></span>
+<span class="normal"><a href="#__codelineno-24-4">4</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2"></a><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4"></a>    <span class="n">i</span> <span class="o">*=</span> <span class="mi">2</span>
+</code></pre></div>
+</td></tr></table>
+<p>We see larger and larger numbers being printed, since Python automatically uses more and more memory to store numbers for us, unlike C where integers are fixed to a certain number of bytes.</p>
+<p>Floating-point imprecision, too, <strong>still exists</strong>, but can be prevented by libraries that can represent decimal numbers with as many bits as are needed.</p>
+<h3 id="29-lists-strings">2.9. Lists, strings</h3>
+<p>We can make a list:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1">1</a></span>
+<span class="normal"><a href="#__codelineno-25-2">2</a></span>
+<span class="normal"><a href="#__codelineno-25-3">3</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">72</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">33</span><span class="p">]</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2"></a>
+<a id="__codelineno-25-3" name="__codelineno-25-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Average: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">scores</span><span class="p">)))</span>
+</code></pre></div>
+</td></tr></table>
+<p>We can use <code>sum</code>, a function built into Python, to add up the values in our list, and divide it by the number of scores, using the <code>len</code> function to get the length of the list. Then, we cast the float to a string before we can concatenate and print it.</p>
+<p>We can even add the entire expression into a formatted string for the same effect:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1">1</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average: </span><span class="si">{</span><span class="nb">sum</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>We can add items to a list with:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-27-1">1</a></span>
+<span class="normal"><a href="#__codelineno-27-2">2</a></span>
+<span class="normal"><a href="#__codelineno-27-3">3</a></span>
+<span class="normal"><a href="#__codelineno-27-4">4</a></span>
+<span class="normal"><a href="#__codelineno-27-5">5</a></span>
+<span class="normal"><a href="#__codelineno-27-6">6</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1"></a><span class="kn">from</span> <span class="nn">cs50</span> <span class="kn">import</span> <span class="n">get_int</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2"></a>
+<a id="__codelineno-27-3" name="__codelineno-27-3"></a><span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5"></a>    <span class="n">scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">get_int</span><span class="p">(</span><span class="s2">&quot;Score: &quot;</span><span class="p">))</span>
+<a id="__codelineno-27-6" name="__codelineno-27-6"></a><span class="o">...</span>
+</code></pre></div>
+</td></tr></table>
+<p>We can iterate over each character in a string:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-28-1">1</a></span>
+<span class="normal"><a href="#__codelineno-28-2">2</a></span>
+<span class="normal"><a href="#__codelineno-28-3">3</a></span>
+<span class="normal"><a href="#__codelineno-28-4">4</a></span>
+<span class="normal"><a href="#__codelineno-28-5">5</a></span>
+<span class="normal"><a href="#__codelineno-28-6">6</a></span>
+<span class="normal"><a href="#__codelineno-28-7">7</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1"></a><span class="kn">from</span> <span class="nn">cs50</span> <span class="kn">import</span> <span class="n">get_string</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2"></a>
+<a id="__codelineno-28-3" name="__codelineno-28-3"></a><span class="n">s</span> <span class="o">=</span> <span class="n">get_string</span><span class="p">(</span><span class="s2">&quot;Before:  &quot;</span><span class="p">)</span>
+<a id="__codelineno-28-4" name="__codelineno-28-4"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;After: &quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<a id="__codelineno-28-5" name="__codelineno-28-5"></a><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+<a id="__codelineno-28-6" name="__codelineno-28-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<a id="__codelineno-28-7" name="__codelineno-28-7"></a><span class="nb">print</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>
+<p>Python will iterate over each character in the string for us with just <code>for c in s</code>.</p>
+</li>
+<li>
+<p>To make a string uppercase, we can also just call <code>s.upper()</code>, without having to iterate over each character ourselves.</p>
+</li>
+</ul>
+<h3 id="210-command-line-arguments-exit-codes">2.10. Command-line arguments, exit codes</h3>
+<p>We can take <strong>command-line arguments</strong> with:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-29-1">1</a></span>
+<span class="normal"><a href="#__codelineno-29-2">2</a></span>
+<span class="normal"><a href="#__codelineno-29-3">3</a></span>
+<span class="normal"><a href="#__codelineno-29-4">4</a></span>
+<span class="normal"><a href="#__codelineno-29-5">5</a></span>
+<span class="normal"><a href="#__codelineno-29-6">6</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1"></a><span class="kn">from</span> <span class="nn">sys</span> <span class="kn">import</span> <span class="n">argv</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2"></a>
+<a id="__codelineno-29-3" name="__codelineno-29-3"></a><span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;hello, </span><span class="si">{</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5"></a><span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-29-6" name="__codelineno-29-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, World&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>We import <code>argv</code> from <code>sys</code>, or system module, built into Python.</li>
+<li>Since <code>argv</code> is a list, we can get the second item with <code>argv[1]</code>.</li>
+<li>Like in C, <code>argv[0]</code> would be the name of our program, like <code>argv.py</code>.</li>
+</ul>
+<p>We can return <strong>exit codes</strong> when our program exits, too:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-30-1">1</a></span>
+<span class="normal"><a href="#__codelineno-30-2">2</a></span>
+<span class="normal"><a href="#__codelineno-30-3">3</a></span>
+<span class="normal"><a href="#__codelineno-30-4">4</a></span>
+<span class="normal"><a href="#__codelineno-30-5">5</a></span>
+<span class="normal"><a href="#__codelineno-30-6">6</a></span>
+<span class="normal"><a href="#__codelineno-30-7">7</a></span>
+<span class="normal"><a href="#__codelineno-30-8">8</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1"></a><span class="kn">import</span> <span class="nn">sys</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2"></a>
+<a id="__codelineno-30-3" name="__codelineno-30-3"></a><span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+<a id="__codelineno-30-4" name="__codelineno-30-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Missing command-line argument.&quot;</span><span class="p">)</span>
+<a id="__codelineno-30-5" name="__codelineno-30-5"></a>    <span class="c1"># same as return 1 in C</span>
+<a id="__codelineno-30-6" name="__codelineno-30-6"></a>    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-30-7" name="__codelineno-30-7"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;hello, </span><span class="si">{</span><span class="n">world</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-30-8" name="__codelineno-30-8"></a><span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>We import the entire <code>sys</code> module now, since we’re using multiple components of it. Now we can use <code>sys.argv</code> and <code>sys.exit()</code> to exit our program with a specific code.</p>
+<h3 id="211-algorithms">2.11. Algorithms</h3>
+<p>We can implement linear search by just checking each element in a list:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-31-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-31-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-31-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-31-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-31-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-31-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-31-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-31-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-31-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-31-10">10</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1"></a><span class="kn">import</span> <span class="nn">sys</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2"></a>
+<a id="__codelineno-31-3" name="__codelineno-31-3"></a><span class="n">number</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4"></a>
+<a id="__codelineno-31-5" name="__codelineno-31-5"></a><span class="k">if</span> <span class="mi">0</span> <span class="ow">in</span> <span class="n">number</span><span class="p">:</span>
+<a id="__codelineno-31-6" name="__codelineno-31-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Found.&quot;</span><span class="p">)</span>
+<a id="__codelineno-31-7" name="__codelineno-31-7"></a>    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-31-8" name="__codelineno-31-8"></a>
+<a id="__codelineno-31-9" name="__codelineno-31-9"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Not found.&quot;</span><span class="p">)</span>
+<a id="__codelineno-31-10" name="__codelineno-31-10"></a><span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>With <code>if 0 in numbers:</code>, we’re asking Python to check the list for us.</li>
+</ul>
+<p>A list of strings, too, can be searched with:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-32-1">1</a></span>
+<span class="normal"><a href="#__codelineno-32-2">2</a></span>
+<span class="normal"><a href="#__codelineno-32-3">3</a></span>
+<span class="normal"><a href="#__codelineno-32-4">4</a></span>
+<span class="normal"><a href="#__codelineno-32-5">5</a></span>
+<span class="normal"><a href="#__codelineno-32-6">6</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1"></a><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Bill&quot;</span><span class="p">,</span> <span class="s2">&quot;Charlie&quot;</span><span class="p">,</span> <span class="s2">&quot;Fred&quot;</span><span class="p">,</span> <span class="s2">&quot;George&quot;</span><span class="p">,</span> <span class="s2">&quot;Ginny&quot;</span><span class="p">,</span> <span class="s2">&quot;Percy&quot;</span><span class="p">,</span> <span class="s2">&quot;Ron&quot;</span><span class="p">]</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2"></a>
+<a id="__codelineno-32-3" name="__codelineno-32-3"></a><span class="k">if</span> <span class="s2">&quot;Ron&quot;</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+<a id="__codelineno-32-4" name="__codelineno-32-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Found&quot;</span><span class="p">)</span>
+<a id="__codelineno-32-5" name="__codelineno-32-5"></a><span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-32-6" name="__codelineno-32-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Not found&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>If we have a dictionary, a set of key-value pairs, we can also check for a particular key, and look at the value stored for it:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-33-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-33-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-33-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-33-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-33-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-33-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-33-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-33-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-33-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-33-10">10</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1"></a><span class="kn">from</span> <span class="nn">cs50</span> <span class="kn">import</span> <span class="n">get_string</span>
+<a id="__codelineno-33-2" name="__codelineno-33-2"></a>
+<a id="__codelineno-33-3" name="__codelineno-33-3"></a><span class="n">people</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-33-4" name="__codelineno-33-4"></a>    <span class="s2">&quot;Brian&quot;</span><span class="p">:</span> <span class="s2">&quot;+1-617-495-1000&quot;</span><span class="p">,</span>
+<a id="__codelineno-33-5" name="__codelineno-33-5"></a>    <span class="s2">&quot;David&quot;</span><span class="p">:</span> <span class="s2">&quot;+1-949-468-2750&quot;</span>
+<a id="__codelineno-33-6" name="__codelineno-33-6"></a><span class="p">}</span>
+<a id="__codelineno-33-7" name="__codelineno-33-7"></a>
+<a id="__codelineno-33-8" name="__codelineno-33-8"></a><span class="n">name</span> <span class="o">=</span> <span class="n">get_string</span><span class="p">(</span><span class="s2">&quot;Name: &quot;</span><span class="p">)</span>
+<a id="__codelineno-33-9" name="__codelineno-33-9"></a><span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">people</span><span class="p">:</span>
+<a id="__codelineno-33-10" name="__codelineno-33-10"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number: </span><span class="si">{</span><span class="n">people</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>We first declare a dictionary, <code>people</code>, where the keys are strings of each name we want to store, and the value we want to associate with each key is a string of a corresponding phone number.</li>
+<li>Then, we use <code>if name in people:</code> to search the keys of our dictionary for a <code>name</code>. If the key exists, then we can get the value with the bracket notation, <code>people[name]</code>, much like indexing into an array with C, except here we use a string instead of an integer.</li>
+<li>Dictionaries, as well as sets, are typically implemented in Python with a data structure like a hash table, so we can have close to constant time lookup. Again, we have the tradeoff of having less control over exactly what happens under the hood, like being able to choose a hash function, with the benefit of having to do less work ourselves.</li>
+</ul>
+<p>Swapping two variables can also be done simply by assigning both values at the same time:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-34-1">1</a></span>
+<span class="normal"><a href="#__codelineno-34-2">2</a></span>
+<span class="normal"><a href="#__codelineno-34-3">3</a></span>
+<span class="normal"><a href="#__codelineno-34-4">4</a></span>
+<span class="normal"><a href="#__codelineno-34-5">5</a></span>
+<span class="normal"><a href="#__codelineno-34-6">6</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1"></a><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<a id="__codelineno-34-2" name="__codelineno-34-2"></a><span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
+<a id="__codelineno-34-3" name="__codelineno-34-3"></a>
+<a id="__codelineno-34-4" name="__codelineno-34-4"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x is </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">, y is </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-34-5" name="__codelineno-34-5"></a><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span>
+<a id="__codelineno-34-6" name="__codelineno-34-6"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x is </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">, y is </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>In Python, we don’t have access to pointers, which protects us from making mistakes with memory.</li>
+</ul>
+<h2 id="3-files">3. Files</h2>
+<h3 id="31-csv-file">3.1. CSV file</h3>
+<p>Let's open a CSV file (comma-separated values):</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-35-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-35-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-35-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-35-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-35-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-35-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-35-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-35-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-35-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-35-10">10</a></span>
+<span class="normal"><a href="#__codelineno-35-11">11</a></span>
+<span class="normal"><a href="#__codelineno-35-12">12</a></span>
+<span class="normal"><a href="#__codelineno-35-13">13</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1"></a><span class="kn">import</span> <span class="nn">csv</span>
+<a id="__codelineno-35-2" name="__codelineno-35-2"></a>
+<a id="__codelineno-35-3" name="__codelineno-35-3"></a><span class="kn">from</span> <span class="nn">cs50</span> <span class="kn">import</span> <span class="n">get_string</span>
+<a id="__codelineno-35-4" name="__codelineno-35-4"></a>
+<a id="__codelineno-35-5" name="__codelineno-35-5"></a><span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;phonebook.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<a id="__codelineno-35-6" name="__codelineno-35-6"></a>
+<a id="__codelineno-35-7" name="__codelineno-35-7"></a><span class="n">name</span> <span class="o">=</span> <span class="n">get_string</span><span class="p">(</span><span class="s2">&quot;Name: &quot;</span><span class="p">)</span>
+<a id="__codelineno-35-8" name="__codelineno-35-8"></a><span class="n">number</span> <span class="o">=</span> <span class="n">get_string</span><span class="p">(</span><span class="s2">&quot;Number: &quot;</span><span class="p">)</span>
+<a id="__codelineno-35-9" name="__codelineno-35-9"></a>
+<a id="__codelineno-35-10" name="__codelineno-35-10"></a><span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+<a id="__codelineno-35-11" name="__codelineno-35-11"></a><span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="n">name</span><span class="p">,</span> <span class="n">number</span><span class="p">])</span>
+<a id="__codelineno-35-12" name="__codelineno-35-12"></a>
+<a id="__codelineno-35-13" name="__codelineno-35-13"></a><span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table>
+<p>It turns out that Python also has a <code>csv</code> library that helps us work with CSV files, so after we open the file for <strong>a</strong>ppending, we can call <code>csv.writer</code> to create a <code>writer</code> from the file, which gives additional functionality, like <code>writer.writerow</code> to write a list as row.</p>
+<h3 id="32-with-and-as-keyword">3.2. with and as keyword</h3>
+<p>We can use the <code>with</code> keyword, which will close the file for us after we're finished.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-36-1">1</a></span>
+<span class="normal"><a href="#__codelineno-36-2">2</a></span>
+<span class="normal"><a href="#__codelineno-36-3">3</a></span>
+<span class="normal"><a href="#__codelineno-36-4">4</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1"></a><span class="c1"># after get name and number from user&#39;s input</span>
+<a id="__codelineno-36-2" name="__codelineno-36-2"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;phonebook.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+<a id="__codelineno-36-3" name="__codelineno-36-3"></a>    <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+<a id="__codelineno-36-4" name="__codelineno-36-4"></a>    <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">((</span><span class="n">name</span><span class="p">,</span> <span class="n">number</span><span class="p">))</span>
+</code></pre></div>
+</td></tr></table>
+<p>We can open another CSV file, tallying the number of times a value appears:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-37-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-37-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-37-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-37-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-37-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-37-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-37-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-37-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-37-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-37-10">10</a></span>
+<span class="normal"><a href="#__codelineno-37-11">11</a></span>
+<span class="normal"><a href="#__codelineno-37-12">12</a></span>
+<span class="normal"><a href="#__codelineno-37-13">13</a></span>
+<span class="normal"><a href="#__codelineno-37-14">14</a></span>
+<span class="normal"><a href="#__codelineno-37-15">15</a></span>
+<span class="normal"><a href="#__codelineno-37-16">16</a></span>
+<span class="normal"><a href="#__codelineno-37-17">17</a></span>
+<span class="normal"><a href="#__codelineno-37-18">18</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1"></a><span class="kn">import</span> <span class="nn">csv</span>
+<a id="__codelineno-37-2" name="__codelineno-37-2"></a>
+<a id="__codelineno-37-3" name="__codelineno-37-3"></a><span class="n">houses</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-37-4" name="__codelineno-37-4"></a>    <span class="s2">&quot;Gryffindor&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+<a id="__codelineno-37-5" name="__codelineno-37-5"></a>    <span class="s2">&quot;Hufflepuff&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+<a id="__codelineno-37-6" name="__codelineno-37-6"></a>    <span class="s2">&quot;Ravenclaw&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+<a id="__codelineno-37-7" name="__codelineno-37-7"></a>    <span class="s2">&quot;Slytherin&quot;</span><span class="p">:</span> <span class="mi">0</span>
+<a id="__codelineno-37-8" name="__codelineno-37-8"></a><span class="p">}</span>
+<a id="__codelineno-37-9" name="__codelineno-37-9"></a>
+<a id="__codelineno-37-10" name="__codelineno-37-10"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;Sorting Hat (Responses) - Form Responses 1.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+<a id="__codelineno-37-11" name="__codelineno-37-11"></a>    <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+<a id="__codelineno-37-12" name="__codelineno-37-12"></a>    <span class="nb">next</span><span class="p">(</span><span class="n">reader</span><span class="p">)</span>
+<a id="__codelineno-37-13" name="__codelineno-37-13"></a>    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
+<a id="__codelineno-37-14" name="__codelineno-37-14"></a>        <span class="n">house</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-37-15" name="__codelineno-37-15"></a>        <span class="n">houses</span><span class="p">[</span><span class="n">house</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-37-16" name="__codelineno-37-16"></a>
+<a id="__codelineno-37-17" name="__codelineno-37-17"></a><span class="k">for</span> <span class="n">house</span> <span class="ow">in</span> <span class="n">houses</span><span class="p">:</span>
+<a id="__codelineno-37-18" name="__codelineno-37-18"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">house</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">houses</span><span class="p">[</span><span class="n">house</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>We use the <code>reader</code> function from the <code>csv</code> library, skip the header row with <code>next(reader)</code>, and then iterate over each of the rest of the rows.</p>
+<p>The second item in each row, <code>row[1]</code>, is the string of a house, so we can use that to access the value stored in <code>houses</code> for that key, and add one to it.</p>
+<p>Finally, we’ll print out the count for each house.</p>
+<h2 id="3-more-libraries">3. More libraries</h2>
+<h3 id="31-pyttsx3-library">3.1. pyttsx3 library</h3>
+<p>On our own Mac or PC, we can open a terminal after installing Python, and use another library to convert text to speech:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-38-1">1</a></span>
+<span class="normal"><a href="#__codelineno-38-2">2</a></span>
+<span class="normal"><a href="#__codelineno-38-3">3</a></span>
+<span class="normal"><a href="#__codelineno-38-4">4</a></span>
+<span class="normal"><a href="#__codelineno-38-5">5</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1"></a><span class="kn">import</span> <span class="nn">pyttsx3</span>
+<a id="__codelineno-38-2" name="__codelineno-38-2"></a>
+<a id="__codelineno-38-3" name="__codelineno-38-3"></a><span class="n">engine</span> <span class="o">=</span> <span class="n">pyttsx3</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+<a id="__codelineno-38-4" name="__codelineno-38-4"></a><span class="n">engine</span><span class="o">.</span><span class="n">say</span><span class="p">(</span><span class="s2">&quot;hello, world&quot;</span><span class="p">)</span>
+<a id="__codelineno-38-5" name="__codelineno-38-5"></a><span class="n">engine</span><span class="o">.</span><span class="n">runAndWait</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>By reading the documentation, we can figure out how to initialize the library, and say a string.</li>
+<li>We can even pass in a format string with <code>engine.say(f"hello, {name}")</code> to say some input.</li>
+</ul>
+<h3 id="32-face_recognition">3.2. face_recognition</h3>
+<p>We can use another library, <code>face_recognition</code>, to find faces in images:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-39-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-39-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-39-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-39-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-39-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-39-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-39-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-39-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-39-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-39-10">10</a></span>
+<span class="normal"><a href="#__codelineno-39-11">11</a></span>
+<span class="normal"><a href="#__codelineno-39-12">12</a></span>
+<span class="normal"><a href="#__codelineno-39-13">13</a></span>
+<span class="normal"><a href="#__codelineno-39-14">14</a></span>
+<span class="normal"><a href="#__codelineno-39-15">15</a></span>
+<span class="normal"><a href="#__codelineno-39-16">16</a></span>
+<span class="normal"><a href="#__codelineno-39-17">17</a></span>
+<span class="normal"><a href="#__codelineno-39-18">18</a></span>
+<span class="normal"><a href="#__codelineno-39-19">19</a></span>
+<span class="normal"><a href="#__codelineno-39-20">20</a></span>
+<span class="normal"><a href="#__codelineno-39-21">21</a></span>
+<span class="normal"><a href="#__codelineno-39-22">22</a></span>
+<span class="normal"><a href="#__codelineno-39-23">23</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1"></a><span class="c1"># Find faces in picture</span>
+<a id="__codelineno-39-2" name="__codelineno-39-2"></a><span class="c1"># https://github.com/ageitgey/face_recognition/blob/master/examples/find_faces_in_picture.py</span>
+<a id="__codelineno-39-3" name="__codelineno-39-3"></a>
+<a id="__codelineno-39-4" name="__codelineno-39-4"></a><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<a id="__codelineno-39-5" name="__codelineno-39-5"></a><span class="kn">import</span> <span class="nn">face_recognition</span>
+<a id="__codelineno-39-6" name="__codelineno-39-6"></a>
+<a id="__codelineno-39-7" name="__codelineno-39-7"></a><span class="c1"># Load the jpg file into a numpy array</span>
+<a id="__codelineno-39-8" name="__codelineno-39-8"></a><span class="n">image</span> <span class="o">=</span> <span class="n">face_recognition</span><span class="o">.</span><span class="n">load_image_file</span><span class="p">(</span><span class="s2">&quot;office.jpg&quot;</span><span class="p">)</span>
+<a id="__codelineno-39-9" name="__codelineno-39-9"></a>
+<a id="__codelineno-39-10" name="__codelineno-39-10"></a><span class="c1"># Find all the faces in the image using the default HOG-based model.</span>
+<a id="__codelineno-39-11" name="__codelineno-39-11"></a><span class="c1"># This method is fairly accurate, but not as accurate as the CNN model and not GPU accelerated.</span>
+<a id="__codelineno-39-12" name="__codelineno-39-12"></a><span class="c1"># See also: find_faces_in_picture_cnn.py</span>
+<a id="__codelineno-39-13" name="__codelineno-39-13"></a><span class="n">face_locations</span> <span class="o">=</span> <span class="n">face_recognition</span><span class="o">.</span><span class="n">face_locations</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<a id="__codelineno-39-14" name="__codelineno-39-14"></a>
+<a id="__codelineno-39-15" name="__codelineno-39-15"></a><span class="k">for</span> <span class="n">face_location</span> <span class="ow">in</span> <span class="n">face_locations</span><span class="p">:</span>
+<a id="__codelineno-39-16" name="__codelineno-39-16"></a>
+<a id="__codelineno-39-17" name="__codelineno-39-17"></a>    <span class="c1"># Print the location of each face in this image</span>
+<a id="__codelineno-39-18" name="__codelineno-39-18"></a>    <span class="n">top</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">bottom</span><span class="p">,</span> <span class="n">left</span> <span class="o">=</span> <span class="n">face_location</span>
+<a id="__codelineno-39-19" name="__codelineno-39-19"></a>
+<a id="__codelineno-39-20" name="__codelineno-39-20"></a>    <span class="c1"># You can access the actual face itself like this:</span>
+<a id="__codelineno-39-21" name="__codelineno-39-21"></a>    <span class="n">face_image</span> <span class="o">=</span> <span class="n">image</span><span class="p">[</span><span class="n">top</span><span class="p">:</span><span class="n">bottom</span><span class="p">,</span> <span class="n">left</span><span class="p">:</span><span class="n">right</span><span class="p">]</span>
+<a id="__codelineno-39-22" name="__codelineno-39-22"></a>    <span class="n">pil_image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">face_image</span><span class="p">)</span>
+<a id="__codelineno-39-23" name="__codelineno-39-23"></a>    <span class="n">pil_image</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table>
+<p>With <a href="https://cdn.cs50.net/2020/fall/lectures/6/src6/6/faces/recognize.py">recognize.py</a>, we can write a program that finds a match for a particular face.</p>
+<h3 id="33-qrcode">3.3. qrcode</h3>
+<p>We can create a QR code, or two-dimensional barcode, with another library:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-40-1">1</a></span>
+<span class="normal"><a href="#__codelineno-40-2">2</a></span>
+<span class="normal"><a href="#__codelineno-40-3">3</a></span>
+<span class="normal"><a href="#__codelineno-40-4">4</a></span>
+<span class="normal"><a href="#__codelineno-40-5">5</a></span>
+<span class="normal"><a href="#__codelineno-40-6">6</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1"></a><span class="kn">import</span> <span class="nn">os</span>
+<a id="__codelineno-40-2" name="__codelineno-40-2"></a><span class="kn">import</span> <span class="nn">qrcode</span>
+<a id="__codelineno-40-3" name="__codelineno-40-3"></a>
+<a id="__codelineno-40-4" name="__codelineno-40-4"></a><span class="n">img</span> <span class="o">=</span> <span class="n">qrcode</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;https://youtu.be/oHg5SJYRHA0&quot;</span><span class="p">)</span>
+<a id="__codelineno-40-5" name="__codelineno-40-5"></a><span class="n">img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;qr.png&quot;</span><span class="p">,</span> <span class="s2">&quot;PNG&quot;</span><span class="p">)</span>
+<a id="__codelineno-40-6" name="__codelineno-40-6"></a><span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;open qr.png&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="34-speech_recognition">3.4. speech_recognition</h3>
+<p>We can recognize audio input from a microphone:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-41-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-41-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-41-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-41-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-41-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-41-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-41-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-41-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-41-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-41-10">10</a></span>
+<span class="normal"><a href="#__codelineno-41-11">11</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1"></a><span class="kn">import</span> <span class="nn">speech_recognition</span>
+<a id="__codelineno-41-2" name="__codelineno-41-2"></a>
+<a id="__codelineno-41-3" name="__codelineno-41-3"></a><span class="c1"># Obtain audio from the microphone</span>
+<a id="__codelineno-41-4" name="__codelineno-41-4"></a><span class="n">recognizer</span> <span class="o">=</span> <span class="n">speech_recognition</span><span class="o">.</span><span class="n">Recognizer</span><span class="p">()</span>
+<a id="__codelineno-41-5" name="__codelineno-41-5"></a><span class="k">with</span> <span class="n">speech_recognition</span><span class="o">.</span><span class="n">Microphone</span><span class="p">()</span> <span class="k">as</span> <span class="n">source</span><span class="p">:</span>
+<a id="__codelineno-41-6" name="__codelineno-41-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Say something:&quot;</span><span class="p">)</span>
+<a id="__codelineno-41-7" name="__codelineno-41-7"></a>    <span class="n">audio</span> <span class="o">=</span> <span class="n">recognizer</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+<a id="__codelineno-41-8" name="__codelineno-41-8"></a>
+<a id="__codelineno-41-9" name="__codelineno-41-9"></a><span class="c1"># Recognize speech using Google Speech Recognition</span>
+<a id="__codelineno-41-10" name="__codelineno-41-10"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You said:&quot;</span><span class="p">)</span>
+<a id="__codelineno-41-11" name="__codelineno-41-11"></a><span class="nb">print</span><span class="p">(</span><span class="n">recognizer</span><span class="o">.</span><span class="n">recognize_google</span><span class="p">(</span><span class="n">audio</span><span class="p">))</span>
+</code></pre></div>
+</td></tr></table>
+<p>We’re following the documentation of the library to listen to our microphone and convert it to text.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-42-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-42-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-42-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-42-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-42-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-42-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-42-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-42-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-42-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-42-10">10</a></span>
+<span class="normal"><a href="#__codelineno-42-11">11</a></span>
+<span class="normal"><a href="#__codelineno-42-12">12</a></span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1"></a><span class="o">...</span>
+<a id="__codelineno-42-2" name="__codelineno-42-2"></a><span class="n">words</span> <span class="o">=</span> <span class="n">recognizer</span><span class="o">.</span><span class="n">recognize_google</span><span class="p">(</span><span class="n">audio</span><span class="p">)</span>
+<a id="__codelineno-42-3" name="__codelineno-42-3"></a>
+<a id="__codelineno-42-4" name="__codelineno-42-4"></a><span class="c1"># Respond to speech</span>
+<a id="__codelineno-42-5" name="__codelineno-42-5"></a><span class="k">if</span> <span class="s2">&quot;hello&quot;</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+<a id="__codelineno-42-6" name="__codelineno-42-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello to you too!&quot;</span><span class="p">)</span>
+<a id="__codelineno-42-7" name="__codelineno-42-7"></a><span class="k">elif</span> <span class="s2">&quot;how are you&quot;</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+<a id="__codelineno-42-8" name="__codelineno-42-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I am well, thanks!&quot;</span><span class="p">)</span>
+<a id="__codelineno-42-9" name="__codelineno-42-9"></a><span class="k">elif</span> <span class="s2">&quot;goodbye&quot;</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+<a id="__codelineno-42-10" name="__codelineno-42-10"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Goodbye to you too!&quot;</span><span class="p">)</span>
+<a id="__codelineno-42-11" name="__codelineno-42-11"></a><span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-42-12" name="__codelineno-42-12"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Huh?&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>Finally, we use another, more sophisticated program to generate deepfakes, or realistic-appearing but computer-generated videos of various personalities.</li>
+<li>By taking advantage of all these libraries that are freely available online, we can easily add advanced functionality to our own applications.</li>
+</ul>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 23, 2022</span>
+      
+    
+  </small>
+</div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="页脚">
+      
+        
+        <a href="../0x05_Data_Structures/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Lec 05: Data Structures" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              Lec 05: Data Structures
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../0x07_SQL/" class="md-footer__link md-footer__link--next" aria-label="下一页: Lec 07: SQL" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              Lec 07: SQL
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "toc.follow", "toc.intergrate"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

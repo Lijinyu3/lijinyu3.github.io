@@ -6,7 +6,52 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://206031.com/about/</loc>
+         <loc>https://206031.com/notes/Harvard_CS50/0x00_Scratch/</loc>
+         <lastmod>2022-04-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://206031.com/notes/Harvard_CS50/0x01_C/</loc>
+         <lastmod>2022-04-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://206031.com/notes/Harvard_CS50/0x02_Arrays/</loc>
+         <lastmod>2022-04-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://206031.com/notes/Harvard_CS50/0x03_Algorithms/</loc>
+         <lastmod>2022-04-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://206031.com/notes/Harvard_CS50/0x04_Memory/</loc>
+         <lastmod>2022-04-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://206031.com/notes/Harvard_CS50/0x05_Data_Structures/</loc>
+         <lastmod>2022-04-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://206031.com/notes/Harvard_CS50/0x06_Python/</loc>
+         <lastmod>2022-04-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://206031.com/notes/Harvard_CS50/0x07_SQL/</loc>
+         <lastmod>2022-04-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://206031.com/notes/Harvard_CS50/0x08_HTML%2C%20CSS%2C%20JavaScript/</loc>
+         <lastmod>2022-04-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://206031.com/notes/Harvard_CS50/0xFF_Syllabus/</loc>
          <lastmod>2022-04-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
