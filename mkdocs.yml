@@ -15,7 +15,14 @@ extra_javascript:
 nav:
   - Home: index.md
   - About: about.md
+  - 测试:
+    - 'test': 'test/tt.md'
 theme:
+  features:
+    - navigation.tabs
+    - navigation.top
+    - toc.follow
+    - toc.intergrate
   name: material
   language: zh
   font:
@@ -30,12 +37,12 @@ theme:
     - media: "(prefers-color-scheme: light)"
       scheme: deep purple
       toggle:
-        icon: material/lightbulb-outline
+        icon: material/lightbulb
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       toggle:
-        icon: material/lightbulb
+        icon: material/lightbulb-outline
         name: Switch to light mode
 
 plugins:
