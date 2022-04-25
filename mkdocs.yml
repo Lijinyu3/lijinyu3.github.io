@@ -15,8 +15,9 @@ extra_javascript:
 nav:
   - Home: index.md
   - Notes:
+    - Home: 'notes/index.md'
     - 'Harvard CS50':
-      - 'Syllabus': 'notes/Harvard_CS50/0xFF_Syllabus.md'
+      - 'Syllabus': 'notes/Harvard_CS50/index.md'
       - 'Lec 00: Scratch': 'notes/Harvard_CS50/0x00_Scratch.md'
       - 'Lec 01: C': 'notes/Harvard_CS50/0x01_C.md'
       - 'Lec 02: Arrays': 'notes/Harvard_CS50/0x02_Arrays.md'
