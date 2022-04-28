@@ -29,7 +29,11 @@ nav:
       - 'Lec 08: HTML, CSS, JS': 'notes/Harvard_CS50/0x08_HTML, CSS, JavaScript.md'
     - 'MIT 6.NULL': 'notes/MIT_6.NULL/'
       #      - 'Lec0. Scratch': 'notes/Harvard_CS50/0x00_Scratch.md'
-      # - 'test': 'notes/Harvard_CS50/test.md'
+  - 'test':
+    - 'MIT 6.824':
+      - 'lab 2': 'test/MIT_6.824/lab2.md'
+  - '随笔':
+    - '为什么写博客': 'essays/why_blog.md'
 theme:
   features:
     - navigation.tabs
