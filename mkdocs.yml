@@ -34,6 +34,22 @@ nav:
       - 'lab 2': 'test/MIT_6.824/lab2.md'
   - '随笔':
     - '为什么写博客': 'essays/why_blog.md'
+  - '算法刷题':
+    - '算法基础':
+      - '基础算法':
+        - '0x01 快排': 'algorithms/algr_basis/0x00_Basic_Algorithms/0x01_quick_sort.md'
+        - '0x02 归并': 'algorithms/algr_basis/0x00_Basic_Algorithms/0x02_merge_sort.md'
+        - '0x03 二分': 'algorithms/algr_basis/0x00_Basic_Algorithms/0x03_binary_search.md'
+        - '0x04 高精度': 'algorithms/algr_basis/0x00_Basic_Algorithms/0x04_high_presicion.md'
+        - '0x05 前缀和&&差分': 'algorithms/algr_basis/0x00_Basic_Algorithms/0x05_prefix_sum&&difference.md'
+        - '0x06 双指针': 'algorithms/algr_basis/0x00_Basic_Algorithms/0x06_two_pointers.md'
+        - '0x07 low bit': 'algorithms/algr_basis/0x00_Basic_Algorithms/0x07_low_bit.md'
+        - '0x08 离散化': 'algorithms/algr_basis/0x00_Basic_Algorithms/0x08_discretization.md'
+        - '0x09 区间合并': 'algorithms/algr_basis/0x00_Basic_Algorithms/0x09_intervals_merge.md'
+      - '基础数据结构':
+        - '0x11 链表': 'algorithms/algr_basis/0x10_Data_Structures/0x11_linked_lists.md'
+        - '0x12 栈和队列': 'algorithms/algr_basis/0x10_Data_Structures/0x12_stacks_and_queues.md'
+
 theme:
   features:
     - navigation.tabs
