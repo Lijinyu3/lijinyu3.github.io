@@ -49,6 +49,7 @@ nav:
       - '基础数据结构':
         - '0x11 链表': 'algorithms/algr_basis/0x10_Data_Structures/0x11_linked_lists.md'
         - '0x12 栈和队列': 'algorithms/algr_basis/0x10_Data_Structures/0x12_stacks_and_queues.md'
+        - '0x13 KMP': 'algorithms/algr_basis/0x10_Data_Structures/0x13_kmp.md'
 
 theme:
   features:
