@@ -29,6 +29,8 @@ nav:
       - 'Lec 08: HTML, CSS, JS': 'notes/Harvard_CS50/0x08_HTML, CSS, JavaScript.md'
     - 'MIT 6.NULL': 'notes/MIT_6.NULL/'
       #      - 'Lec0. Scratch': 'notes/Harvard_CS50/0x00_Scratch.md'
+    - 'Calculus':
+      - '二项式定理': 'notes/Calculus/binomial_theorem.md'
   - 'test':
     - 'MIT 6.824':
       - 'lab 2': 'test/MIT_6.824/lab2.md'
