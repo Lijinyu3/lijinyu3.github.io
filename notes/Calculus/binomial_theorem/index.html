@@ -12,14 +12,14 @@
         <meta name="author" content="enotaa33@gmail.com">
       
       
-        <link rel="canonical" href="https://206031.com/notes/Harvard_CS50/0x03_Algorithms/">
+        <link rel="canonical" href="https://206031.com/notes/Calculus/binomial_theorem/">
       
       <link rel="icon" href="../../../img/favicon.ico">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.3">
     
     
       
-        <title>Lec 03: Algorithms - Li's blog</title>
+        <title>二项式定理 - Li's blog</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-searching" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -103,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Lec 03: Algorithms
+              二项式定理
             
           </span>
         </div>
@@ -400,14 +400,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
       
       
       
@@ -430,7 +428,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../Harvard_CS50/" class="md-nav__link">
         Syllabus
       </a>
     </li>
@@ -444,7 +442,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../0x00_Scratch/" class="md-nav__link">
+      <a href="../../Harvard_CS50/0x00_Scratch/" class="md-nav__link">
         Lec 00: Scratch
       </a>
     </li>
@@ -458,7 +456,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../0x01_C/" class="md-nav__link">
+      <a href="../../Harvard_CS50/0x01_C/" class="md-nav__link">
         Lec 01: C
       </a>
     </li>
@@ -472,7 +470,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../0x02_Arrays/" class="md-nav__link">
+      <a href="../../Harvard_CS50/0x02_Arrays/" class="md-nav__link">
         Lec 02: Arrays
       </a>
     </li>
@@ -484,150 +482,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Lec 03: Algorithms
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../Harvard_CS50/0x03_Algorithms/" class="md-nav__link">
         Lec 03: Algorithms
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-searching" class="md-nav__link">
-    1. Searching
-  </a>
-  
-    <nav class="md-nav" aria-label="1. Searching">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#11-running-time-big-o-big" class="md-nav__link">
-    1.1. Running time, Big O, Big Ω
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#12-t-function-vs-big-o" class="md-nav__link">
-    1.2. T function vs Big O
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#13-linear-search-binary-search" class="md-nav__link">
-    1.3. Linear search, binary search
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-structs" class="md-nav__link">
-    2. Structs
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-sorting" class="md-nav__link">
-    3. Sorting
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Sorting">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#31-tradeoff" class="md-nav__link">
-    3.1. Tradeoff
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#32-selection-sort" class="md-nav__link">
-    3.2. Selection sort
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#33-bubble-sort" class="md-nav__link">
-    3.3. Bubble sort
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-recursion" class="md-nav__link">
-    4. Recursion
-  </a>
-  
-    <nav class="md-nav" aria-label="4. Recursion">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#41-merge-sort" class="md-nav__link">
-    4.1. Merge sort
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#42-tradeoff-again" class="md-nav__link">
-    4.2. Tradeoff again
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-another-notation" class="md-nav__link">
-    5. Another notation
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -639,7 +498,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../0x04_Memory/" class="md-nav__link">
+      <a href="../../Harvard_CS50/0x04_Memory/" class="md-nav__link">
         Lec 04: Memory
       </a>
     </li>
@@ -653,7 +512,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../0x05_Data_Structures/" class="md-nav__link">
+      <a href="../../Harvard_CS50/0x05_Data_Structures/" class="md-nav__link">
         Lec 05: Data Structures
       </a>
     </li>
@@ -667,7 +526,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../0x06_Python/" class="md-nav__link">
+      <a href="../../Harvard_CS50/0x06_Python/" class="md-nav__link">
         Lec 06: Python
       </a>
     </li>
@@ -681,7 +540,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../0x07_SQL/" class="md-nav__link">
+      <a href="../../Harvard_CS50/0x07_SQL/" class="md-nav__link">
         Lec 07: SQL
       </a>
     </li>
@@ -695,7 +554,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../0x08_HTML%2C%20CSS%2C%20JavaScript/" class="md-nav__link">
+      <a href="../../Harvard_CS50/0x08_HTML%2C%20CSS%2C%20JavaScript/" class="md-nav__link">
         Lec 08: HTML, CSS, JS
       </a>
     </li>
@@ -728,12 +587,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" checked>
       
       
       
@@ -754,11 +615,100 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../Calculus/binomial_theorem/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          二项式定理
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         二项式定理
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 二项式定理的由来
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 阶乘
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 排列
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 排列">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    3.1. 全排列
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    3.2. 非全排列
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. 组合
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5. 二项式定理
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1224,6 +1174,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1232,30 +1184,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-searching" class="md-nav__link">
-    1. Searching
+  <a href="#1" class="md-nav__link">
+    1. 二项式定理的由来
   </a>
   
-    <nav class="md-nav" aria-label="1. Searching">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 阶乘
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 排列
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 排列">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#11-running-time-big-o-big" class="md-nav__link">
-    1.1. Running time, Big O, Big Ω
+  <a href="#31" class="md-nav__link">
+    3.1. 全排列
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#12-t-function-vs-big-o" class="md-nav__link">
-    1.2. T function vs Big O
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#13-linear-search-binary-search" class="md-nav__link">
-    1.3. Linear search, binary search
+  <a href="#32" class="md-nav__link">
+    3.2. 非全排列
   </a>
   
 </li>
@@ -1266,76 +1225,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-structs" class="md-nav__link">
-    2. Structs
+  <a href="#4" class="md-nav__link">
+    4. 组合
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-sorting" class="md-nav__link">
-    3. Sorting
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Sorting">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#31-tradeoff" class="md-nav__link">
-    3.1. Tradeoff
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#32-selection-sort" class="md-nav__link">
-    3.2. Selection sort
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#33-bubble-sort" class="md-nav__link">
-    3.3. Bubble sort
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-recursion" class="md-nav__link">
-    4. Recursion
-  </a>
-  
-    <nav class="md-nav" aria-label="4. Recursion">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#41-merge-sort" class="md-nav__link">
-    4.1. Merge sort
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#42-tradeoff-again" class="md-nav__link">
-    4.2. Tradeoff again
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-another-notation" class="md-nav__link">
-    5. Another notation
+  <a href="#5" class="md-nav__link">
+    5. 二项式定理
   </a>
   
 </li>
@@ -1352,196 +1250,91 @@
             <article class="md-content__inner md-typeset">
               
                 
-  <a href="https://github.com/Lijinyu3/lijinyu3.github.io/edit/main/docs/notes/Harvard_CS50/0x03_Algorithms.md" title="编辑此页" class="md-content__button md-icon">
+  <a href="https://github.com/Lijinyu3/lijinyu3.github.io/edit/main/docs/notes/Calculus/binomial_theorem.md" title="编辑此页" class="md-content__button md-icon">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
 
-  <h1>Lec 03: Algorithms</h1>
-
-<h2 id="1-searching">1. Searching</h2>
-<p>It turns out that, with arrays, computers cannot look at all of the elements at once. Computers can only <strong>do one thing at a time,</strong> such as look at one element of the array.</p>
-<p>Actually humans are also cannot do this, because there if only are several elements of the array, we could have a glance to see all of this, but how if we have billion or even trillion elements of array? And even there are only several elements, we still look at one element at a time, only we're too fast to sense that.</p>
-<p><strong>Searching</strong> is how we solve problem of finding a particular value. A simple case might have an input of some array of values, and the output might simply be a <code>bool</code> value, whether or not a particular value is in the array.</p>
-<h3 id="11-running-time-big-o-big">1.1. Running time, Big <em>O</em>, Big Ω</h3>
-<p><strong>Running time</strong> is how long an algorithms takes to run given some size of inout.</p>
-<p>And in week 0 we use the notation such as <strong>log<sub>2</sub>n</strong>, <strong>n</strong> and <strong>n/2</strong> to describe running times, the more formal way to describe each of these running times is with <strong>Big <em>O</em> notation</strong>, which we can think of as <strong>on the order of</strong>. </p>
-<p>In Big <em>O</em> notation, we only care about the <strong>dominant factor</strong>, or largest term.</p>
-<p>Also there we have a similar notation called <strong>Big Ω</strong> ,big Omega notation, which is the <strong>lower bound</strong> of number of steps for our algorithms, or the best case. <strong>Big <em>O</em></strong> is the <strong>upper bound</strong> of number of steps, or the worst case.</p>
-<p>There are some common running times in <strong>Big <em>O</em></strong> and <strong>Big Ω</strong>:</p>
-<ul>
-<li><strong><em>O</em>(n^2^)</strong></li>
-<li><strong><em>O</em>(n*log n)</strong></li>
-<li><strong><em>O</em>(n)</strong></li>
-<li><strong><em>O</em>(log n)</strong></li>
-<li><strong><em>O</em>(1)</strong></li>
-<li>An algorithm that takes a <strong>constant</strong> number of steps, regardless of how big the problem is.</li>
-</ul>
-<p>And:</p>
-<ul>
-<li><strong>Ω(n^2^)</strong></li>
-<li><strong>Ω(n*log n)</strong></li>
-<li><strong>Ω(n)</strong></li>
-<li><strong>Ω(log n)</strong></li>
-<li><strong>Ω(1)</strong></li>
-</ul>
-<h3 id="12-t-function-vs-big-o">1.2. T function vs Big O</h3>
-<p>When discussing an algorithm, the common usage of the symbol  𝑇  is to represent its time complexity.</p>
-<p>𝑇  is a function. The input to this function is the input size, the output is the (worst-case) running time for an input of that size.</p>
-<p>Therefore,  𝑇(𝑛)  is a number: the number returned by the function  𝑇  when given the number  𝑛 . This number is the running time of our algorithm on an input of size  𝑛 .</p>
-<p>The  𝑂  in " 𝑂(𝑛) " is not a function. This is Big O notation. In particular, the symbol  𝑂(𝑛)  represents the class of all functions that grow (asymptotically) at most as quickly as the linear function  𝑓(𝑛)=𝑛 .</p>
-<p>Big O notation gives us a convenient way to talk about upper bounds. For example, we can say "the time complexity of this algorithm is  𝑂(𝑛2) " (formally: " 𝑇∈𝑂(𝑛2) ") to say that the running time of the algorithm is at most quadratic in the input size.</p>
-<p>Sometimes, you can see both symbols being used in a single equation. For example, the time complexity of MergeSort is commonly described by the following recurrence: " 𝑇(𝑛)=2𝑇(𝑛/2)+𝑂(𝑛) ".</p>
-<p>The meaning of the above statement: For any  𝑛 , the time  𝑇(𝑛)  needed to sort  𝑛  elements can be computed by taking the time  𝑇(𝑛/2)  needed to sort  𝑛/2  elements, multiplying that time by 2, and adding something extra. That something extra must be at most linear in  𝑛 .</p>
-<h3 id="13-linear-search-binary-search">1.3. Linear search, binary search</h3>
-<p>If we want to look for some number in an array of numbers, the simplest algorithm would be check each of these numbers from left to right, that is <strong>linear search</strong>.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">2</a></span>
-<span class="normal"><a href="#__codelineno-0-3">3</a></span>
-<span class="normal"><a href="#__codelineno-0-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>For i from 0 to n-1:
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a>    If the i&#39;th of array is number:
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a>        Return true
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a>Return false        // Outside the for loop
-</code></pre></div></td></tr></table></div>
-<ul>
-<li>Input: </li>
-<li>a number we wanna find</li>
-<li>an array of numbers</li>
-<li>Output:</li>
-<li>a boolean value of whether our number is found</li>
-<li>Running time:</li>
-<li><em>O</em>(n)</li>
-<li>Ω(1)</li>
-</ul>
-<p>If we know that the numbers in this array are sorted, then we can start in the middle, and find our value more efficiently, that is <strong>binary search</strong>.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
-<span class="normal"><a href="#__codelineno-1-2">2</a></span>
-<span class="normal"><a href="#__codelineno-1-3">3</a></span>
-<span class="normal"><a href="#__codelineno-1-4">4</a></span>
-<span class="normal"><a href="#__codelineno-1-5">5</a></span>
-<span class="normal"><a href="#__codelineno-1-6">6</a></span>
-<span class="normal"><a href="#__codelineno-1-7">7</a></span>
-<span class="normal"><a href="#__codelineno-1-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>If no numbers:
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a>    Return false
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a>If the middle of array is number:
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a>    Return true
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a>Else if middle number &gt; number:
-<a id="__codelineno-1-6" name="__codelineno-1-6"></a>    Search left half
-<a id="__codelineno-1-7" name="__codelineno-1-7"></a>Else if middle number &lt; number:
-<a id="__codelineno-1-8" name="__codelineno-1-8"></a>    Search right half
-</code></pre></div></td></tr></table></div>
-<p>The input and output is same as the previous.</p>
-<ul>
-<li>Running time:</li>
-<li><em>O</em>(log n)</li>
-<li>Ω(1)</li>
-</ul>
-<p>We perform steps at a frequency of one <strong>hertz</strong> (Hz), or cycle per second, and a processor's speed might be measured in gigahertz (GHz), or billion of operations per second. So the more efficient algorithms we choose, the more operations we could perform.</p>
-<h2 id="2-structs">2. Structs</h2>
-<p>If we wanted a type of variable more complex, such as a person in phone book, which contains their name and phone number, the basic types in C will not adequate.</p>
-<p>It turns out in C that we define our own data type, or <strong>data structure</strong>, with a <strong>struct</strong> in the following syntax:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
-<span class="normal"><a href="#__codelineno-2-2">2</a></span>
-<span class="normal"><a href="#__codelineno-2-3">3</a></span>
-<span class="normal"><a href="#__codelineno-2-4">4</a></span>
-<span class="normal"><a href="#__codelineno-2-5">5</a></span>
-<span class="normal"><a href="#__codelineno-2-6">6</a></span>
-<span class="normal"><a href="#__codelineno-2-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">number</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="p">}</span><span class="w"> </span><span class="n">person</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="c1">// Using the dot operator &quot;.&quot; to use the variable inside structs.</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="n">person</span><span class="w"> </span><span class="n">p</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="n">p</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Use dot&quot;</span><span class="p">;</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
-<p>We can see that one struct contains other data types inside it.</p>
-<p>With structs, we can be a little more confident that we won't have human errors in our program, which means we'll improve the <strong>robustness</strong> of our programs.</p>
-<h2 id="3-sorting">3. Sorting</h2>
-<p>If out input is an <strong>unsorted</strong> list of numbers, there are many algorithms we could use to produce an output of a <strong>sorted</strong> list, where all the elements are in order.</p>
-<h3 id="31-tradeoff">3.1. Tradeoff</h3>
-<p>With a sorted list, we can use binary search for efficiency, but it might take more time to write a sorting algorithm for that efficiency, so sometimes we'll encounter the <strong>tradeoff</strong> of time it takes a human to write a program compared to the time it takes a computer to run some algorithm.</p>
-<p>Other tradeoffs we'll see might be <strong>time</strong> and <strong>complexity</strong>, or <strong>time</strong> and <strong>memory usage</strong>.</p>
-<h3 id="32-selection-sort">3.2. Selection sort</h3>
-<p><strong>Selection sort</strong> is a simple sorting algorithm, and its pseudocode here:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
-<span class="normal"><a href="#__codelineno-3-2">2</a></span>
-<span class="normal"><a href="#__codelineno-3-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>For i from 0 to n-1
-<a id="__codelineno-3-2" name="__codelineno-3-2"></a>    Find smallest item between i&#39;th item and last item
-<a id="__codelineno-3-3" name="__codelineno-3-3"></a>    Swap smallest item with i&#39;th item
-</code></pre></div></td></tr></table></div>
-<p>For this algorithm, we were looking at roughly all <code>n</code> elements to find the smallest currently, and making <code>n</code> passes to sort all the elements.</p>
-<p>Its running time is <strong><em>O</em>(n^2^)</strong>.</p>
-<ul>
-<li>First we have to look at all n elements, then n-1, then n-2, and so on until there is only one element we need to look at.</li>
-<li>n + (n - 1) + (n - 2) + ... + 1 = n^2^/2 + n/2 = <strong><em>O</em>(n^2^)</strong></li>
-</ul>
-<p>And its lower bound of running time is <strong>Ω(n^2^)</strong>.</p>
-<ul>
-<li>The best case with a sorting algorithm is that the list of input has been sorted.</li>
-<li>Even though the list was sorted, <strong>Selection sort</strong> still need finding the smallest element n times, that still has the running time of <strong>n^2^</strong>.</li>
-</ul>
-<h3 id="33-bubble-sort">3.3. Bubble sort</h3>
-<p>There also is a simple sorting algorithm called <strong>Bubble sort</strong>, where we swap pairs of numbers repeatedly.</p>
-<p>Here's its pseudocode:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
-<span class="normal"><a href="#__codelineno-4-2">2</a></span>
-<span class="normal"><a href="#__codelineno-4-3">3</a></span>
-<span class="normal"><a href="#__codelineno-4-4">4</a></span>
-<span class="normal"><a href="#__codelineno-4-5">5</a></span>
-<span class="normal"><a href="#__codelineno-4-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>Repeat n-1 times
-<a id="__codelineno-4-2" name="__codelineno-4-2"></a>    For i from 0 to n-2 // Since we&#39;re comparing the i&#39;th and i+1&#39;th
-<a id="__codelineno-4-3" name="__codelineno-4-3"></a>        If i&#39;th and 1+i&#39;th elements out of order
-<a id="__codelineno-4-4" name="__codelineno-4-4"></a>            Swap them
-<a id="__codelineno-4-5" name="__codelineno-4-5"></a>    If no swaps
-<a id="__codelineno-4-6" name="__codelineno-4-6"></a>        Quit
-</code></pre></div></td></tr></table></div>
-<ul>
-<li>And we can stop as soon as the list is sorted, since we can just remember whether we made any swaps. If not, the list must be stored already. </li>
-</ul>
-<p>This algorithm has <strong><em>O</em>(n^2^)</strong>.</p>
-<ul>
-<li>We have <code>n-1</code> comparisons in the loop, and at most <code>n-1</code> loops, so we get <strong>n^2^-2n+1</strong> steps total, where the largest factor is <strong>n^2^</strong>.</li>
-</ul>
-<p>The lower bound for running time this algorithm would be <strong>Ω(n)</strong>.</p>
-<ul>
-<li>Once we look at all the elements is sorted we could quit.</li>
-</ul>
-<h2 id="4-recursion">4. Recursion</h2>
-<p><strong>Recursion</strong> is the ability for a function to call itself.</p>
-<h3 id="41-merge-sort">4.1. Merge sort</h3>
-<p>We can take the idea of <strong>recursion</strong> to sorting, with another algorithm called <strong>Merge sort</strong>.</p>
-<p>The pseudocode might look like:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
-<span class="normal"><a href="#__codelineno-5-2">2</a></span>
-<span class="normal"><a href="#__codelineno-5-3">3</a></span>
-<span class="normal"><a href="#__codelineno-5-4">4</a></span>
-<span class="normal"><a href="#__codelineno-5-5">5</a></span>
-<span class="normal"><a href="#__codelineno-5-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>If only one number
-<a id="__codelineno-5-2" name="__codelineno-5-2"></a>    Return
-<a id="__codelineno-5-3" name="__codelineno-5-3"></a>Else
-<a id="__codelineno-5-4" name="__codelineno-5-4"></a>    Sort left half of number
-<a id="__codelineno-5-5" name="__codelineno-5-5"></a>    Sort right half of number
-<a id="__codelineno-5-6" name="__codelineno-5-6"></a>    Merge sorted halves
-</code></pre></div></td></tr></table></div>
-<p>Notice the line 1 in pseudocode, this is <strong>recursion terminal condition</strong>. Once we haven't <strong>recursion terminal condition</strong>, the recursion will endless running.</p>
-<p>The magic of this algorithm is the line 6. It will return if there's only one element, then we could merge sorted halves, where the halves both are only one element, and of course is sorted, then we can back to the stage which  invoked this stage, and then merge, and so forth.</p>
-<p>Each merging steps required <code>n</code> steps, there are <code>log n</code> stages containing merging, so total time is <code>n*log n</code>.</p>
-<p>So the upper bound for running time is <strong><em>O</em>(n * log n)</strong>.</p>
-<p>And the lower bound is <strong>Ω(n * log n)</strong>, since we still have to sort each half first and then merge them together.</p>
-<h3 id="42-tradeoff-again">4.2. Tradeoff again</h3>
-<p>Even though <strong>merge sort</strong> is likely to be faster than <strong>selection sort</strong> or <strong>bubble sort</strong>, we do need <strong>more memory</strong> to temporarily store our merged list at each stage.</p>
-<p>We face the <strong>tradeoff</strong> of incurring a higher cost, another array in memory, for the benefit of faster sorting.</p>
-<h2 id="5-another-notation">5. Another notation</h2>
-<p>Finally, there's another notation, <strong>θ</strong>，Theta, which we use describe running times of algorithms if <strong>the upper bound and lower bound is the same</strong>.</p>
-<p>For example, <strong>merge sort</strong> has <strong>θ（n logn)</strong>, and <strong>selection sort</strong> has <strong>θ(n^2^)</strong>.</p>
+<h1 id="_1">二项式定理</h1>
+<p>[toc]</p>
+<hr />
+<p>高中数学二项式定理就没好好学，现在经常忘记二项式定理，因此写一篇博客把二项式定理完整复习一下。</p>
+<h2 id="1">1. 二项式定理的由来</h2>
+<p>二项式定理是用于展开n个二项式乘积的通用公式：
+$$
+(a+b)^n=(a+b)(a+b)\cdots(a+b).
+$$</p>
+<p>首先观察<span class="arithmatex">\((a+b)^n\)</span>在<span class="arithmatex">\(n\)</span>较小时的结果：</p>
+<div class="arithmatex">\[
+(a+b)^1 = a+b,\\
+(a+b)^2 = a^2+2ab+b^2,\\
+(a+b)^3 = a^3+3a^2b+3ab^2+b^3,\\
+(a+b)^4 = a^4+4a^3b+6a^2b^2+4ab^3+b^4,\\
+(a+b)^5 = a^5+5a^4b+10a^3b+10a^2b^3+5ab^4+b^5,\\
+\]</div>
+<p>只观察结果中的项，不难理解，n个(a+b)相乘，会出现a^n^和b^n^；对于中间的项，a和b的指数合为n，因为在n个(a+b)相乘的过程中，每一次要么选择与a相乘要么选择与b，不论选择与谁相乘，最终的相乘次数为n。而a^n^或b^n^是相乘过程的特殊情况，即每次都选择a或每次都选择b。</p>
+<p>因此，对于二项式的n次方的结果为:</p>
+<div class="arithmatex">\[
+(a+b)^n = \sum_{i=0}^n k_i\times a^ib^{n-1}
+\]</div>
+<p>那么对于每一项前的系数<span class="arithmatex">\(k_i\)</span>是啥呢，要想理解这个，就必须先理解两个重要概念：排列数(Permutations)和组合数(Combinations)。但是要理解排列和组合前，我们还需要先了解阶乘(Factorial)。</p>
+<h2 id="2">2. 阶乘</h2>
+<p>如果n是一个正整数，那么n的阶乘<span class="arithmatex">\(n!=1\cdot2\cdot3\cdots n=\prod_{i=1}^ni\)</span>。特别地，<span class="arithmatex">\(0!=1\)</span>，原因等会儿会说。</p>
+<p>通过阶乘，我们可以表示一段<strong>连续的整数乘积</strong>：</p>
+<div class="arithmatex">\[
+(k+1)\cdot (k+2) \cdots n = \prod_{i=k+1}^ni = {1\cdot2\cdots n \over 1\cdot2\cdots k} = {\prod_{i=1}^ni \over \prod_{j=1}^{k}j} = {n! \over k!},\ if\ k &lt; n. \\
+i.e., \prod_{i=k+1}^ni={n!\over k!},\ if\ k&lt;n.
+\]</div>
+<h2 id="3">3. 排列</h2>
+<h3 id="31">3.1. 全排列</h3>
+<p>给定n个不同的物体，求有多少种排列这n个物体的方式。这就是<strong>排列问题</strong>。</p>
+<p>要求解这个问题，我们需要考虑，如果我们需要做两个连续且独立的决定，假设第一个决定d1有c1种选择，第二个决定d2有c2种选择。那么对于d1、d2两个决定整体来说，我们共有c1*c2种选择。如，我们需要决定穿什么上衣和裤子，那么d1=穿什么上衣，d2=穿什么裤子；假设我们有c1件可选择的上衣，即d1有c1种选择，c2件可选择的裤子，即d2有c2种选择；那么最终对于决定穿什么上衣和裤子来说，我们共有c1*c2种选择。这就是<strong>乘法原理</strong>：做一件事，如果需要n个步骤，每个步骤有mi种不同的方法，那么最终做完这件事有<span class="arithmatex">\(\prod_{i=1}^nm_i\)</span>种不同的方法。</p>
+<p>接下来，考虑排列问题。排列问题本质上就是决定这n个位置上选择什么物体，即做n次连续且独立的决定。对于d1来说，也就是决定第1个位置选择什么物体，很明显我们可以选择n个物体中任意一个，即c1=n；对于d2，因为d1已经选择了一个物体，那么我们就少了一个物体可供选择，c2=n-1；最终对于dn来说，只剩下一个物体可供选择，cn=1。</p>
+<p>那么最终对于这个排列问题，我们有多少种选择方式（即排列方式）呢？<span class="arithmatex">\(n(n-1)(n-2)\cdots2\cdot1=\prod_{i=1}^ni=n!\)</span>种。对于n个物体的这么多排列顺序来说，每一种顺序都叫做n个物体的一种<strong>排列(Permutation)</strong>。</p>
+<div class="arithmatex">\[
+\text{The number of permutations of \textit{n} objects is \textit n!}.
+\]</div>
+<p>现在可以发现，n的阶乘其实就是n个物体的排列数量。那么不难理解，0的阶乘为啥是1了。1个物体的排列数量为1，因为只能选择1个物体；0个物体的排列数量依然为1，因为什么都没得选本身也是一种选择。</p>
+<h3 id="32">3.2. 非全排列</h3>
+<p>上面是有n个物体，求n个物体的排列。那么如果是n个物体，求n个物体中k个物体的排列方式呢(k &lt;= n)？这叫做n个物体，一次取k个物体的排列，总数排列数表示为<span class="arithmatex">\(P(n, k)\)</span>，或<span class="arithmatex">\(A(n, k)\)</span>，其中P表示Permutations，A表示Arrangement。</p>
+<p>解决办法同上，在选择k个位置的第1个位置时，我们有n个物体供选择，第2个位置n-1个物体，第k个位置（也就是最后一个位置），有n-(k-1) = n-k+1个物体供选择。根据乘法定理，</p>
+<div class="arithmatex">\[
+P(n, k)=n(n-1)(n-2)\cdots(n-k+1)=\prod_{i=n-k+1}^ni={n!\over (n-k)!}
+\]</div>
+<h2 id="4">4. 组合</h2>
+<p>在排列中，n个物体的位置很重要，但是如果我们不想考虑位置，只想考虑能选出多少种k个物体。这就是n个物体每次选择k个的组合。总组合数表示为<span class="arithmatex">\(C(n, k)\)</span>，更多时候也表示为<span class="arithmatex">\(\binom n k\)</span>。<span class="arithmatex">\(\binom n k\)</span>也叫做<strong>二项式系数(Binomial coefficients)</strong>。原因稍后解释。</p>
+<p>如何求出组合数呢，这就需要用到刚刚的排列了。组合与排列存在着一定的关系。对于n个物体选k个的排列数<span class="arithmatex">\(P(n, k)\)</span>来说，其实就是求出有多少种选择这k个数的数量，而后再考虑有多少种给这k个数排列的数量。即，n中选k就是组合数<span class="arithmatex">\(\binom n k\)</span>，而排列这k个数就是k的全排列<span class="arithmatex">\(P(k, k)=k!\)</span>。因此：</p>
+<div class="arithmatex">\[
+P(n, k)=\binom n k \cdot P(k, k) = \binom n k \cdot k! \\
+C(n, k)=\binom n k = {P(n, k)\over k!}={{n!\over (n-k)!}\over k!}={n!\over k!\cdot(n-k)!}
+\]</div>
+<p>排列数还有一些有趣的性质：</p>
+<div class="arithmatex">\[
+\binom n 0 = \binom n n = {n!\over 0!n!} = 1\\
+\binom n 1 = \binom n {n-1} = {n!\over 1!(n-1)!} = n
+\]</div>
+<p>或者推广一下：</p>
+<div class="arithmatex">\[
+\binom n k = \binom n {n-k} = {n!\over k!(n-k)!}
+\]</div>
+<p>这个性质不难从二项式定理公式上推导出来，更直观的理解为，在n个物体中选k个的选择，本质上就是在n个物体中选剩下的n-k个的选择。（n个物体减去你每个挑k个的每个组合，就是你每个挑n-k个的每个组合，这n-k个是你在不知不觉中挑好的）</p>
+<h2 id="5">5. 二项式定理</h2>
+<p>现在，我们终于可以回过头来讨论二项式定理中的系数k了。还记得我们推出：</p>
+<div class="arithmatex">\[
+(a+b)^n = \sum_{i=0}^n k_i\times a^ib^{n-1}
+\]</div>
+<p>在这n个(a+b)相乘的过程中，可以理解为n次选择，每次都能选择a或者b。那么对于<span class="arithmatex">\(k_i\cdot a^ib^{n-i}\)</span>来说，就是n次选择中i次选择了a，有多少种选法系数k就是多少（n-i次选择b结果一样，和上面二项式系数的性质一样，选择了i次a，自然也就是选择了n-i次b）。即<span class="arithmatex">\(\binom n i\)</span>。将系数k代入二项式定理中：</p>
+<div class="arithmatex">\[
+(a+b)^n=\sum_{i=0}^n{\binom n i \cdot a^ib^{n-1}} = \sum_{i=0}^n{{n!\over i!(n-i)!}\cdot a^ib^{n-i}}
+\]</div>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 23, 2022</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 8, 2022</span>
       
     
   </small>
@@ -1566,7 +1359,7 @@
     <nav class="md-footer__inner md-grid" aria-label="页脚" >
       
         
-        <a href="../0x02_Arrays/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Lec 02: Arrays" rel="prev">
+        <a href="../../Harvard_CS50/0x08_HTML%2C%20CSS%2C%20JavaScript/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Lec 08: HTML, CSS, JS" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1575,20 +1368,20 @@
               <span class="md-footer__direction">
                 上一页
               </span>
-              Lec 02: Arrays
+              Lec 08: HTML, CSS, JS
             </div>
           </div>
         </a>
       
       
         
-        <a href="../0x04_Memory/" class="md-footer__link md-footer__link--next" aria-label="下一页: Lec 04: Memory" rel="next">
+        <a href="../../../essays/why_blog/" class="md-footer__link md-footer__link--next" aria-label="下一页: 为什么写博客" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              Lec 04: Memory
+              为什么写博客
             </div>
           </div>
           <div class="md-footer__button md-icon">
