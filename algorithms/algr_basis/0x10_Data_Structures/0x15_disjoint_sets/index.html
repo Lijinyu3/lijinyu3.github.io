@@ -12,20 +12,16 @@
         <meta name="author" content="enotaa33@gmail.com">
       
       
-        <link rel="canonical" href="https://206031.com/algorithms/algr_basis/0x00_Basic_Algorithms/0x01_quick_sort/">
+        <link rel="canonical" href="https://206031.com/algorithms/algr_basis/0x10_Data_Structures/0x15_disjoint_sets/">
       
       
-        <link rel="prev" href="../../../../essays/why_blog/">
-      
-      
-        <link rel="next" href="../0x02_merge_sort/">
       
       <link rel="icon" href="../../../../img/favicon.ico">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.12">
     
     
       
-        <title>0x01 快排 - Li's blog</title>
+        <title>0x15 并查集 - Li's blog</title>
       
     
     
@@ -77,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#0x01" class="md-skip">
+        <a href="#0x15" class="md-skip">
           跳转至
         </a>
       
@@ -110,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              0x01 快排
+              0x15 并查集
             
           </span>
         </div>
@@ -269,8 +265,6 @@
         
   
   
-    
-  
 
 
   
@@ -287,7 +281,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="./" class="md-tabs__link md-tabs__link--active">
+      <a href="../../0x00_Basic_Algorithms/0x01_quick_sort/" class="md-tabs__link">
         算法刷题
       </a>
     </li>
@@ -780,16 +774,14 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
       
       
       
@@ -798,7 +790,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
           算法刷题
@@ -809,16 +801,14 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
       
       
       
@@ -827,7 +817,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_5_1">
           <span class="md-nav__icon md-icon"></span>
           算法基础
@@ -838,16 +828,14 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_1" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_1" >
       
       
       
@@ -856,7 +844,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_1_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_1_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_5_1_1">
           <span class="md-nav__icon md-icon"></span>
           基础算法
@@ -867,93 +855,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          0x01 快排
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../0x00_Basic_Algorithms/0x01_quick_sort/" class="md-nav__link">
         0x01 快排
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    1. 什么是快速排序
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    2. 关键点
-  </a>
-  
-    <nav class="md-nav" aria-label="2. 关键点">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21" class="md-nav__link">
-    2.1. 朴素做法
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#22" class="md-nav__link">
-    2.2. 双指针做法
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    3. 时间复杂度分析
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    4. [拓展] 快速选择算法
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -965,7 +871,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../0x02_merge_sort/" class="md-nav__link">
+      <a href="../../0x00_Basic_Algorithms/0x02_merge_sort/" class="md-nav__link">
         0x02 归并
       </a>
     </li>
@@ -979,7 +885,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../0x03_binary_search/" class="md-nav__link">
+      <a href="../../0x00_Basic_Algorithms/0x03_binary_search/" class="md-nav__link">
         0x03 二分
       </a>
     </li>
@@ -993,7 +899,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../0x04_high_presicion/" class="md-nav__link">
+      <a href="../../0x00_Basic_Algorithms/0x04_high_presicion/" class="md-nav__link">
         0x04 高精度
       </a>
     </li>
@@ -1007,7 +913,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../0x05_prefix_sum%26%26difference/" class="md-nav__link">
+      <a href="../../0x00_Basic_Algorithms/0x05_prefix_sum%26%26difference/" class="md-nav__link">
         0x05 前缀和&&差分
       </a>
     </li>
@@ -1021,7 +927,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../0x06_two_pointers/" class="md-nav__link">
+      <a href="../../0x00_Basic_Algorithms/0x06_two_pointers/" class="md-nav__link">
         0x06 双指针
       </a>
     </li>
@@ -1035,7 +941,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../0x07_low_bit/" class="md-nav__link">
+      <a href="../../0x00_Basic_Algorithms/0x07_low_bit/" class="md-nav__link">
         0x07 low bit
       </a>
     </li>
@@ -1049,7 +955,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../0x08_discretization/" class="md-nav__link">
+      <a href="../../0x00_Basic_Algorithms/0x08_discretization/" class="md-nav__link">
         0x08 离散化
       </a>
     </li>
@@ -1063,7 +969,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../0x09_intervals_merge/" class="md-nav__link">
+      <a href="../../0x00_Basic_Algorithms/0x09_intervals_merge/" class="md-nav__link">
         0x09 区间合并
       </a>
     </li>
@@ -1111,7 +1017,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../0x10_Data_Structures/0x11_linked_lists/" class="md-nav__link">
+      <a href="../0x11_linked_lists/" class="md-nav__link">
         0x11 链表
       </a>
     </li>
@@ -1125,7 +1031,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../0x10_Data_Structures/0x12_stacks_and_queues/" class="md-nav__link">
+      <a href="../0x12_stacks_and_queues/" class="md-nav__link">
         0x12 栈和队列
       </a>
     </li>
@@ -1139,7 +1045,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../0x10_Data_Structures/0x13_kmp/" class="md-nav__link">
+      <a href="../0x13_kmp/" class="md-nav__link">
         0x13 KMP
       </a>
     </li>
@@ -1195,29 +1101,29 @@
       
         <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
-    1. 什么是快速排序
+    1. 啥是并查集
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
-    2. 关键点
+    2. 如何实现
   </a>
   
-    <nav class="md-nav" aria-label="2. 关键点">
+    <nav class="md-nav" aria-label="2. 如何实现">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#21" class="md-nav__link">
-    2.1. 朴素做法
+    2.1. 朴素实现
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#22" class="md-nav__link">
-    2.2. 双指针做法
+    2.2. 路径压缩优化
   </a>
   
 </li>
@@ -1229,15 +1135,28 @@
       
         <li class="md-nav__item">
   <a href="#3" class="md-nav__link">
-    3. 时间复杂度分析
+    3. 并查集的应用
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 并查集的应用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    3.1. 合并查询集合
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    4. [拓展] 快速选择算法
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    3.2. 无向图节点连通性
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1260,25 +1179,15 @@
 
 
 
-<h1 id="0x01">0x01 快速排序</h1>
+<h1 id="0x15">0x15 并查集</h1>
+<p>[toc]</p>
 <hr />
-<h2 id="1">1. 什么是快速排序</h2>
-<p>快速排序基于<strong>分而治之（Divide and conquer）</strong>的思想。</p>
-<p>输入是一串数字（整形数组），输出是一串有序的数字。</p>
-<ol>
-<li>确定分界点</li>
-<li>分界点可以是<code>l + r &gt;&gt; 1</code>，边界条件（2个数字）即为左边界，因为向下取整。</li>
-<li>可以是<code>l + r + 1 &gt;&gt; 1</code>，边界条件是右边界，向上取整。</li>
-<li>然后分别调整左右区间，使左边界&lt;= pivot，右边界&gt;= pivot。</li>
-<li>左右边界不一定以<code>pivot</code>原来的位置划分。</li>
-<li>递归处理左右边界。</li>
-</ol>
-<p>快速排序是不稳定的，因为在调整左右边界时，会打乱数字顺序，递归划分时不能把顺序调整回来。</p>
-<p>相应的，可以给每个数字添加上它的位置信息，在比较同样的数字，可以再比较其位置，从而把同样的值的元素变稳定。这样快速排序就稳定了。</p>
-<h2 id="2">2. 关键点</h2>
-<p>快速排序的关键点在于第二部，如何分别调整左右区间。这一步的目的是将区间划分为&lt;= pivot的元素和&gt;= pivot元素的左右两个区间。</p>
-<h3 id="21">2.1. 朴素做法</h3>
-<p>遍历原区间所有元素，小于等于pivot的元素，加入左区间；大于等于pivot的放入右区间。而后合并左右区间至原区间。</p>
+<h2 id="1">1. 啥是并查集</h2>
+<p>并查集(disjoint sets直译为不交集)，其实就是其英文名字的意思，若干个无交集的集合。对于其的操作就是中文名字所述，合并两个集合，查询某个元素属于哪一个集合。</p>
+<h2 id="2">2. 如何实现</h2>
+<h3 id="21">2.1. 朴素实现</h3>
+<p>最直接的办法就是建立一个一维数组，数组中每个元素代表每个元素属于哪个集合。如<code>dsjset[i]=3</code>，就代表i号元素属于n号集合。这样对于查询操作来说时间复杂度是O(1)的，但是合并就很蛋疼，时间复杂度为O(n)。为了减少每次合并都要动集合内全部的元素，我们可以选择一个集合内部的代表元素，如i号元素，将所有与i号元素同集合的元素都指向它，<code>dsjset[j]=i</code>，而i号元素指向自己。这样当集合合并时，只需要改变i号元素的指向值，无须改变牵一发而动全身。其次我们并不关心某个元素属于哪一号集合，这个几号集合是无意义的，我们只关心它和谁在一个集合，和谁不在一个集合。因此选出一个代表元素是完全OK的。</p>
+<p>但是这样的话随着集合的多次合并，想要查询就变得困难。如果有m次合并，那么查询集合的时间复杂度为O(m)。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
@@ -1288,112 +1197,109 @@
 <span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
 <span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
 <span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-0-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">ori</span><span class="p">[],</span><span class="w"> </span><span class="n">left</span><span class="p">[],</span><span class="w"> </span><span class="n">right</span><span class="p">[];</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="kt">int</span><span class="w"> </span><span class="n">pl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">pr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="c1">// divide the left and right intervals</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ori</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">pivot</span><span class="p">)</span><span class="w">    </span><span class="n">left</span><span class="p">[</span><span class="n">pl</span><span class="o">++</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ori</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span><span class="k">else</span><span class="w">    </span><span class="n">right</span><span class="p">[</span><span class="n">pr</span><span class="o">++</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ori</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="p">}</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="c1">// merge them to original array</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">pl</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w">    </span><span class="n">ori</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">left</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pl</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">pr</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w">   </span><span class="n">ori</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">right</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#__codelineno-0-19">19</a></span>
+<span class="normal"><a href="#__codelineno-0-20">20</a></span>
+<span class="normal"><a href="#__codelineno-0-21">21</a></span>
+<span class="normal"><a href="#__codelineno-0-22">22</a></span>
+<span class="normal"><a href="#__codelineno-0-23">23</a></span>
+<span class="normal"><a href="#__codelineno-0-24">24</a></span>
+<span class="normal"><a href="#__codelineno-0-25">25</a></span>
+<span class="normal"><a href="#__codelineno-0-26">26</a></span>
+<span class="normal"><a href="#__codelineno-0-27">27</a></span>
+<span class="normal"><a href="#__codelineno-0-28">28</a></span>
+<span class="normal"><a href="#__codelineno-0-29">29</a></span>
+<span class="normal"><a href="#__codelineno-0-30">30</a></span>
+<span class="normal"><a href="#__codelineno-0-31">31</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1e5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="kt">int</span><span class="w"> </span><span class="n">dsj_sets</span><span class="p">[</span><span class="n">N</span><span class="p">],</span><span class="w"> </span><span class="n">idx</span><span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="c1">// 初始化，每个元素都属于一个单独的集合</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="kt">void</span><span class="w"> </span><span class="nf">init</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">        </span><span class="n">dsj_sets</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="p">}</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="c1">// 查询某个元素属于哪个集合</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="kt">int</span><span class="w"> </span><span class="nf">get_parent</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">elem</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dsj_set</span><span class="p">[</span><span class="n">elem</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">elem</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">        </span><span class="c1">// 集合代表</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">elem</span><span class="p">;</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">parent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dsj_set</span><span class="p">[</span><span class="n">elem</span><span class="p">];</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">get_parent</span><span class="p">(</span><span class="n">parent</span><span class="p">);</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="p">}</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a>
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="c1">// 合并两个元素所在的集合</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="kt">void</span><span class="w"> </span><span class="nf">merge_sets</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">elem1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">elem2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">set1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_parent</span><span class="p">(</span><span class="n">elem1</span><span class="p">),</span><span class="w"> </span><span class="n">set2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_parent</span><span class="p">(</span><span class="n">elem2</span><span class="p">);</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="w">    </span><span class="c1">// 无须特判，如果set1=set2，那么数组中存储的还是它自身</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="w">    </span><span class="n">dsj_set</span><span class="p">[</span><span class="n">set1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">set2</span><span class="p">;</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="p">}</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27"></a>
+<a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="c1">// 查询两个元素是否在同一集合</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">query</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">elem1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">elem2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">get_parent</span><span class="p">(</span><span class="n">elem1</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">get_parent</span><span class="p">(</span><span class="n">elem2</span><span class="p">);</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-<h3 id="22">2.2. 双指针做法</h3>
-<p>使用两个指针，左指针指向数组起始点，右指针指向终点。左指针右移，遇到大于等于pivot的停下；右指针左移，遇到小于等于pivot的停下。当双指针都停下时，交换双指针的元素。重复，直到双指针相遇。</p>
-<p>这一过程中，左指针之前的元素一定满足左区间的要求，右指针同理。因此双指针相遇时，就划分好了左右区间。</p>
+<h3 id="22">2.2. 路径压缩优化</h3>
+<p>虽然查询的时间复杂度变高，但是我们可以对其进行路径压缩优化。所谓路径压缩优化，就是在每次查询后，利用查询的信息，让之后再查询时不会走同样的弯路。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
 <span class="normal"><a href="#__codelineno-1-2">2</a></span>
 <span class="normal"><a href="#__codelineno-1-3">3</a></span>
 <span class="normal"><a href="#__codelineno-1-4">4</a></span>
 <span class="normal"><a href="#__codelineno-1-5">5</a></span>
 <span class="normal"><a href="#__codelineno-1-6">6</a></span>
-<span class="normal"><a href="#__codelineno-1-7">7</a></span>
-<span class="normal"><a href="#__codelineno-1-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">pl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">pr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="kt">int</span><span class="w"> </span><span class="n">pivot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">pl</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">pr</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">];</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">pl</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">pr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="k">do</span><span class="w"> </span><span class="n">pl</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">pl</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">pivot</span><span class="p">);</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">    </span><span class="k">do</span><span class="w"> </span><span class="n">pr</span><span class="o">--</span><span class="p">;</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">pr</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">pivot</span><span class="p">);</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pl</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">pr</span><span class="p">)</span><span class="w">    </span><span class="n">swap</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">pl</span><span class="p">],</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">pr</span><span class="p">]);</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="p">}</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="n">quick_sort</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="n">pr</span><span class="p">),</span><span class="w"> </span><span class="n">quick_sort</span><span class="p">(</span><span class="n">pr</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="p">)</span>
+<span class="normal"><a href="#__codelineno-1-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>        5
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>       / \
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>      3   2
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>     /
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>    1
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a>   /
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a>  4
 </code></pre></div></td></tr></table></div>
-<p>​   注意边界问题，如果选取的<code>pivot = a[pl + pr + 1 &gt;&gt; 1]</code>需要在最后的边界改为<code>start, pl - 1; pl, end</code>。</p>
-<h2 id="3">3. 时间复杂度分析</h2>
-<p>对于快速排序，会对区间划分<code>log n</code>层，每一层的调整左右区间都是<code>n</code>次。总的时间复杂度为<strong><code>O(n * log n)</code></strong>.</p>
-<h2 id="4">4. [拓展] 快速选择算法</h2>
-<p>快速选择算法（Quick Select）可以快速地在一个无序区间内选择出第<strong><code>K</code></strong>大/小的数字。时间复杂度为<strong><code>O(n)</code></strong>.</p>
-<p>首先我们知道快速排序的调整左右区间这一过程，可以将当前区间分为两个区间，左边小于等于pivot，右边大于。这时候我们就能发现我们要找的K所在的区间，随后对K所在的区间进行调整左右区间这一过程，不断缩小区间，最终<code>a[K - 1]</code>就是要找的数字。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-2-10">10</a></span>
-<span class="normal"><a href="#__codelineno-2-11">11</a></span>
-<span class="normal"><a href="#__codelineno-2-12">12</a></span>
-<span class="normal"><a href="#__codelineno-2-13">13</a></span>
-<span class="normal"><a href="#__codelineno-2-14">14</a></span>
-<span class="normal"><a href="#__codelineno-2-15">15</a></span>
-<span class="normal"><a href="#__codelineno-2-16">16</a></span>
-<span class="normal"><a href="#__codelineno-2-17">17</a></span>
-<span class="normal"><a href="#__codelineno-2-18">18</a></span>
-<span class="normal"><a href="#__codelineno-2-19">19</a></span>
-<span class="normal"><a href="#__codelineno-2-20">20</a></span>
-<span class="normal"><a href="#__codelineno-2-21">21</a></span>
-<span class="normal"><a href="#__codelineno-2-22">22</a></span>
-<span class="normal"><a href="#__codelineno-2-23">23</a></span>
-<span class="normal"><a href="#__codelineno-2-24">24</a></span>
-<span class="normal"><a href="#__codelineno-2-25">25</a></span>
-<span class="normal"><a href="#__codelineno-2-26">26</a></span>
-<span class="normal"><a href="#__codelineno-2-27">27</a></span>
-<span class="normal"><a href="#__codelineno-2-28">28</a></span>
-<span class="normal"><a href="#__codelineno-2-29">29</a></span>
-<span class="normal"><a href="#__codelineno-2-30">30</a></span>
-<span class="normal"><a href="#__codelineno-2-31">31</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a>
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1e5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">;</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7"></a>
-<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="kt">int</span><span class="w"> </span><span class="nf">quick_select</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">right</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">left</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">right</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">left</span><span class="p">];</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">left</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">right</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">mid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">l</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">];</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">l</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="w">        </span><span class="k">do</span><span class="w"> </span><span class="n">l</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">l</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">mid</span><span class="p">);</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="w">        </span><span class="k">do</span><span class="w"> </span><span class="n">r</span><span class="o">--</span><span class="p">;</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">r</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">mid</span><span class="p">);</span>
-<a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">l</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="n">swap</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">l</span><span class="p">],</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">r</span><span class="p">]);</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">front_l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">left</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">back_l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">right</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">r</span><span class="p">;</span>
-<a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">k</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">front_l</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">quick_select</span><span class="p">(</span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">);</span>
-<a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">quick_select</span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">right</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">front_l</span><span class="p">);</span>
-<a id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-2-24" name="__codelineno-2-24"></a><span class="p">}</span>
-<a id="__codelineno-2-25" name="__codelineno-2-25"></a>
-<a id="__codelineno-2-26" name="__codelineno-2-26"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-27" name="__codelineno-2-27"></a><span class="w">    </span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">k</span><span class="p">;</span>
-<a id="__codelineno-2-28" name="__codelineno-2-28"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-<a id="__codelineno-2-29" name="__codelineno-2-29"></a><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">quick_select</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
-<a id="__codelineno-2-30" name="__codelineno-2-30"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<a id="__codelineno-2-31" name="__codelineno-2-31"></a><span class="p">}</span>
+<p>设想上面这种情况，在多次集合合并后，对于1、3、2元素来说，数组中存储的都不是其真正的集合父节点，需要查询多次才能找到真正的父节点，即5。但是一旦查询过一次，我们知道其真正的父节点后，就应该更新父节点信息，这样下次查询时就还是O(1)的。如对于1号元素来说，它本来存的是3，但是查询过一次后发现是5，那么它就应更新为5。其次对于4来说，它需要查多次才能到真正的父节点，那么它在一路上碰到的所有祖先节点也应当指向最新的根节点，即4查到父节点为5时，它查询路上碰到的3也应该一并更新。</p>
+<p>对于路径压缩优化只需要改变get_parent函数：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span>
+<span class="normal"><a href="#__codelineno-2-6">6</a></span>
+<span class="normal"><a href="#__codelineno-2-7">7</a></span>
+<span class="normal"><a href="#__codelineno-2-8">8</a></span>
+<span class="normal"><a href="#__codelineno-2-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">get_parent</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">elem</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dsj_sets</span><span class="p">[</span><span class="n">elem</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">elem</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">elem</span><span class="p">;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">dated_parent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dsj_sets</span><span class="p">[</span><span class="n">elem</span><span class="p">];</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">parent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_parent</span><span class="p">(</span><span class="n">dated_parent</span><span class="p">);</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">    </span><span class="n">dsj_sets</span><span class="p">[</span><span class="n">elem</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parent</span><span class="p">;</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">parent</span><span class="p">;</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-<p>对于时间复杂度，每次划分的区间减少一半，从n到1，总和为<code>S = n + n/2 + n/4 + ... + 1</code>。通过等比数列求和公式和求极限可以得出最终的时间复杂度为<strong><code>O(n)</code></strong>.</p>
+<p>最终查询的时间复杂度均摊应该是O(1)的，我也不知道咋算。</p>
+<h2 id="3">3. 并查集的应用</h2>
+<h3 id="31">3.1. 合并查询集合</h3>
+<p>都叫并查集了，肯定可以用于合并、查询多个无交集的集合。这种问题比较直接，直接用就行。</p>
+<h3 id="32">3.2. 无向图节点连通性</h3>
+<p>并查集还可以维护一张无向图的节点连通性。可以想象，对于无向图中，每个点都相当于一个元素，如果两个点连通，那么可以认为它们同处一个集合。如果让两个点进行连通，那么两个点原本连通的点也会连通，这就相当于合并了两个集合。</p>
+<p>不过并查集并不能快速的分离集合，所以只适用于无断开连通的无向图。再归纳一下，其实并查集解决了元素间的<strong>关系传递性</strong>。对于无向图，点与点一旦连通，那么就会将这个连通关系传递到原本和它们连通的点。不过这种关系传递性一旦传递，就很难断开关系。</p>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">May 29, 2022</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 13, 2023</span>
       
     
   </small>
