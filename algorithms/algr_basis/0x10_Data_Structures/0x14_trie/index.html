@@ -15,13 +15,17 @@
         <link rel="canonical" href="https://206031.com/algorithms/algr_basis/0x10_Data_Structures/0x14_trie/">
       
       
+        <link rel="prev" href="../0x13_kmp/">
+      
+      
+        <link rel="next" href="../0x15_disjoint_sets/">
       
       <link rel="icon" href="../../../../img/favicon.ico">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.12">
     
     
       
-        <title>0x14 trie(字典树) - Li's blog</title>
+        <title>0x14 trie - Li's blog</title>
       
     
     
@@ -106,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              0x14 trie(字典树)
+              0x14 trie
             
           </span>
         </div>
@@ -265,6 +269,8 @@
         
   
   
+    
+  
 
 
   
@@ -281,7 +287,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../0x00_Basic_Algorithms/0x01_quick_sort/" class="md-tabs__link">
+      <a href="../../0x00_Basic_Algorithms/0x01_quick_sort/" class="md-tabs__link md-tabs__link--active">
         算法刷题
       </a>
     </li>
@@ -774,14 +780,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
       
       
       
@@ -790,7 +798,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
           算法刷题
@@ -801,14 +809,16 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" checked>
       
       
       
@@ -817,7 +827,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_5_1">
           <span class="md-nav__icon md-icon"></span>
           算法基础
@@ -988,14 +998,16 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_2" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_2" checked>
       
       
       
@@ -1004,7 +1016,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_2_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_2_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_5_1_2">
           <span class="md-nav__icon md-icon"></span>
           基础数据结构
@@ -1047,6 +1059,116 @@
     <li class="md-nav__item">
       <a href="../0x13_kmp/" class="md-nav__link">
         0x13 KMP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          0x14 trie
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        0x14 trie
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-trie" class="md-nav__link">
+    1. 什么是trie
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-trie" class="md-nav__link">
+    2. 为什么要用trie
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-trie" class="md-nav__link">
+    3. trie的实现
+  </a>
+  
+    <nav class="md-nav" aria-label="3. trie的实现">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    3.1. 正常实现
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    3.2. 优化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    3.3. 拓展
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x15_disjoint_sets/" class="md-nav__link">
+        0x15 并查集
       </a>
     </li>
   
